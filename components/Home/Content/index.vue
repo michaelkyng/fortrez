@@ -7,6 +7,7 @@
           <HomeContentOurProjects title="Our Projects"/>
           <HomeContentOurStats class="h-fit"/>
           <HomeContentOurUpdates title="Our Updates" class="h-fit"/>
+          <HomeContentOurNewsletter/>
         </div>
     </div>
   </div>

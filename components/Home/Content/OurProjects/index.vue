@@ -10,50 +10,16 @@
         <ChevronRightIcon class="group-hover:text-accent w-6 h-6 "  :class="transition"/>
       </button>
       <div ref="scrollContainer" class="menu-scroll relative flex justify-start items-center h-fit gap-4 sm:gap-10 md:gap-20  px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14">
-        <HomeContentOurProjectsCard class="flex-none group" v-for="cardItem in data">
-            <NuxtLink :to="cardItem.title">
-              <div class="flex flex-col gap-y-5">
-                <div class="flex flex-col gap-y-2.5">
-                  <div class="relative max-full h-32 rounded-2xl overflow-clip">
-                    <div class="absolute flex items-center px-5 opacity-0 group-hover:opacity-100 z-10 w-full h-full bg-black/70" :class="transition">
-                        <!-- Black Ovelay-->
-                        
-                        <span class="absolute right-5 bottom-1 flex items-center gap-1 text-accent">
-                          <span class="text-xs md:text-sm flex items-center"><IconsSymbolsNaira/>{{ cardItem.funded }}</span> 
-                          <span class="text-xs">of</span>
-                          <span class="text-xs md:text-sm flex items-center"><IconsSymbolsNaira/>{{ cardItem.amount }}</span>
-                        </span>
-
-                        <UProgress class="relative" :value="cardItem.funded" :max="cardItem.amount" size="sm" color="yellow">
-                          <template #indicator="{ percent }">
-                            <div class="text-right absolute -top-6" :style="{ width: `${percent}%` }">
-                              <span class="text-accent text-xs">{{percent}}%</span>
-                            </div>
-                          </template>          
-                        </UProgress>
-                    </div>
-                    <img class="absolute object-cover h-32 md:h-auto top-0 left-0 group-hover:scale-125" :class="transition" :src="cardItem.image" alt="">
-                  </div>
-                  <div class="flex flex-col max-w-60 md:max-w-72 gap-y-2.5">
-                    <h1 class="text-base sm:text-lg md:text-xl font-bold">{{cardItem.title}}</h1>
-                    <p class="text-xs sm:text-sm md:text-base text-black/50 group-hover:text-black/80 w-full text-ellipsis line-clamp-2 sm:line-clamp-3">{{ cardItem.description }}</p>
-                  </div>
-                </div>
-                <div class="flex justify-between">
-                  <div v-if="cardItem.completed" class="flex gap-1 items-center">
-                    <component  :is="IconCompleted"/>
-                    <p class="text-sm md:text-base text-black/60 sm:text-black/80">Completed</p>
-                  </div>
-      
-                  <div v-else class="flex gap-1 items-center">
-                    <component  :is="IconInProgress"/>
-                    <p class="text-sm md:text-base text-black/60 sm:text-black/80">InProgress</p>
-                  </div>
-                  <p class="text-accent/80 hover:text-accent hover:border-b hover:border-accent font-medium lg:font-semibold pr-1">LEARN MORE</p>
-                </div>
-      
-              </div>
-            </NuxtLink>
+        <HomeContentOurProjectsCard class="flex-none group" v-for="cardItem in data" 
+        :title="cardItem.title" 
+        :description="cardItem.description" 
+        :funded="cardItem.funded"
+        :amount="cardItem.amount"
+        :completed="cardItem.completed"
+        :image="cardItem.image"
+        :path="`/projects/${cardItem.title}`"
+        >
+            
         </HomeContentOurProjectsCard>
       </div>
     </div>
