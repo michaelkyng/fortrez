@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-scroll flex gap-2.5 sm:gap-5 justify-start xl:justify-center items-center overflow-x-scroll py-2.5 w-full lg:w-3/5 scroll-smooth mx-auto">
+  <div class="menu-scroll flex gap-2.5 sm:gap-5 justify-start xl:justify-center items-center overflow-x-scroll py-2.5 w-full scroll-smooth">
     <ButtonGhost name="All" :active="true"/>
     <ButtonGhost name="News" :active="false"/>
     <ButtonGhost name="Events" :active="false"/>

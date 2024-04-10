@@ -1,14 +1,15 @@
 <template>
     <div>
-        <NuxtLink to="/projects" :class="`flex gap-1 w-fit items-center py-0.5 text-${props.color}/80 hover:text-${props.color} hover:border-solid border-b-2 border-b-transparent border-${props.color}/60 hover:border-${props.color} text-sm sm:text-base bg-transparent transition ease-in-out duration-300`">
+        <NuxtLink :to="props.to" class="flex gap-1 w-fit items-center py-0.5 border-b-2 border-b-transparent  text-sm sm:text-base transition ease-in-out duration-300"
+        :class="color ? 'text-accent/80 hover:text-accent hover:border-b-accent' : 'hover:border-black/50  text-black/50'">
           <span class="font-bold">{{props.name}}</span>
-          <ArrowRightIcon class="w-4 h-4"/>
+          <slot></slot>
         </NuxtLink>    
     </div>
 </template>
   
   <script lang="ts" setup>
-  import {ArrowRightIcon} from "@heroicons/vue/solid";
+  
   
 
     const props = defineProps({
@@ -17,8 +18,12 @@
         require: true
     },
     color: {
-        type: String,
-        default:'accent'
+        type: Boolean,
+        default:true
+    },
+    to:{
+      type:String,
+      require:true
     }    
 })
   </script>

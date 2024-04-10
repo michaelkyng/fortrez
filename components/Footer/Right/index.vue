@@ -63,7 +63,7 @@
       <div class="flex flex-col gap-4 sm:gap-6">
 
         <div class="flex gap-6">
-          <NuxtLink class="max-w-fit" to="/">
+          <NuxtLink class="max-w-fit" to="https://x.com/fortrez_?s=21">
             <IconsSocialsX/>
           </NuxtLink>
           <NuxtLink class="max-w-fit" to="/faq">
@@ -72,10 +72,10 @@
         </div>
         
         <div class="flex gap-6">
-          <NuxtLink class="max-w-fit" to="/terms-of-use">
+          <NuxtLink class="max-w-fit" to="https://www.linkedin.com/company/fortrezofficial">
             <IconsSocialsLinkedIn/>
           </NuxtLink>
-          <NuxtLink class="max-w-fit" to="/privacy-policy">
+          <NuxtLink class="max-w-fit" to="https://t.me/FortrezNews">
             <IconsSocialsTelegram/>
           </NuxtLink>
         </div>

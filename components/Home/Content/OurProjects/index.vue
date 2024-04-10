@@ -1,6 +1,6 @@
 <template>
-  <div class="relative h-fit flex flex-col w-full gap-y-16 lg:gap-y-20 overflow-hidden" :class="containerWidth">
-    <h1 class="z-10" :class="subHeading">{{props.title}}</h1>
+  <div class="relative h-fit flex flex-col w-full overflow-hidden" :class="containerWidth, props.project ? 'gap-y-16 lg:gap-y-20' : 'gap-y-8'">
+    <h1 class="z-10" :class="props.font">{{props.title}}</h1>
     
     <div class="relative flex items-center mx-1 overflow-hidden">
       <button @click="scrollLeft" class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline">
@@ -14,7 +14,7 @@
         :title="cardItem.title" 
         :description="cardItem.description" 
         :funded="cardItem.funded"
-        :amount="cardItem.amount"
+        :target="cardItem.target"
         :completed="cardItem.completed"
         :image="cardItem.image"
         :path="`/projects/${cardItem.title}`"
@@ -27,8 +27,6 @@
 </template>
 
 <script lang="ts" setup>
-import IconCompleted from '@/components/Icons/Projects/CompletedStatus.vue'
-import IconInProgress from '@/components/Icons/Projects/InProgressStatus.vue'
 import {ChevronRightIcon, ChevronLeftIcon} from "@heroicons/vue/solid";
 
 
@@ -42,8 +40,7 @@ const data = ref([
         image: '/images/projectImage1.png',
         completed: false,
         funded: 250000.57,
-        amount: 1000000,
-        status: IconCompleted
+        target: 1000000
     },
     {
         title: 'Nourishing vulnerable children',
@@ -51,8 +48,7 @@ const data = ref([
         image: '/images/projectImage1.png',
         completed: false,
         funded: 650000.77,
-        amount: 2000000,
-        status: IconCompleted
+        target: 2000000
     },
     {
         title: 'Nourishing vulnerable children',
@@ -60,8 +56,7 @@ const data = ref([
         image: '/images/projectImage1.png',
         completed: true,
         funded: 1000000,
-        amount: 1000000,
-        status: IconCompleted
+        target: 1000000
     },
     {
         title: 'Nourishing vulnerable children',
@@ -69,8 +64,7 @@ const data = ref([
         image: '/images/projectImage1.png',
         completed: true,
         funded: 1000000,
-        amount: 1000000,
-        status: IconCompleted
+        target: 1000000
     }
   ])
 
@@ -79,6 +73,14 @@ const props = defineProps({
   title: {
     type: String,
     require: true
+  },
+  font: {
+    type: String,
+    reqiure:true
+  },
+  project:{
+    type:Boolean,
+    default:true
   }
 })
 

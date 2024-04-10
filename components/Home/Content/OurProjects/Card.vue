@@ -8,15 +8,15 @@
                         <!-- Black Ovelay-->
                         
                         <span class="absolute right-5 bottom-1 flex items-center gap-1 text-accent" :class="transition">
-                          <span class="text-xxs md:text-xs flex items-center"><IconsSymbolsNaira/>{{ props.funded }}</span> 
+                          <span class="text-xxs md:text-xs flex items-center"><IconsSymbolsNaira class="w-2 sm:w-3 h-2 sm:h-3" color="#ffdf00"/>{{ props.funded }}</span> 
                           <span class="text-xxs">of</span>
-                          <span class="text-xxs md:text-xs flex items-center"><IconsSymbolsNaira/>{{ props.amount }}</span>
+                          <span class="text-xxs md:text-xs flex items-center"><IconsSymbolsNaira class="w-2 sm:w-3 h-2 sm:h-3" color="#ffdf00"/>{{ props.target }}</span>
                         </span>
 
-                        <UProgress class="relative" :value="props.funded" :max="props.amount" size="2xs" color="yellow">
+                        <UProgress class="relative" :value="props.funded" :max="props.target" size="2xs" color="yellow">
                           <template #indicator="{ percent }">
                             <div class="text-right absolute -top-6" :style="{ width: `${percent}%` }">
-                              <span class="text-accent text-xs">{{percent}}%</span>
+                              <span class="text-accent text-xs">{{Math.round(percent)}}%</span>
                             </div>
                           </template>          
                         </UProgress>
@@ -49,7 +49,6 @@
 <script lang="ts" setup>
 import IconCompleted from '@/components/Icons/Projects/CompletedStatus.vue'
 import IconInProgress from '@/components/Icons/Projects/InProgressStatus.vue'
-import {ChevronRightIcon, ChevronLeftIcon} from "@heroicons/vue/solid";
 
 
 const props = defineProps({
@@ -77,13 +76,9 @@ const props = defineProps({
     type:Number,
     require:true
   },
-  amount: {
+  target: {
     type:Number,
     require:true
-  },
-  status: {
-    type:Boolean,
-    default:true
   }
 })
 

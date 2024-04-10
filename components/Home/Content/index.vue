@@ -4,7 +4,7 @@
         <HomeContentOurStrategy/>
         <div class="relative">
           <DesignShapesYellowLinesLoop class="absolute right-0 opacity-50"/>
-          <HomeContentOurProjects title="Our Projects"/>
+          <HomeContentOurProjects title="Our Projects" :font="subHeading"/>
           <HomeContentOurStats class="h-fit"/>
           <HomeContentOurUpdates title="Our Updates" class="h-fit"/>
           <HomeContentOurNewsletter/>
@@ -14,5 +14,5 @@
 </template>
 
 <script lang="ts" setup>
-const { containerWidth } = useTailwindConfig()
+const { containerWidth, subHeading } = useTailwindConfig()
 </script>
