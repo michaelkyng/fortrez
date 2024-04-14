@@ -1,8 +1,8 @@
 <template>
-  <div class="relative bg-gradient-to-b from-white-bright to-white-dim h-fit px-5">
+  <div class="relative bg-gradient-to-b from-white-bright to-white-dim h-fit ">
   
   
-  <div class="relative pt-20 z-0">
+  <div class="relative pt-20 z-0 px-5">
     
     <div class="relative py-14 flex flex-col items-start justify-center gap-y-14" :class="containerWidth">
       

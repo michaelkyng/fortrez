@@ -7,7 +7,12 @@
 </template>
 
 <script lang="ts" setup>
+const {initAuth} = useAuth()
 
+
+onBeforeMount(()=>{
+  initAuth()
+})
 </script>
 
 <style>

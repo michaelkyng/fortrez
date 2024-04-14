@@ -14,6 +14,18 @@ datasource db {
   relationMode = "prisma"
 }
 
+model Admin {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String         @unique
+  password     String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  refreshToken RefreshToken[]
+  project      Project[]
+  mediaFiles   MediaFiles[]
+}
+
 model Project {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
   title         String        @unique
@@ -27,12 +39,32 @@ model Project {
   veifiedFunded Int?
   target        Int
   completed     Boolean
+  authorId      String        @db.ObjectId
+  author        Admin         @relation(fields: [authorId], references: [id])
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
+
+  // MediaFiles
+  mediaFiles MediaFiles[]
+}
+
+model MediaFiles {
+  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  url              String
+  providerPublicId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  adminId String @db.ObjectId
+  admin   Admin  @relation(fields: [adminId], references: [id])
+
+  projectId String  @db.ObjectId
+  project   Project @relation(fields: [projectId], references: [id])
 }
 
 model Transaction {
-  id        String   @id @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String?
   donor     String
   comment   String?
@@ -43,4 +75,14 @@ model Transaction {
   updatedAt DateTime @updatedAt
   project   Project  @relation(fields: [projectId], references: [id])
   projectId String   @db.ObjectId
+}
+
+model RefreshToken {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  adminId String @db.ObjectId
+  admin   Admin  @relation(fields: [adminId], references: [id])
 }
