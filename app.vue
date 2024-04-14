@@ -1,5 +1,5 @@
 <template>
-  <div class="font-arial overflow-hidden scroll-smooth text-black">
+  <div class="font-arial overflow-hidden scroll-smooth text-black selection:bg-alternativeAccent">
     
     <Navbar/>
     <NuxtPage />
@@ -7,7 +7,12 @@
 </template>
 
 <script lang="ts" setup>
+const {initAuth} = useAuth()
 
+
+onBeforeMount(()=>{
+  initAuth()
+})
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <NuxtLink to="/projects" class="px-5 py-2.5 text hover:text-accent border-none hover:border-b border-accent/60 hover:border-accent text-base bg-transparent transition ease-in-out duration-300">{{props.name}}</NuxtLink>    
+      <NuxtLink to="/projects" class="flex justify-center items-center gap-2.5 px-5 py-2.5 text border border-slate-300 text-sm text-black/80 bg-transparent rounded-3xl"><slot></slot> {{props.name}}</NuxtLink>    
     </div>
   </template>
   

@@ -1,15 +1,15 @@
 <template>
-    <div class="bg-white fixed z-20 w-full bg-white-bright py-2">
+    <div class="bg-white fixed z-20 w-full py-2">
         <div class="hidden md:flex justify-center items-start gap-11 py-5 md:max-w-2xl lg:max-w-3xl xl:max-w-7xl mx-auto">
-                <NuxtLink to="/" :class="navLink">Home</NuxtLink>
-                <NuxtLink to="/support" :class="navLink">Support Us</NuxtLink>
+                <NuxtLink to="/" :class="navLink" active-class="text-accent">Home</NuxtLink>
+                <NuxtLink to="/support" :class="navLink" active-class="text-accent">Support Us</NuxtLink>
                 <div class="relative w-16">
                     <div class="absolute h-14 w-16 inset-0 flex items-start justify-center bg-white-bright rounded-full">
                         <NuxtLink to="/" class="flex grow justify-center h-full items-center"><Logo/></NuxtLink>
                     </div>
                 </div>
-                <NuxtLink to="/blog" :class="navLink">Blog</NuxtLink>
-                <NuxtLink to="/projects" :class="navLink">Donate</NuxtLink>
+                <NuxtLink to="/blog" :class="navLink" active-class="text-accent">Blog</NuxtLink>
+                <NuxtLink to="/projects" :class="navLink" active-class="text-accent">Donate</NuxtLink>
         </div>
 
         <!-- Mobile View -->
@@ -40,14 +40,14 @@
 
     
         <Transition mode="in-out" name="menu">
-            <div v-if="menuToggled" class="absolute h-screen bg-black/95 right-0 w-2/3 top-0 backdrop-blur-sm">
+            <div v-if="menuToggled" class="absolute md:hidden h-screen bg-black/95 right-0 w-2/3 top-0 backdrop-blur-sm">
                 <div class="flex flex-col w-full py-20 text-right">
-                    <NuxtLink to="/" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent">Home</NuxtLink>
-                    <NuxtLink to="/support" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent">Support Us</NuxtLink>
-                    <NuxtLink to="/blog" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent">Blog</NuxtLink>
-                    <NuxtLink to="/projects" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent">Donate</NuxtLink>
-                    <NuxtLink to="/whitepaper" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent">White Paper</NuxtLink>
-                    <NuxtLink to="/" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent">Proposal</NuxtLink>
+                    <NuxtLink to="/"  @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Home</NuxtLink>
+                    <NuxtLink to="/support" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Support Us</NuxtLink>
+                    <NuxtLink to="/blog" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Blog</NuxtLink>
+                    <NuxtLink to="/projects" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Donate</NuxtLink>
+                    <NuxtLink to="/whitepaper" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">White Paper</NuxtLink>
+                    <NuxtLink to="/" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Proposal</NuxtLink>
                 </div>
             </div>
         </Transition>
