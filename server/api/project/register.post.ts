@@ -1,6 +1,7 @@
 import { createProject } from "~/server/db/project";
 import { createMediaFile } from "~/server/db/mediafiles";
 import formidable from "formidable";
+import { uploadToCloudinary } from "~/server/utils/cloudinary";
 import { projectTransformer } from "~/server/transformers/project";
 
 export default defineEventHandler(async (event) => {
@@ -52,9 +53,12 @@ export default defineEventHandler(async (event) => {
   const project = await createProject(projectData);
 
   const filePromises = Object.keys(files).map(async (key) => {
+    const file = files[key][0];
+    const CloudinaryResource: any = await uploadToCloudinary(file.filepath);
+
     return createMediaFile({
-      url: "",
-      providerPublicId: "Random_Id",
+      url: CloudinaryResource.secure_url,
+      providerPublicId: CloudinaryResource.public_id,
       adminId: adminId,
       projectId: project.id,
     });
@@ -63,7 +67,6 @@ export default defineEventHandler(async (event) => {
   await Promise.all(filePromises);
 
   return {
-    // project: projectTransformer(project),
-    files,
+    project: projectTransformer(project),
   };
 });

@@ -25,14 +25,14 @@
             </defs>
         
         </svg>
-        <div class="absolute top-7 sm:top-16 left-[26px] sm:left-8">
+        <div class="absolute top-7 sm:top-16 left-[26px] sm:left-8 xl:left-12">
             <p class="w-36 text-center text-black/90 text-xxs sm:text-sm max-w-20 sm:max-w-40">
                 {{ props.title }}
             </p>
          </div>
 
 
-          <p class="w-56 text-black/60 text-center  text-xxs sm:text-sm max-w-28 sm:max-w-40 relative top-0">
+          <p class="w-56 text-black/60 text-center  text-xxs sm:text-sm max-w-28 sm:max-w-40 xl:max-w-60 relative top-0">
                 {{ props.description }}
           </p>
     </div>

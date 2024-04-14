@@ -1,7 +1,9 @@
 <template>
-    <div class="bg-white-bright">
+    <div class="bg-white-dim">
 
             <SupportHeader/>
+            <HomeContentOurNewsletter/>
+            <Footer/>
     </div>
 </template>
 
