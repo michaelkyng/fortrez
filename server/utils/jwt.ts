@@ -3,7 +3,7 @@ const getAccessToken = (admin: any) => {
   const config = useRuntimeConfig();
 
   return jwt.sign({ adminId: admin.id }, config.jwtAccessSecret, {
-    expiresIn: "10m",
+    expiresIn: "20m",
   });
 };
 const getRefreshToken = (admin: any) => {

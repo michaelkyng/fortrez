@@ -2,7 +2,11 @@ import UrlPattern from "url-pattern";
 import { decodeAccessToken } from "~/server/utils/jwt";
 import { getAdminById } from "../db/admin";
 export default defineEventHandler(async (event) => {
-  const endpoints = ["/api/auth/admin/admin", "/api/project/register"];
+  const endpoints = [
+    "/api/auth/admin/admin",
+    "/api/project/register",
+    "/api/blog/register",
+  ];
 
   const isHandledByThisMiddleware = endpoints.some((endpoints) => {
     const pattern: any = new UrlPattern(endpoints);

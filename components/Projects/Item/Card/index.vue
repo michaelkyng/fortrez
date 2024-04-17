@@ -60,7 +60,9 @@
                       </div>
                     </template>          
                   </UProgress>
-                  <UButton class="w-fit mt-10 px-3 py-2.5 rounded-3xl font-semibold" color="yellow">Donate Now</UButton>
+                  <NuxtLink to="/comingsoon">
+                    <UButton class="w-fit mt-10 px-3 py-2.5 rounded-3xl font-semibold" color="yellow">Donate Now</UButton>
+                  </NuxtLink>
                 </div>
             </div>
         </div>

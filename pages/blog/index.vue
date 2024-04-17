@@ -16,12 +16,17 @@
       </div>
       <DesignShapesFaintGrayCurves class="absolute top-0 left-0"/>
       
-      <div class="relative bg-white-bright py-14 ">
-        <BlogHeader class="bg-[#ffffff]"/>
+      <div v-if="data">
+        <div class="relative bg-white-bright py-14 ">
+          <BlogHeader class="bg-[#ffffff]" :data="data[0]"/>
+        </div>
+        <div class="relative bg-white-dim overflow-hidden">
+          <BlogContent :data="data"/>
+        </div>
       </div>
 
-      <div class="relative bg-white-dim overflow-hidden">
-        <BlogContent />
+      <div v-else class="flex justify-center items-center h-96">
+        <h1 class="text-accent" :class="subHeading">No Blog Feed </h1>
       </div>
       
     </div>
@@ -36,11 +41,21 @@
 <script lang="ts" setup>
 const {subHeading,transition,containerWidth} = useTailwindConfig();
 
-const latestBlog = ref({
-  title: "Children saved through partnerships with churches",
-  description: "Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.",
-  image: '/images/projectImage1.png',
-  tags: '#children #partnership',
-  date: '27th March 2024'
+const isLoading = ref(false)
+const {getBlogs} = useBlog()
+const data :any= ref([])
+
+onBeforeMount(async ()=>{
+  isLoading.value = true
+  try {
+    const {blogs}:any = await getBlogs()
+    console.log(blogs)
+    data.value = blogs
+    console.log("data : ",data.value)
+  } catch (error) {
+    console.log(error)
+  }finally{
+    isLoading.value = false
+  }
 })
 </script>

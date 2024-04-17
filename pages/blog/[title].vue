@@ -9,21 +9,25 @@
     <div class="relative pt-20 z-0">
       
       <div class="relative h-full flex flex-col justify-end items-start px-5 pt-12 py-4 gap-2" :class="containerWidth">
-        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">{{ blog.title }}</h1>
-        <p class="relative text-black/80 top-2.5 text-sm sm:text-base">{{ blog.date }}</p>
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">{{ data.title }}</h1>
+        <p class="relative text-black/80 top-2.5 text-sm sm:text-base">{{ data.createdAt }}</p>
       </div>
 
       <DesignShapesFaintGrayCurves class="absolute top-0 left-0"/>
       
-      <div class="relative bg-white-bright py-14 ">
+      <div v-if="data &&data.title"class="relative bg-white-bright py-14 ">
         
         <BlogItem class="bg-[#ffffff]" 
-          :title="blog.title" 
-          :description="blog.description" 
-          :image="blog.image"
-          :tags="blog.tags"
-          :date="blog.date"
+          :title="data.title" 
+          :description="data.description" 
+          :image="data.mediaFiles[0].url"
+          :tags="data.tags"
+          :date="data.createdAt"
           />
+      </div>
+
+      <div v-else class="flex justify-center items-center h-96 w-full">
+        <h1 class="text-accent h-screen" :class="subHeading">No Data on the Blog Found </h1>
       </div>
 
     </div>
@@ -36,14 +40,37 @@
 </template>
 
 <script lang="ts" setup>
+const {title}:any = useRoute().params
+const {verifyBlog} = useBlog()
+const {containerWidth,subHeading} = useTailwindConfig();
 
-const {containerWidth} = useTailwindConfig();
+interface BlogData {
+  title: string;
+  description: string;
+  mediaFiles: { url: string }[];
+  tags: string;
+  createdAt: string;
+}
 
-const blog = ref({
-  title: "Children saved through partnerships with churches",
-  description: "Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.Greetings from the BitGive team! We are excited to share with you some insightful updates we've received from Black Girls Code (BGC) regarding the ongoing implementation of our collaborative project. Your support has been instrumental in driving positive change, and we are thrilled to provide you with a glimpse into the progress being made.",
-  image: '/images/blogImage1.png',
-  tags: '#children #partnership',
-  date: '27th March 2024'
+const data: Ref<BlogData> = ref({
+  title: '',
+  description: '',
+  mediaFiles: [],
+  tags: '',
+  createdAt: '',
+});
+
+
+onBeforeMount(async()=>{
+  try {
+    const {blog} :any = await verifyBlog(title)
+    data.value = blog
+  } catch (error) {
+    console.log(error)
+  }finally{
+    
+  }
 })
+
+
 </script>

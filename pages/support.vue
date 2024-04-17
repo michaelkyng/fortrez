@@ -2,6 +2,7 @@
     <div class="bg-white-dim">
 
             <SupportHeader/>
+            <SupportContent/>
             <HomeContentOurNewsletter/>
             <Footer/>
     </div>

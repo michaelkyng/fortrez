@@ -26,7 +26,7 @@
           <FooterNavLinks title="Donate"/>
         </NuxtLink>
 
-        <NuxtLink class="max-w-fit" to="#proposal">
+        <NuxtLink class="max-w-fit" to="/#proposal">
           <FooterNavLinks title="Proposal"/>
         </NuxtLink>
         
@@ -38,19 +38,19 @@
 
       <div class="flex flex-col gap-1 sm:gap-3">
 
-        <NuxtLink class="max-w-fit" to="/">
+        <NuxtLink class="max-w-fit" to="/comingsoon">
           <FooterNavLinks title="WhitePaper"/>
         </NuxtLink>
 
-        <NuxtLink class="max-w-fit" to="/faq">
+        <NuxtLink class="max-w-fit" to="/comingsoon">
           <FooterNavLinks title="FAQ"/>
         </NuxtLink>
         
-        <NuxtLink class="max-w-fit" to="/terms-of-use">
+        <NuxtLink class="max-w-fit" to="/comingsoon">
           <FooterNavLinks title="Terms of Use"/>
         </NuxtLink>
 
-        <NuxtLink class="max-w-fit" to="/privacy-policy">
+        <NuxtLink class="max-w-fit" to="/comingsoon">
           <FooterNavLinks title="Privacy Policy"/>
         </NuxtLink>
 
@@ -66,7 +66,7 @@
           <NuxtLink class="max-w-fit" to="https://x.com/fortrez_?s=21">
             <IconsSocialsX/>
           </NuxtLink>
-          <NuxtLink class="max-w-fit" to="/faq">
+          <NuxtLink class="max-w-fit" to="/comingsoon">
             <IconsSocialsInstagram/>
           </NuxtLink>
         </div>

@@ -1,7 +1,7 @@
 import { mediaFilesTransformer } from "./mediaFiles";
 import { transactionsTransformer } from "./transactions";
 
-export const projectTransformer = (projectData: any) => {
+export const fprojectTransformer = (projectData: any) => {
   return {
     id: projectData.id,
     title: projectData.title,
@@ -12,10 +12,12 @@ export const projectTransformer = (projectData: any) => {
     type: projectData.type,
     donors: !!projectData.transactions ? projectData.transactions.length : 0,
     funded: !!projectData.transactions ? projectData.transactions.length : 0,
-    verifiedFunded: projectData.verifiedFunded,
+    verifiedFunded: projectData.transactions
+      ? projectData.transactions.length
+      : 0,
     target: projectData.target,
     completed: projectData.completed,
-    mediaFiles: projectData.mediaFiles.map(mediaFilesTransformer),
-    transactions: projectData.transactions.map(transactionsTransformer),
+    mediaFiles: projectData.mediaFiles,
+    transactions: projectData.transactions,
   };
 };

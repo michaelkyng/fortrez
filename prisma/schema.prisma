@@ -24,6 +24,7 @@ model Admin {
   refreshToken RefreshToken[]
   project      Project[]
   mediaFiles   MediaFiles[]
+  Blog         Blog[]
 }
 
 model Project {
@@ -38,6 +39,8 @@ model Project {
   veifiedFunded Int?
   target        Int
   completed     Boolean
+  category      String
+  type          String
   authorId      String        @db.ObjectId
   author        Admin         @relation(fields: [authorId], references: [id])
   createdAt     DateTime      @default(now())
@@ -47,19 +50,34 @@ model Project {
   mediaFiles MediaFiles[]
 }
 
+model Blog {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  title       String       @unique
+  description String
+  tags        String
+  category    String
+  authorId    String       @db.ObjectId
+  author      Admin        @relation(fields: [authorId], references: [id])
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  mediaFiles  MediaFiles[]
+}
+
 model MediaFiles {
-  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
   url              String
   providerPublicId String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   adminId String @db.ObjectId
   admin   Admin  @relation(fields: [adminId], references: [id])
 
-  projectId String  @db.ObjectId
-  project   Project @relation(fields: [projectId], references: [id])
+  projectId String? @db.ObjectId
+  blogId    String? @db.ObjectId
+
+  project Project? @relation(fields: [projectId], references: [id])
+  blog    Blog?    @relation(fields: [blogId], references: [id])
 }
 
 model Transaction {

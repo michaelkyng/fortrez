@@ -1,8 +1,7 @@
-import { createProject } from "~/server/db/project";
+import { createBlog } from "~/server/db/blog";
 import { createMediaFile } from "~/server/db/mediafiles";
 import formidable from "formidable";
 import { uploadToCloudinary } from "~/server/utils/cloudinary";
-import { projectTransformer } from "~/server/transformers/project";
 
 export default defineEventHandler(async (event) => {
   const form = formidable({});
@@ -20,32 +19,20 @@ export default defineEventHandler(async (event) => {
   const { fields, files } = response;
 
   const adminId = event.context.auth?.admin?.id;
-  const sample = fields.solutions[0];
-  const solutions = sample.split("--");
 
-  const projectData = {
+  const blogData = {
     title: fields.title[0],
     description: fields.description[0],
-    problem: fields.problem[0],
-    solutions: solutions,
+    tags: fields.tags[0],
     category: fields.category[0],
-    type: fields.type[0],
-    completed: false,
-    donors: null,
-    funded: null,
-    target: Number(fields.target[0]),
     authorId: adminId,
   };
 
   if (
-    !projectData.title ||
-    !projectData.description ||
-    !projectData.problem ||
-    !projectData.solutions ||
-    !projectData.category ||
-    !projectData.type ||
-    projectData.completed === null ||
-    !projectData.target
+    !blogData.title ||
+    !blogData.description ||
+    !blogData.tags ||
+    !blogData.category
   ) {
     return sendError(
       event,
@@ -53,7 +40,7 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const project = await createProject(projectData);
+  const blog = await createBlog(blogData);
 
   const filePromises = Object.keys(files).map(async (key) => {
     const file = files[key][0];
@@ -69,13 +56,13 @@ export default defineEventHandler(async (event) => {
       url: CloudinaryResource.secure_url,
       providerPublicId: CloudinaryResource.public_id,
       adminId: adminId,
-      projectId: project.id,
+      blogId: blog.id,
     });
   });
 
   await Promise.all(filePromises);
 
   return {
-    project: project,
+    blog: blog,
   };
 });

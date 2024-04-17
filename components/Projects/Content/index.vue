@@ -2,30 +2,64 @@
     <div>
         <div class="relative flex flex-col gap-7 md:gap-14 z-10" :class="containerWidth">
             <DesignShapesBlob class="absolute blur-[200px] w-96 inset-x-0 mx-auto -top-52 -z-10 opacity-50"/>
-    
-            <div class="relative flex flex-wrap-reverse w-full overflow-hidden px-5 mx-auto gap-y-7">
-                <SubNavFilter/>
-                <div class="relative group basis-3/5 md:basis-2/5">
-                    <input type="search" name="search" id="search" placeholder="Search..." class="bg-slate-300/20 px-7 py-2.5 rounded-3xl outline-none w-full">
-                    <SearchIcon class="absolute inset-0 left-0 top-0 w-4 h-4 my-auto ml-2 text-slate-500/60"/>
+
+            <div class="flex flex-col gap-y-5 px-5">
+                <h1 :class="subHeading2">Foundation Projects</h1>
+                <div class="relative flex items-center mx-1 overflow-hidden">
+                    <button @click="scrollLeft" class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline">
+                        <ChevronLeftIcon class="group-hover:text-accent w-6 h-6 " :class="transition" />
+                    </button>
+                    <button @click="scrollRight" class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline">
+                        <ChevronRightIcon class="group-hover:text-accent w-6 h-6 "  :class="transition"/>
+                    </button>
+                    <div ref="scrollContainer" class="menu-scroll relative flex justify-start items-center h-fit gap-4 sm:gap-10 md:gap-20  px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14">
+                        <HomeContentOurProjectsCard class="flex-none group" v-for="cardItem in Fdata" 
+                        :title="cardItem.title" 
+                        :description="cardItem.description" 
+                        :funded="cardItem.funded"
+                        :target="cardItem.target"
+                        :completed="cardItem.completed"
+                        :image="cardItem.mediaFiles[0].url"
+                        :path="`/projects/f/${cardItem.title}`"
+                        >
+                            
+                        </HomeContentOurProjectsCard>
+                    </div>
                 </div>
-                <ButtonOutline name="Filter" class="w-fit ml-auto">
-                    <IconsSymbolsFilter/>
-                </ButtonOutline>
             </div>
     
-            <div class="relative flex flex-wrap justify-center gap-y-1.5 sm:gap-y-5 lg:gap-y-8 gap-x-1.5 sm:gap-x-5 md:gap-x-10 lg:gap-x-1 lg:justify-between h-fit px-5">
-                <HomeContentOurProjectsCard2 class="flex-none group" v-for="cardItem in data" 
-                :title="cardItem.title" 
-                :description="cardItem.description" 
-                :funded="cardItem.funded"
-                :target="cardItem.target"
-                :completed="cardItem.completed"
-                :image="cardItem.image"
-                :path="`/projects/${cardItem.title}`"
-                >
-                
-                </HomeContentOurProjectsCard2>
+            
+            <div class="flex flex-col gap-y-5 px-5">
+                <h1 :class="subHeading2">Other Projects</h1>
+                <div v-if="data && data.length">
+                  <div class="relative fle flex-wrap-reverse w-full overflow-hidden px-5 mx-auto gap-y-7 hidden">
+                      <SubNavFilter/>
+                      <div class="relative group basis-3/5 md:basis-2/5">
+                          <input type="search" name="search" id="search" placeholder="Search..." class="bg-slate-300/20 px-7 py-2.5 rounded-3xl outline-none w-full">
+                          <SearchIcon class="absolute inset-0 left-0 top-0 w-4 h-4 my-auto ml-2 text-slate-500/60"/>
+                      </div>
+                      <ButtonOutline name="Filter" class="w-fit ml-auto">
+                          <IconsSymbolsFilter/>
+                      </ButtonOutline>
+                  </div>
+                  <div class="relative flex flex-wrap justify-center gap-y-1.5 sm:gap-y-5 lg:gap-y-8 gap-x-1.5 sm:gap-x-5 md:gap-x-10 lg:gap-x-1 lg:justify-between h-fit ">
+                      <HomeContentOurProjectsCard2 class="flex-none group" v-for="cardItem in data"
+                      :title="cardItem.title"
+                      :description="cardItem.description"
+                      :funded="cardItem.funded"
+                      :target="cardItem.target"
+                      :completed="cardItem.completed"
+                      :image="cardItem.image"
+                      :path="`/projects/p/${cardItem.title}`"
+                      >
+                  
+                      </HomeContentOurProjectsCard2>
+                  </div>
+                </div>
+
+                <div v-else class="flex justify-center items-center h-96">
+                  <h1 class="text-accent" :class="subHeading">No Project</h1>
+                </div>
             </div>
   
         </div>
@@ -35,101 +69,41 @@
 
   <script lang="ts" setup>
   import IconCompleted from '@/components/Icons/Projects/CompletedStatus.vue'
-  import {SearchIcon} from '@heroicons/vue/solid'
-  const {containerWidth, subHeading} = useTailwindConfig()
+  import {SearchIcon,ChevronRightIcon,ChevronLeftIcon} from '@heroicons/vue/solid'
+  const {containerWidth, subHeading2,transition,subHeading} = useTailwindConfig()
+  const isLoading = ref(false)
+const {getProjects,getFProjects} = useProject()
+const data :any= ref([])
+const Fdata :any= ref([])
 
-  const data = ref([
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: false,
-        funded: 250000.57,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: false,
-        funded: 650000.77,
-        target: 2000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    },
-    {
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: true,
-        funded: 1000000,
-        target: 1000000,
-        status: IconCompleted
-    }
-  ])
+onBeforeMount(async ()=>{
+  isLoading.value = true
+  try {
+    const {projects}:any = await getProjects()
+    const {Fprojects}:any = await getFProjects()
+    data.value = projects
+    console.log(data.value.length)
+    Fdata.value = Fprojects
+  } catch (error) {
+    console.log(error)
+  }finally{
+    isLoading.value = false
+  }
+})
+
+  const scrollContainer = ref<HTMLDivElement | null>(null);
+
+const scrollRight = () => {
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollBy({ left: 400, behavior: 'smooth' });
+  }
+};
+
+const scrollLeft = () => {
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollBy({ left: -400, behavior: 'smooth' });
+  }
+};
   </script>
     <style>
     /* Target the cancel button */

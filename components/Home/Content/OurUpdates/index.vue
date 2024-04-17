@@ -9,17 +9,21 @@
       <button @click="scrollRight" class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline">
         <ChevronRightIcon class="group-hover:text-accent w-6 h-6 "  :class="transition"/>
       </button>
-      <div ref="scrollContainer" class="menu-scroll relative flex justify-start items-center h-fit gap-5 sm:gap-10 md:gap-20  px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14">
-        <HomeContentOurUpdatesCard class="flex-none group" v-for="cardItem in data" 
+      <div v-if="data" ref="scrollContainer" class="menu-scroll w-full relative flex justify-start items-center h-fit gap-5 sm:gap-10 md:gap-20  px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14">
+        <HomeContentOurUpdatesCard class="flex-none group"  v-for="cardItem in data" 
         :title="cardItem.title"
         :description="cardItem.description"
-        :image="cardItem.image"
+        :image="cardItem.mediaFiles[0].url"
         :tags="cardItem.tags"
-        :date="cardItem.date"
+        :date="cardItem.createdAt"
         :path="`/blog/${cardItem.title}`"
         >
             
         </HomeContentOurUpdatesCard>
+      </div>
+
+      <div v-else class="flex justify-center items-center h-96 w-full">
+        <h1 class="text-accent" :class="subHeading">No Blog Feed </h1>
       </div>
     </div>
   </div>
@@ -32,36 +36,24 @@ import {ChevronRightIcon, ChevronLeftIcon, ArrowSmRightIcon} from "@heroicons/vu
 const {subHeading,transition,containerWidth} = useTailwindConfig()
 
 
-const data = ref([
-    {
-        title: 'Children Saved through partnerships with Churches',
-        description: "Hello donors! From BitGive's team we would like you to have some of the information we received from Black Girls Code (BGC) about the implementation of this project. Once we receive more, we'll keep updating this.",
-        image: '/images/blogImage1.png',
-        tags: '#children #partnership',
-        date: '27th March 2024'
-    },
-    {
-        title: 'Children Saved through partnerships with Churches',
-        description: "Hello donors! From BitGive's team we would like you to have some of the information we received from Black Girls Code (BGC) about the implementation of this project. Once we receive more, we'll keep updating this.",
-        image: '/images/projectImage1.png',
-        tags: '#children #partnership',
-        date: '27th March 2024'
-    },
-    {
-        title: 'Children Saved through partnerships with Churches',
-        description: "Hello donors! From BitGive's team we would like you to have some of the information we received from Black Girls Code (BGC) about the implementation of this project. Once we receive more, we'll keep updating this.",
-        image: '/images/projectImage1.png',
-        tags: '#children #partnership',
-        date: '27th March 2024'
-    },
-    {
-        title: 'Children Saved through partnerships with Churches',
-        description: "Hello donors! From BitGive's team we would like you to have some of the information we received from Black Girls Code (BGC) about the implementation of this project. Once we receive more, we'll keep updating this.",
-        image: '/images/projectImage1.png',
-        tags: '#children #partnership',
-        date: '27th March 2024'
-    },
-  ])
+const isLoading = ref(false)
+const {getBlogs} = useBlog()
+const data :any= ref([])
+const latestBlog = ref()
+
+onBeforeMount(async ()=>{
+  isLoading.value = true
+  try {
+    const {blogs}:any = await getBlogs()
+    console.log(blogs)
+    data.value = blogs
+    console.log("data : ",data.value)
+  } catch (error) {
+    console.log(error)
+  }finally{
+    isLoading.value = false
+  }
+})
 
 
 const props = defineProps({

@@ -46,8 +46,8 @@
                     <NuxtLink to="/support" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Support Us</NuxtLink>
                     <NuxtLink to="/blog" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Blog</NuxtLink>
                     <NuxtLink to="/projects" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Donate</NuxtLink>
-                    <NuxtLink to="/whitepaper" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">White Paper</NuxtLink>
-                    <NuxtLink to="/" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Proposal</NuxtLink>
+                    <NuxtLink to="/comingsoon" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">White Paper</NuxtLink>
+                    <NuxtLink to="/#proposal" @click="menuToggled = !menuToggled" class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent" active-class="text-accent">Proposal</NuxtLink>
                 </div>
             </div>
         </Transition>

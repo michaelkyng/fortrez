@@ -1,5 +1,5 @@
 <template>
-   <div class="relative bg-white-bright z-0">
+   <div class="relative bg-white-bright z-10">
        <DesignShapesStar class="absolute z-0 top-0 -right-10"/>
        <div class="font-arial px-5" :class="containerWidth">
         <div class="flex items-center justify-between flex-wrap lg:flex-nowrap  px-5 py-40 gap-x-8 sm:gap-x-10 md:gap-x-14 gap-y-10 w-full min-h-80">
@@ -34,23 +34,14 @@
            
                <div class="flex basis-full lg:basis-4/12 xl:basis-5/12 justify-center z-10">
                    <div class="w-full flex flex-col rounded-3xl overflow-clip h-full min-h-72 max-w-lg">
-                        <img class="object-cover min-h-72" src="/public/images/projectImage1.png" alt="">
+                        <img class="object-cover min-h-72" src="/public/images/supportImage.png" alt="">
                     </div>
                </div>
             </div>
            
        </div>
 
-       <div class="bg-white-dim">
-           <div class="px-5":class="containerWidth">
-                <div class="flex justify-evenly">
-           
-           
-                    <SupportInfographic/>
-                </div>
-           
-            </div>
-       </div>
+       
     </div>
 
     <div>
