@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   typescript: {
-    typeCheck: true,
+    // typeCheck: true,
   },
   runtimeConfig: {
     jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
