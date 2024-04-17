@@ -1,6 +1,6 @@
 <template>
   <div class="h-fit max-w-60 sm:max-w-72 border drop-shadow-none p-2 rounded-2xl bg-white-bright overflow-clip">
-    <NuxtLink :to="`/project/f/${props.path}`">
+    <NuxtLink :to="`/projects/f/${props.path}`">
               <div class="flex flex-col gap-y-5">
                 <div class="flex flex-col gap-y-2.5">
                   <div class="relative max-full h-32 rounded-2xl overflow-clip">
