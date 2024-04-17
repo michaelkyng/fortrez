@@ -20,7 +20,7 @@
                         :target="cardItem.target"
                         :completed="cardItem.completed"
                         :image="cardItem.mediaFiles[0].url"
-                        :path="`/projects/f/${cardItem.title}`"
+                        :path="`${cardItem.title}`"
                         >
                             
                         </HomeContentOurProjectsCard>
