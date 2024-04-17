@@ -20,6 +20,9 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  ui: {
+    icons: ["heroicons"],
+  },
   app: {
     head: {
       charset: "UTF-8",
