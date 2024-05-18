@@ -15,8 +15,8 @@
         <!-- Mobile View -->
         <div class="relative flex justify-center md:hidden p-4">
             <div class="relative w-full py-3.5">
-                <div class="absolute top-0 mx-auto h-14 w-16 inset-0 flex items-start justify-center bg-white-bright rounded-full">
-                    <NuxtLink to="/" class="flex grow justify-center h-full"><Logo/></NuxtLink>
+                <div class="absolute top-0 mx-auto size-16 inset-0 flex items-start justify-center bg-white-bright rounded-full">
+                    <NuxtLink to="/" class="flex grow justify-center items-center h-full group"><Logo class="w-10 group-hover:scale-105 group-active:scale-105"/></NuxtLink>
                 </div>
 
                 <div class="absolute right-0 top-0 z-10">
