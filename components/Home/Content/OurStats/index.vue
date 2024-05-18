@@ -15,10 +15,6 @@
     
         </div>
     </div>
-
-    <div class="flex justify-center">
-      <img class="relative md:absolute right-0 md:-right-12 bottom-0 w-4/6 sm:w-2/4 md:w-auto  h-auto md:h-4/6 lg:h-auto" src="/images/designImage.png" alt="Mother Image">
-    </div>
   </div>
 </template>
 

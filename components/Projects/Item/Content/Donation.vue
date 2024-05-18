@@ -14,7 +14,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(transaction, index) in entries" :key="index" class=" even:bg-black/5 odd:bg-transparent">
+                    <tr v-for="(transaction, index) in entries" :key="index" class=" even:bg-slate-300/20 odd:bg-transparent">
                         <td class="p-4 sm:p-6 w-fit text-nowrap">{{ transaction.donor }}</td>
                         <td class="p-4 mr-4 md:mr-0 sm:p-6 w-fit">
                         <UPopover mode="hover" :popper="{ placement: 'top-start', arrow: true }">

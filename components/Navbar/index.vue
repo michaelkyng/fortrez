@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white fixed z-20 w-full py-2">
+    <div class="fixed z-20 w-full py-2">
         <div class="hidden md:flex justify-center items-start gap-11 py-5 md:max-w-2xl lg:max-w-3xl xl:max-w-7xl mx-auto">
                 <NuxtLink to="/" :class="navLink" active-class="text-accent">Home</NuxtLink>
                 <NuxtLink to="/support" :class="navLink" active-class="text-accent">Support Us</NuxtLink>

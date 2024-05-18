@@ -3,7 +3,7 @@
     <NuxtLink :to="`/projects/f/${props.path}`">
               <div class="flex flex-col gap-y-5">
                 <div class="flex flex-col gap-y-2.5">
-                  <div class="relative max-full h-32 rounded-2xl overflow-clip">
+                  <div class="relative h-32 rounded-2xl overflow-clip">
                     <div class="absolute flex items-center px-5 opacity-0 group-hover:opacity-100 z-10 w-full h-full bg-black/70" :class="transition">
                         <!-- Black Ovelay-->
                         
@@ -24,7 +24,7 @@
                     <img class="absolute object-cover h-32 md:h-auto top-0 left-0 group-hover:scale-125" :class="transition" :src="props.image" alt="">
                   </div>
                   <div class="flex flex-col max-w-60 md:max-w-72 gap-y-2.5">
-                    <h1 class="text-base sm:text-lg md:text-xl font-bold">{{props.title}}</h1>
+                    <h1 class="text-base sm:text-lg md:text-xl font-bold min-h-14">{{props.title}}</h1>
                     <p class="text-xs sm:text-sm md:text-base text-black/50 group-hover:text-black/80 w-full text-ellipsis line-clamp-2 sm:line-clamp-3" :class="transition">{{ props.description }}</p>
                   </div>
                 </div>
