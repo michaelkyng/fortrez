@@ -2,8 +2,8 @@
   <div :class="containerWidth" class="relative h-fit flex flex-col w-full overflow-hidden gap-y-16 lg:gap-y-20 px-5">
     <h1 :class="subHeading">Our Blueprint</h1>
     <div class="flex flex-col gap-y-10 self-center">
-      <p class="text-black/80 md:text-2xl max-w-5xl text-center">
-          <i class="font-serif leading-5 md:leading-10">
+      <p class="text-black/80 md:text-2xl max-w-5xl text-center leading-5 md:leading-10">
+          
               Fortrez, a blockchain-based platform for charitable
               donations would ensure transparency and security.
               With blockchain, every donation transaction is recorded and
@@ -14,7 +14,7 @@
               Plus, the decentralized nature of blockchain reduces the risk
               of fraud and corruption. It's an awesome way to make sure charitable
               donations are used for their intended purpose!
-          </i>
+          
       </p>
 
       
