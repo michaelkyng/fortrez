@@ -61,7 +61,6 @@ onBeforeMount(async () => {
   isLoading.value = true;
   try {
     const { blogs }: any = await getBlogs();
-    console.log(blogs);
     data.value = blogs;
   } catch (error) {
     console.log(error);

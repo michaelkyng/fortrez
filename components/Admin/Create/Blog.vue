@@ -151,7 +151,6 @@ const handleBlog = async () => {
   try {
     const response = await createBlog(blogData);
     blogSuccessful.value = true;
-    console.log(response);
   } catch (error) {
     console.log(error);
   } finally {
