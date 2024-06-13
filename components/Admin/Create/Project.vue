@@ -181,7 +181,6 @@ const handleProject = async () => {
   try {
     const response = await createProject(projectData);
     projectSuccessful.value = true;
-    console.log(response);
   } catch (error) {
     console.log(error);
   } finally {

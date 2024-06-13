@@ -120,7 +120,6 @@ onBeforeMount(async () => {
     const { projects }: any = await getProjects();
     const { Fprojects }: any = await getFProjects();
     data.value = projects;
-    console.log(data.value.length);
     Fdata.value = Fprojects;
   } catch (error) {
     console.log(error);

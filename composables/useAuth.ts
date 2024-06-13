@@ -73,7 +73,6 @@ export default () => {
     }
 
     const jwt: any = jwtDecode(authToken.value);
-    console.log("JWT : ", jwt);
     const RefreshTime = jwt.exp - 60000;
 
     setTimeout(async () => {

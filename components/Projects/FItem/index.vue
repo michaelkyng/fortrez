@@ -1,30 +1,28 @@
 <template>
   <div class="relative space-y-20">
-    <ProjectsItemCard v-if="Fdata && Fdata.title "
-            :title="Fdata.title"
-            :description="Fdata.description"
-            :image="Fdata.mediaFiles[0].url"
-            :completed="Fdata.completed"
-            :funded="Fdata.funded"
-            :target="Fdata.target"
+    <ProjectsItemCard
+      v-if="Fdata && Fdata.title"
+      :title="Fdata.title"
+      :description="Fdata.description"
+      :image="Fdata.mediaFiles[0].url"
+      :completed="Fdata.completed"
+      :funded="Fdata.funded"
+      :target="Fdata.target"
     />
 
-    <ProjectsFItemContent :project="Fdata"/>
-    
+    <ProjectsFItemContent :project="Fdata" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { Transaction } from '@prisma/client';
-const {containerWidth,subHeading} = useTailwindConfig();
+import type { Transaction } from "@prisma/client";
+const { containerWidth, subHeading } = useTailwindConfig();
 const prop = defineProps({
-  urltitle: String
-})
+  urltitle: String,
+});
 
-
-const {verifyProject} = useProject()
-const title:any = prop.urltitle
-console.log("Title : ", title)
+const { verifyProject } = useProject();
+const title: any = prop.urltitle;
 
 interface FProjectData {
   title: string;
@@ -37,28 +35,24 @@ interface FProjectData {
 }
 
 const Fdata: Ref<FProjectData> = ref({
-  title: '',
-  description: '',
+  title: "",
+  description: "",
   mediaFiles: [],
   transactions: [], // Corrected typo here
   completed: false,
   funded: 0,
   target: 0,
-  tags: '',
-  createdAt: '',
+  tags: "",
+  createdAt: "",
 });
 
-
-onBeforeMount(async()=>{
+onBeforeMount(async () => {
   try {
-    const {project} :any = await verifyProject(title)
-    Fdata.value = project
+    const { project }: any = await verifyProject(title);
+    Fdata.value = project;
   } catch (error) {
-    console.log(error)
-  }finally{
-    
+    console.log(error);
+  } finally {
   }
-})
-
-
+});
 </script>

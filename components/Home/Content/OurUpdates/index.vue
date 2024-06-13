@@ -1,80 +1,98 @@
 <template>
-  <div class="relative h-fit flex flex-col w-full gap-y-16 lg:gap-y-20 overflow-hidden" :class="containerWidth">
-    <h1 class="z-10" :class="subHeading">{{props.title}}</h1>
-    
+  <div
+    class="relative h-fit flex flex-col w-full gap-y-16 lg:gap-y-20 overflow-hidden"
+    :class="containerWidth"
+  >
+    <h1 class="z-10" :class="subHeading">{{ props.title }}</h1>
+
     <div class="relative flex items-center mx-1 overflow-hidden">
-      <button @click="scrollLeft" class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline">
-        <ChevronLeftIcon class="group-hover:text-accent w-6 h-6 " :class="transition" />
+      <button
+        @click="scrollLeft"
+        class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline"
+      >
+        <ChevronLeftIcon
+          class="group-hover:text-accent w-6 h-6"
+          :class="transition"
+        />
       </button>
-      <button @click="scrollRight" class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline">
-        <ChevronRightIcon class="group-hover:text-accent w-6 h-6 "  :class="transition"/>
+      <button
+        @click="scrollRight"
+        class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline"
+      >
+        <ChevronRightIcon
+          class="group-hover:text-accent w-6 h-6"
+          :class="transition"
+        />
       </button>
-      <div v-if="data" ref="scrollContainer" class="menu-scroll w-full relative flex justify-start items-center h-fit gap-5 sm:gap-10 md:gap-20  px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14">
-        <HomeContentOurUpdatesCard class="flex-none group"  v-for="cardItem in data" 
-        :title="cardItem.title"
-        :description="cardItem.description"
-        :image="cardItem.mediaFiles[0].url"
-        :tags="cardItem.tags"
-        :date="cardItem.createdAt"
-        :path="`/blog/${cardItem.title}`"
+      <div
+        v-if="data"
+        ref="scrollContainer"
+        class="menu-scroll w-full relative flex justify-start items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
+      >
+        <HomeContentOurUpdatesCard
+          class="flex-none group"
+          v-for="cardItem in data"
+          :title="cardItem.title"
+          :description="cardItem.description"
+          :image="cardItem.mediaFiles[0].url"
+          :tags="cardItem.tags"
+          :date="cardItem.createdAt"
+          :path="`/blog/${cardItem.title}`"
         >
-            
         </HomeContentOurUpdatesCard>
       </div>
 
       <div v-else class="flex justify-center items-center h-96 w-full">
-        <h1 class="text-accent" :class="subHeading">No Blog Feed </h1>
+        <h1 class="text-accent" :class="subHeading">No Blog Feed</h1>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {ChevronRightIcon, ChevronLeftIcon, ArrowSmRightIcon} from "@heroicons/vue/solid";
+import {
+  ChevronRightIcon,
+  ChevronLeftIcon,
+  ArrowSmRightIcon,
+} from "@heroicons/vue/solid";
 
+const { subHeading, transition, containerWidth } = useTailwindConfig();
 
-const {subHeading,transition,containerWidth} = useTailwindConfig()
+const isLoading = ref(false);
+const { getBlogs } = useBlog();
+const data: any = ref([]);
+const latestBlog = ref();
 
-
-const isLoading = ref(false)
-const {getBlogs} = useBlog()
-const data :any= ref([])
-const latestBlog = ref()
-
-onBeforeMount(async ()=>{
-  isLoading.value = true
+onBeforeMount(async () => {
+  isLoading.value = true;
   try {
-    const {blogs}:any = await getBlogs()
-    console.log(blogs)
-    data.value = blogs
-    console.log("data : ",data.value)
+    const { blogs }: any = await getBlogs();
+    data.value = blogs;
   } catch (error) {
-    console.log(error)
-  }finally{
-    isLoading.value = false
+    console.log(error);
+  } finally {
+    isLoading.value = false;
   }
-})
-
+});
 
 const props = defineProps({
   title: {
     type: String,
-    require: true
-  }
-})
+    require: true,
+  },
+});
 
 const scrollContainer = ref<HTMLDivElement | null>(null);
 
 const scrollRight = () => {
   if (scrollContainer.value) {
-    scrollContainer.value.scrollBy({ left: 400, behavior: 'smooth' });
+    scrollContainer.value.scrollBy({ left: 400, behavior: "smooth" });
   }
 };
 
 const scrollLeft = () => {
   if (scrollContainer.value) {
-    scrollContainer.value.scrollBy({ left: -400, behavior: 'smooth' });
+    scrollContainer.value.scrollBy({ left: -400, behavior: "smooth" });
   }
 };
-
 </script>
