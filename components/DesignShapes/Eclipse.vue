@@ -1,57 +1,122 @@
 <template>
-    <div class="flex flex-col relative justify-center items-center gap-y-2.5 px-2.5 ">
-        <svg class="h-fit max-w-[116px] sm:max-w-48" width="237" height="302" viewBox="0 0 237 302" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M225.5 120C225.5 182.156 175.132 232.543 113 232.543C50.8681 232.543 0.5 182.156 0.5 120C0.5 57.8438 50.8681 7.45651 113 7.45651C175.132 7.45651 225.5 57.8438 225.5 120Z" stroke="#999999"/>
-            <g filter="url(#filter0_d_1251_6641)">
-            <ellipse cx="113" cy="121.739" rx="95.6154" ry="95.6522" fill="white" fill-opacity="0.5" shape-rendering="crispEdges"/>
-            </g>
-            <path d="M157.885 23.5757C143.583 17.6767 128.424 14.6858 112.825 14.6858C97.2275 14.6858 82.0658 17.6767 67.7641 23.5757L63 12.0104C78.8205 5.48436 95.5831 2.17568 112.825 2.17568C130.066 2.17568 146.829 5.48436 162.65 12.0104L157.885 23.5757Z" fill="#FFDF00" fill-opacity="0.5"/>
-            <path d="M115.769 238.397C98.541 238.397 81.7972 235.096 66 228.586L70.7616 217.04C85.0411 222.926 100.183 225.909 115.769 225.909C131.392 225.909 146.569 222.912 160.877 217L165.649 228.542C149.819 235.081 133.038 238.397 115.769 238.397Z" fill="#FFDF00" fill-opacity="0.5"/>
-            <path d="M113.945 248L112 248.044L112.055 256L114 255.956L113.945 248Z" fill="#7A7B7C"/>
-            <path d="M113.945 264L112 264.044L112.055 272L114 271.956L113.945 264Z" fill="#7A7B7C"/>
-            <path d="M113.943 280L112 280.044L112.055 288L114 287.956L113.943 280Z" fill="#7A7B7C"/>
-            <path d="M116 298.999C116 300.657 114.656 302 113 302C111.344 302 110 300.657 110 298.999C110 297.343 111.344 296 113 296C114.656 296 116 297.343 116 298.999Z" fill="#7A7B7C"/>
-            <defs>
-            <filter id="filter0_d_1251_6641" x="17.3846" y="26.087" width="219.231" height="217.304" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dx="18" dy="16"/>
-            <feGaussianBlur stdDeviation="5"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1251_6641"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1251_6641" result="shape"/>
-            </filter>
-            </defs>
-        
-        </svg>
-        <div class="absolute top-7 sm:top-16 left-[26px] sm:left-8 xl:left-12">
-            <p class="w-36 text-center text-black/90 text-xxs sm:text-sm max-w-20 sm:max-w-40">
-                {{ props.title }}
-            </p>
-         </div>
-
-
-          <p class="w-56 text-black/60 text-center  text-xxs sm:text-sm max-w-28 sm:max-w-40 xl:max-w-60 relative top-0">
-                {{ props.description }}
-          </p>
+  <div
+    class="flex flex-col relative justify-start items-center gap-y-2.5 px-2.5"
+  >
+    <svg
+      class="h-fit max-w-[116px] sm:max-w-48"
+      width="237"
+      height="302"
+      viewBox="0 0 237 302"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M225.5 120C225.5 182.156 175.132 232.543 113 232.543C50.8681 232.543 0.5 182.156 0.5 120C0.5 57.8438 50.8681 7.45651 113 7.45651C175.132 7.45651 225.5 57.8438 225.5 120Z"
+        stroke="#999999"
+      />
+      <g filter="url(#filter0_d_1251_6641)">
+        <ellipse
+          cx="113"
+          cy="121.739"
+          rx="95.6154"
+          ry="95.6522"
+          fill="white"
+          fill-opacity="0.5"
+          shape-rendering="crispEdges"
+        />
+      </g>
+      <path
+        d="M157.885 23.5757C143.583 17.6767 128.424 14.6858 112.825 14.6858C97.2275 14.6858 82.0658 17.6767 67.7641 23.5757L63 12.0104C78.8205 5.48436 95.5831 2.17568 112.825 2.17568C130.066 2.17568 146.829 5.48436 162.65 12.0104L157.885 23.5757Z"
+        fill="#FFDF00"
+        fill-opacity="0.5"
+      />
+      <path
+        d="M115.769 238.397C98.541 238.397 81.7972 235.096 66 228.586L70.7616 217.04C85.0411 222.926 100.183 225.909 115.769 225.909C131.392 225.909 146.569 222.912 160.877 217L165.649 228.542C149.819 235.081 133.038 238.397 115.769 238.397Z"
+        fill="#FFDF00"
+        fill-opacity="0.5"
+      />
+      <path
+        d="M113.945 248L112 248.044L112.055 256L114 255.956L113.945 248Z"
+        fill="#7A7B7C"
+      />
+      <path
+        d="M113.945 264L112 264.044L112.055 272L114 271.956L113.945 264Z"
+        fill="#7A7B7C"
+      />
+      <path
+        d="M113.943 280L112 280.044L112.055 288L114 287.956L113.943 280Z"
+        fill="#7A7B7C"
+      />
+      <path
+        d="M116 298.999C116 300.657 114.656 302 113 302C111.344 302 110 300.657 110 298.999C110 297.343 111.344 296 113 296C114.656 296 116 297.343 116 298.999Z"
+        fill="#7A7B7C"
+      />
+      <defs>
+        <filter
+          id="filter0_d_1251_6641"
+          x="17.3846"
+          y="26.087"
+          width="219.231"
+          height="217.304"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dx="18" dy="16" />
+          <feGaussianBlur stdDeviation="5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_1251_6641"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_1251_6641"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <div class="absolute top-7 sm:top-[68px] left-[26px] sm:left-8 xl:left-12">
+      <p
+        class="w-36 text-center text-black/90 text-xxs sm:text-sm max-w-20 sm:max-w-40"
+      >
+        {{ props.title }}
+      </p>
     </div>
 
+    <p
+      class="w-56 text-black/60 text-center text-xxs sm:text-sm max-w-28 sm:max-w-40 xl:max-w-60 relative top-0"
+    >
+      {{ props.description }}
+    </p>
+  </div>
 </template>
 
 <script lang="ts" setup>
-const props=defineProps({
-        title:{
-                type:String,
-                require:true
-        },
+const props = defineProps({
+  title: {
+    type: String,
+    require: true,
+  },
 
-        description:{
-                type:String,
-                require:true
-        }
-})
+  description: {
+    type: String,
+    require: true,
+  },
+});
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

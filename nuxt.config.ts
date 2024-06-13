@@ -1,25 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    "@nuxt/ui",
-    [
-      "nuxt-mail",
-      {
-        message: {
-          to: process.env.NUXT_PUBLIC_EMAIL,
-        },
-        smtp: {
-          host: process.env.ZOHO_ENDPOINT,
-          port: 465,
-          secure: true,
-          auth: {
-            user: process.env.NUXT_PUBLIC_EMAIL,
-            pass: process.env.PASS,
-          },
+  modules: ["@nuxt/ui", [
+    "nuxt-mail",
+    {
+      message: {
+        to: process.env.NUXT_PUBLIC_EMAIL,
+      },
+      smtp: {
+        host: process.env.ZOHO_ENDPOINT,
+        port: 465,
+        secure: true,
+        auth: {
+          user: process.env.NUXT_PUBLIC_EMAIL,
+          pass: process.env.PASS,
         },
       },
-    ],
-  ],
+    },
+  ], "nuxt-swiper"],
   ui: {
     icons: ["heroicons"],
   },
