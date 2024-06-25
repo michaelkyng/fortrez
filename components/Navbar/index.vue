@@ -75,7 +75,7 @@
             >Home</NuxtLink
           >
           <NuxtLink
-            to="/comingsoon"
+            to="/blueprint"
             @click="menuToggled = !menuToggled"
             class="text-white-dim/80 border border-white-dim/5 px-5 py-2.5 active:text-accent"
             active-class="text-accent"
