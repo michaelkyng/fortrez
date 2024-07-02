@@ -26,13 +26,11 @@
     <div>
       <div class="bg-white-bright px-5 py-28" id="blueprint">
         <div :class="containerWidth">
-          <ol class="list-item list-inside space-y-12">
+          <ol class="list-none space-y-12">
             <div class="flex flex-col gap-y-5">
-              <li class="list-decimal font-semibold text-xl px-2.5">
-                Introduction
-              </li>
+              <li class="font-semibold text-xl px-2.5">Introduction</li>
               <p
-                class="px-2.5 text-justify sm:text-start text-black/80 text-sm md:text-base"
+                class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
               >
                 Fortrez, a blockchain-based platform for charitable donations
                 would ensure transparency and security. With blockchain, every
@@ -47,11 +45,9 @@
             </div>
             <div class="flex flex-col gap-y-8">
               <div class="flex flex-col gap-y-5">
-                <li class="list-decimal font-semibold text-xl px-2.5">
-                  Problems
-                </li>
+                <li class="font-semibold text-xl px-2.5">Problems</li>
                 <p
-                  class="px-2.5 text-justify sm:text-start text-black/80 text-sm md:text-base"
+                  class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
                 >
                   Charitable organizations and philanthropists face a range of
                   challenges. Some common problems include:
@@ -67,11 +63,9 @@
             </div>
             <div class="flex flex-col gap-y-8">
               <div class="flex flex-col gap-y-5">
-                <li class="list-decimal font-semibold text-xl px-2.5">
-                  Solutions
-                </li>
+                <li class="font-semibold text-xl px-2.5">Solutions</li>
                 <p
-                  class="px-2.5 text-justify sm:text-start text-black/80 text-sm md:text-base"
+                  class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
                 >
                   Fortrez offers several benefits in addressing the challenges
                   faced by charitable organizations and philanthropists:
@@ -89,11 +83,9 @@
               </div>
             </div>
             <div class="flex flex-col gap-y-5">
-              <li class="list-decimal font-semibold text-xl px-2.5">
-                Token UseCase
-              </li>
+              <li class="font-semibold text-xl px-2.5">Token UseCase</li>
               <p
-                class="px-2.5 text-justify sm:text-start text-black/80 text-sm md:text-base"
+                class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
               >
                 The native token of Fortrez is
                 <span class="text-accent underline underline-offset-4"
@@ -115,11 +107,9 @@
               </p>
             </div>
             <div class="flex flex-col gap-y-5">
-              <li class="list-decimal font-semibold text-xl px-2.5">
-                Tokenomics
-              </li>
+              <li class="font-semibold text-xl px-2.5">Tokenomics</li>
               <p
-                class="px-2.5 text-justify sm:text-start text-black/80 text-sm md:text-base"
+                class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
               >
                 ...Coming Soon
               </p>

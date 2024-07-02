@@ -12,7 +12,7 @@
           <h1
             class="text-3xl sm:text-4xl xl:text-6xl max-w-[95%] sm:max-w-[90%] font-bold"
           >
-            Transpiracy, trust and transformation through blockchain donation.
+            Transparency, Trust and Transformation through blockchain donation.
           </h1>
           <p
             class="text-[12px] lg:text-md xl:text-xl max-w-full sm:max-w-[70%] opacity-80"

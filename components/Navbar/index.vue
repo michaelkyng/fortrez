@@ -27,36 +27,34 @@
     </div>
 
     <!-- Mobile View -->
-    <div class="relative flex justify-center md:hidden p-4">
+    <div class="relative flex justify-center md:hidden px-5">
       <div class="relative w-full py-3.5">
         <div
-          class="absolute top-0 mx-auto size-16 inset-0 flex items-start justify-center bg-white-bright rounded-full"
+          class="absolute top-0 mx-auto size-16 inset-0 flex items-center justify-between bg-white-bright rounded-full w-full"
         >
-          <NuxtLink
-            to="/"
-            class="flex grow justify-center items-center h-full group"
+          <NuxtLink to="/" class="flex justify-center items-center h-full group"
             ><Logo class="w-10 group-hover:scale-105 group-active:scale-105"
           /></NuxtLink>
-        </div>
 
-        <div class="absolute right-0 top-0 z-10">
-          <transition mode="out-in" name="buttonSwap">
-            <button
-              v-if="!menuToggled"
-              class="outline-accent active:outline rounded-md outline-2 p-0.5 z-20"
-              @click="menuToggled = !menuToggled"
-            >
-              <MenuAlt3Icon class="w-6 h-6" />
-            </button>
+          <div class="z-10">
+            <transition mode="out-in" name="buttonSwap">
+              <button
+                v-if="!menuToggled"
+                class="outline-accent active:outline rounded-md outline-2 p-0.5 z-20"
+                @click="menuToggled = !menuToggled"
+              >
+                <MenuAlt3Icon class="w-6 h-6" />
+              </button>
 
-            <button
-              v-else
-              class="outline-accent active:outline rounded-md outline-2 p-0.5 z-20"
-              @click="menuToggled = !menuToggled"
-            >
-              <XIcon class="w-6 h-6 text-accent" />
-            </button>
-          </transition>
+              <button
+                v-else
+                class="outline-accent active:outline rounded-md outline-2 p-0.5 z-20"
+                @click="menuToggled = !menuToggled"
+              >
+                <XIcon class="w-6 h-6 text-accent" />
+              </button>
+            </transition>
+          </div>
         </div>
       </div>
     </div>
