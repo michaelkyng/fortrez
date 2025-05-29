@@ -42,7 +42,6 @@
 </template>
 
 <script lang="ts" setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
 const { containerWidth } = useTailwindConfig();
 
 // const slides = [

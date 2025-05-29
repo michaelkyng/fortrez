@@ -81,6 +81,4 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import {} from "@heroicons/vue/outline";
-</script>
+<script lang="ts" setup></script>

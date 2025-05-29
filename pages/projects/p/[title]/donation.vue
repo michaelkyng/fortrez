@@ -28,7 +28,7 @@
             name="Project Oveview"
             class="px-2.5"
           >
-            <ArrowSmLeftIcon class="w-4 h-4 order-first" />
+            <PhCaretLeft class="w-4 h-4 order-first" weight="fill" />
           </ButtonLink>
 
           <ButtonLink
@@ -36,7 +36,7 @@
             class="px-2.5"
             name="Donate Now"
           >
-            <ArrowSmRightIcon class="w-4 h-4" />
+            <PhCaretRight class="w-4 h-4" weight="fill" />
           </ButtonLink>
         </div>
       </div>
@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ArrowSmLeftIcon, ArrowSmRightIcon } from "@heroicons/vue/solid";
+import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 const { containerWidth, subHeading, subHeading2 } = useTailwindConfig();
 
 const perPage = 10;

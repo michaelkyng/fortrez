@@ -10,7 +10,7 @@
         <span v-if="errorOccurrence" class="text-red-500/80 text-sm">An Error Occured, Please try again!</span>
         <div class="relative">
             <input v-model="email" type="email" name="email" class="relative outline-none bg-white-dim py-2.5 px-4 rounded-3xl w-full" placeholder="Email address"/>
-            <UButton @click.prevent="handleEmailWaitlist" color="yellow" class="absolute inset-y-0 rounded-3xl right-0 px-3 font-semibold" :class="transition" :loading="isLoading">Subscribe</UButton>
+            <UButton @click.prevent="handleEmailWaitlist"  class="absolute inset-y-0 rounded-3xl right-0 px-3 font-semibold" :class="transition" :loading="isLoading">Subscribe</UButton>
         </div>
     </div>
   </div>

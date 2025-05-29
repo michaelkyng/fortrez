@@ -14,7 +14,7 @@
         @click="scrollLeft"
         class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline"
       >
-        <ChevronLeftIcon
+        <PhCaretLeft
           class="group-hover:text-accent w-6 h-6"
           :class="transition"
         />
@@ -23,7 +23,7 @@
         @click="scrollRight"
         class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline"
       >
-        <ChevronRightIcon
+        <PhCaretRight
           class="group-hover:text-accent w-6 h-6"
           :class="transition"
         />
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/vue/solid";
+import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 
 const { subHeading, transition, containerWidth } = useTailwindConfig();
 const isLoading = ref(false);
@@ -70,18 +70,9 @@ onBeforeMount(async () => {
 });
 
 const props = defineProps({
-  title: {
-    type: String,
-    require: true,
-  },
-  font: {
-    type: String,
-    reqiure: true,
-  },
-  project: {
-    type: Boolean,
-    default: true,
-  },
+  title: { type: String, require: true },
+  font: { type: String, reqiure: true },
+  project: { type: Boolean, default: true },
 });
 
 const scrollContainer = ref<HTMLDivElement | null>(null);

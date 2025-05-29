@@ -17,9 +17,7 @@
       </div>
       <div class="absolute bottom-5 inset-x-0">
         <NuxtLink to="#blueprint">
-          <ArrowCircleDownIcon
-            class="size-6 md:size-10 mx-auto animate-bounce"
-          />
+          <PhArrowCircleDown class="size-6 md:size-10 mx-auto animate-bounce" />
         </NuxtLink>
       </div>
     </div>
@@ -128,7 +126,7 @@ import Contract from "@/components/Icons/Blueprint/Contract.vue";
 import Traceable from "@/components/Icons/Blueprint/Traceable.vue";
 import Global from "@/components/Icons/Blueprint/Global.vue";
 import Funding from "@/components/Icons/Blueprint/Funding.vue";
-import { ArrowCircleDownIcon } from "@heroicons/vue/solid";
+import { PhArrowCircleDown } from "@phosphor-icons/vue";
 const { containerWidth } = useTailwindConfig();
 
 const problems = [

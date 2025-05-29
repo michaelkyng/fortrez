@@ -17,7 +17,7 @@
             @click="scrollLeft"
             class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline"
           >
-            <ChevronLeftIcon
+            <PhCaretLeft
               class="group-hover:text-accent w-6 h-6"
               :class="transition"
             />
@@ -26,7 +26,7 @@
             @click="scrollRight"
             class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline"
           >
-            <ChevronRightIcon
+            <PhCaretRight
               class="group-hover:text-accent w-6 h-6"
               :class="transition"
             />
@@ -66,7 +66,7 @@
                 placeholder="Search..."
                 class="bg-slate-300/20 px-7 py-2.5 rounded-3xl outline-none w-full"
               />
-              <SearchIcon
+              <PhMagnifyingGlass
                 class="absolute inset-0 left-0 top-0 w-4 h-4 my-auto ml-2 text-slate-500/60"
               />
             </div>
@@ -103,10 +103,10 @@
 <script lang="ts" setup>
 import IconCompleted from "@/components/Icons/Projects/CompletedStatus.vue";
 import {
-  SearchIcon,
-  ChevronRightIcon,
-  ChevronLeftIcon,
-} from "@heroicons/vue/solid";
+  PhCaretRight,
+  PhCaretLeft,
+  PhMagnifyingGlass,
+} from "@phosphor-icons/vue";
 const { containerWidth, subHeading2, transition, subHeading } =
   useTailwindConfig();
 const isLoading = ref(false);

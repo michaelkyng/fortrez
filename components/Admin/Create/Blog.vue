@@ -14,7 +14,7 @@
           <span
             class="flex gap-x-2.5 items-center text-base md:text-xl font-medium"
           >
-            <CheckCircleIcon class="size-6 text-white-bright" /> Blog Created
+            <PhCheckCircle class="size-6 text-white-bright" /> Blog Created
             Successfully</span
           >
         </div>
@@ -97,7 +97,7 @@
 </template>
 
 <script lang="ts" setup>
-import { CheckCircleIcon } from "@heroicons/vue/solid";
+import { PhCheckCircle } from "@phosphor-icons/vue";
 const { subHeading2, transition } = useTailwindConfig();
 const defaultImageHolder = ref("/images/imageHolder.jpg");
 const options = [

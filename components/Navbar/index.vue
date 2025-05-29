@@ -43,7 +43,7 @@
                 class="outline-accent active:outline rounded-md outline-2 p-0.5 z-20"
                 @click="menuToggled = !menuToggled"
               >
-                <MenuAlt3Icon class="w-6 h-6" />
+                <PhList class="w-6 h-6" />
               </button>
 
               <button
@@ -51,7 +51,7 @@
                 class="outline-accent active:outline rounded-md outline-2 p-0.5 z-20"
                 @click="menuToggled = !menuToggled"
               >
-                <XIcon class="w-6 h-6 text-accent" />
+                <PhX class="w-6 h-6 text-accent" />
               </button>
             </transition>
           </div>
@@ -114,7 +114,7 @@
 </template>
 
 <script lang="ts" setup>
-import { MenuAlt3Icon, XIcon } from "@heroicons/vue/solid";
+import { PhList, PhX } from "@phosphor-icons/vue";
 const { navLink } = useTailwindConfig();
 const menuToggled = ref(false);
 </script>
