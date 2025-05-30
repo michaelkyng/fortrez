@@ -10,20 +10,17 @@
           <div
             class="flex flex-col gap-5 shrink-0 items-center justify-start text-center z-10"
           >
-            <h1
-              class="text-3xl sm:text-5xl xl:text-6xl max-w-4xl font-bold"
-            >
-              Transparency, Trust and Transformation through blockchain donation.
+            <h1 class="text-3xl sm:text-5xl xl:text-6xl max-w-4xl font-bold">
+              Transparency, Trust and Transformation through blockchain
+              donation.
             </h1>
-            <p
-              class="text-base md:text-lg max-w-2xl opacity-80"
-            >
-              Welcome to Fortrez, where blockchain technology meets philanthropy.
-              We're committed to transforming how charitable organizations secure
-              funding for their projects and initiatives.
+            <p class="text-base md:text-lg max-w-2xl opacity-80">
+              Welcome to Fortrez, where blockchain technology meets
+              philanthropy. We're committed to transforming how charitable
+              organizations secure funding for their projects and initiatives.
             </p>
           </div>
-          <button></button>
+          <NuxtLink to="/" class="bg-primary">Hi There</NuxtLink>
         </div>
 
         <div
@@ -33,7 +30,6 @@
             src="/images/test1.png"
             class="object-cover h-72 lg:h-auto block w-full"
           />
-          
         </div>
       </div>
       <div
