@@ -60,8 +60,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        lato: ['"Lato"', "sans-serif"],
-        sans: ['"IBM Plex Sans"', "sans-serif"],
+        lato: ['Lato', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'sans-serif'], 
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

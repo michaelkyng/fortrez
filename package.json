@@ -13,6 +13,7 @@
     "@dword-design/functions": "6.0.2",
     "@nuxt/types": "2.18.1",
     "@nuxt/ui": "^3.1.3",
+    "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "7.0.0-beta.0",
     "@phosphor-icons/vue": "^2.2.1",
     "@prisma/client": "^6.8.2",
@@ -39,14 +40,15 @@
   "devDependencies": {
     "@types/swiper": "6.0.0",
     "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.5",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-prettier": "^5.4.1",
     "nuxt-phosphor-icons": "^1.3.0",
     "postcss": "^8.5.4",
     "prettier": "3.5.3",
     "prisma": "^6.8.2",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5.3.3",
+    "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"
   }
 }
