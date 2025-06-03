@@ -9,4 +9,7 @@
   --color-accent-foreground: hsl(0 0% 100%);
 
   --color-secondary: hsl(0 0% 96%);
+
+  --font-lato: Lato, sans-serif;
+  --font-sans: IBM Plex Sans, sans-serif;
 }
