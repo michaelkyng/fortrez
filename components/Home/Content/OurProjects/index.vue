@@ -1,49 +1,49 @@
 <template>
   <div
-    class="relative h-fit flex flex-col w-full overflow-hidden"
+    class="relative h-fit flex flex-col items-center w-full overflow-hidden"
     :class="
-      props.project
+      project
         ? 'gap-y-16 lg:gap-y-20' + containerWidth
         : 'gap-y-8' + containerWidth
     "
   >
-    <h1 class="z-10" :class="props.font">{{ props.title }}</h1>
+    <h1 class="z-10" :class="font">{{ title }}</h1>
 
-    <div class="relative flex items-center mx-1 overflow-hidden">
+    <div class="relative flex items-center mx-1 overflow-hidden w-full">
       <button
         @click="scrollLeft"
-        class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline"
+        class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline cursor-pointer"
       >
         <PhCaretLeft
+          weight="fill"
           class="group-hover:text-accent w-6 h-6"
           :class="transition"
         />
       </button>
       <button
         @click="scrollRight"
-        class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline"
+        class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline cursor-pointer"
       >
         <PhCaretRight
+          weight="fill"
           class="group-hover:text-accent w-6 h-6"
           :class="transition"
         />
       </button>
       <div
         ref="scrollContainer"
-        class="menu-scroll relative flex justify-start items-center h-fit gap-4 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
+        class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 md:gap-20 px-2.5 py-5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
       >
         <HomeContentOurProjectsCard
           class="flex-none group"
+          v-if="!isLoading"
           v-for="cardItem in data"
-          :title="cardItem.title"
-          :description="cardItem.description"
-          :funded="cardItem.funded"
-          :target="cardItem.target"
-          :completed="cardItem.completed"
-          :image="cardItem.mediaFiles[0].url"
-          :path="`${cardItem.title}`"
-        >
-        </HomeContentOurProjectsCard>
+          :item="cardItem"
+        />
+
+        <div v-else class="flex justify-center items-center w-full">
+          <img src="/animation.gif" alt="Animation" />
+        </div>
       </div>
     </div>
   </div>
@@ -51,17 +51,19 @@
 
 <script lang="ts" setup>
 import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
+import type { ProjectWithRelations } from "~/types/type";
 
-const { subHeading, transition, containerWidth } = useTailwindConfig();
-const isLoading = ref(false);
+const { transition, containerWidth } = useTailwindConfig();
+const isLoading = ref(true);
 const { getFProjects } = useProject();
-const data: any = ref([]);
+const data = ref<ProjectWithRelations[]>([]);
 
 onBeforeMount(async () => {
   isLoading.value = true;
   try {
-    const { Fprojects }: any = await getFProjects();
-    data.value = Fprojects;
+    const { Fprojects } = await getFProjects();
+    data.value = Fprojects as ProjectWithRelations[];
+    console.log(data.value);
   } catch (error) {
     console.log(error);
   } finally {
@@ -69,7 +71,7 @@ onBeforeMount(async () => {
   }
 });
 
-const props = defineProps({
+defineProps({
   title: { type: String, require: true },
   font: { type: String, reqiure: true },
   project: { type: Boolean, default: true },

@@ -4,7 +4,7 @@
     class="relative h-fit flex flex-col items-center"
   >
     <div
-      class="h-fit flex flex-col items-center p-16 w-fit bg-accent/90 gap-y-10 rounded-3xl"
+      class="h-fit flex flex-col items-center py-16 px-8 sm:px-16 w-fit bg-accent/90 gap-y-10 rounded-3xl"
     >
       <h1
         class="text-center text-lg lg:text-xl py-2 px-5 font-medium bg-secondary w-fit rounded-full shadow-xs"
@@ -13,7 +13,7 @@
       </h1>
       <div class="flex flex-col gap-y-10 self-center">
         <p
-          class="text-accent-foreground sm:text-lg max-w-3xl text-center leading-5 md:leading-10 font-lato"
+          class="text-accent-foreground sm:text-lg max-w-3xl text-justify sm:text-center leading-5 md:leading-10 font-lato"
         >
           Fortrez, a blockchain-based platform for charitable donations would
           ensure transparency and security. With blockchain, every donation
@@ -34,5 +34,5 @@
 </template>
 
 <script lang="ts" setup>
-const { subHeading, containerWidth } = useTailwindConfig();
+const { containerWidth } = useTailwindConfig();
 </script>

@@ -1,29 +1,79 @@
 <template>
-  <div class="relative my-20">
-    <DesignShapesYellowFaintDots
-      class="absolute -left-40 -bottom-40 opacity-70"
-    />
+  <div
+    class="relative my-20 bg-primary/80 bg-[url(/images/donation.jpg)] bg-cover bg-blend-multiply"
+  >
+    <div class="absolute top-0 left-0 size-full bg-[#0d0d0e]/95"></div>
     <div class="relative py-16 lg:py-28" :class="containerWidth">
       <div
-        class="flex flex-col py-16 gap-5 bg-alternativeAccent mx-auto justify-center items-center text-center rounded-full w-[80%] xl:max-w-[90%] px-5"
+        class="flex flex-col py-16 gap-5 mx-auto justify-center items-center text-center px-5 text-white"
       >
-        <h1
-          class="text-base md:text-lg font-bold max-w-60 sm:max-w-80 lg:max-w-fit"
-        >
+        <h1 class="text-3xl md:text-4xl font-bold">
           Helping Families and Projects in our Communities
         </h1>
-        <p class="text-black/70 text-sm md:text-base">
-          Providing Essential Help and Support
-        </p>
-        <div class="relative flex justify-center items-center">
-          <DesignShapesCircle />
-          <div class="absolute">
-            <p class="text-white-bright text-2xl">01</p>
+        <p class="text-lg md:text-xl">Providing Essential Help and Support</p>
+        <div
+          class="relative flex flex-col lg:flex-row gap-10 justify-center items-center w-full p-5 sm:p-10 rounded-full mt-5"
+        >
+          <div
+            class="flex flex-col justify-center items-center w-full gap-2 bg-[#000000] p-10 rounded-2xl max-w-96"
+          >
+            <div
+              class="flex justify-center items-center font-space font-black w-fit text-4xl sm:text-5xl text-primary"
+            >
+              <template v-for="(char, index) in characters" :key="index">
+                <Counter
+                  v-if="/\d/.test(char)"
+                  :digit="Number(char)"
+                  :delay="index * 150"
+                />
+                <span v-else>,</span>
+              </template>
+            </div>
+
+            <p class="font-lato font-bold text-xl">Amount Donated</p>
+          </div>
+          <div
+            class="flex flex-col justify-center items-center w-full gap-2 bg-[#000000] p-10 rounded-2xl max-w-96"
+          >
+            <div
+              class="flex justify-center items-center font-space font-black w-fit text-4xl sm:text-5xl text-primary"
+            >
+              <template v-for="(char, index) in characters" :key="index">
+                <Counter
+                  v-if="/\d/.test(char)"
+                  :digit="Number(char)"
+                  :delay="index * 150"
+                />
+                <span v-else>,</span>
+              </template>
+            </div>
+
+            <p class="font-lato font-bold text-xl">Amount Donated</p>
+          </div>
+          <div
+            class="flex flex-col justify-center items-center w-full gap-2 bg-[#000000] p-10 rounded-2xl max-w-96"
+          >
+            <div
+              class="flex justify-center items-center font-space font-black w-fit text-4xl sm:text-5xl text-primary"
+            >
+              <template v-for="(char, index) in characters" :key="index">
+                <Counter
+                  v-if="/\d/.test(char)"
+                  :digit="Number(char)"
+                  :delay="index * 150"
+                />
+                <span v-else>,</span>
+              </template>
+            </div>
+
+            <p class="font-lato font-bold text-xl">Amount Donated</p>
           </div>
         </div>
-        <p class="text-black/90 text-sm md:text-base max-w-[80%] lg:max-w-md">
-          Support our projects [Nourishing Vulnerable Children, Providing
-          Maternal Support]
+        <p class="text-xl md:text-2xl">
+          Support our projects (
+          <span class="text-primary font-medium"
+            >Nourishing Vulnerable Children, Providing Maternal Support </span
+          >)
         </p>
       </div>
     </div>
@@ -32,6 +82,7 @@
 
 <script lang="ts" setup>
 const { containerWidth } = useTailwindConfig();
+const number = 487484;
+const formatted = number.toLocaleString();
+const characters = formatted.split("");
 </script>
-
-<style></style>

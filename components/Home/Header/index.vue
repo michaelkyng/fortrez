@@ -11,8 +11,18 @@ const { containerWidth } = useTailwindConfig();
 <template>
   <div class="relative h-fit overflow-y-visible bg-white-dim overflow-x-clip">
     <div class="relative h-fit">
+      <img
+        class="absolute -top-1/6 md:-top-0 -left-1/5 md:-left-0 -translate-x-1/2 size-fit"
+        src="/designElement.png"
+        alt="Element"
+      />
+      <img
+        class="absolute bottom-0 md:bottom-1/5 -right-0 translate-x-1/2 size-fit"
+        src="/designElement.png"
+        alt="Element"
+      />
       <div
-        class="flex flex-col gap-14 md:gap-20 sm:pt-40 xl:pt-52 items-center justify-center text-center overflow-visible md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-7xl mx-auto w-full px-5 pt-20"
+        class="flex flex-col gap-14 md:gap-20 pt-40 xl:pt-52 items-center justify-center text-center overflow-visible md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-7xl mx-auto w-full px-5"
       >
         <div class="flex flex-col items-center gap-8">
           <div
@@ -29,16 +39,6 @@ const { containerWidth } = useTailwindConfig();
             </p>
           </div>
           <Button name="Donate Now" />
-          <img
-            class="absolute top-1/6 -left-0 size-fit"
-            src="/designElement.png"
-            alt="Element"
-          />
-          <img
-            class="absolute bottom-1/5 -right-0 size-fit"
-            src="/designElement.png"
-            alt="Element"
-          />
         </div>
 
         <div
