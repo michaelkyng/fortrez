@@ -1,18 +1,27 @@
 import { verifyProject } from "~/server/db/project";
-import { fprojectTransformer } from "~/server/transformers/fproject";
+import { projectTransformer } from "~/server/transformers/project";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { title } = body;
+
   const project = await verifyProject({
-    where: {}, // Add any additional where conditions if needed
+    where: {},
     include: {
       mediaFiles: true,
       transactions: true,
     },
-    title, // Pass the title as part of the params object
+    title,
   });
+
+  if (!project) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Project not found",
+    });
+  }
+
   return {
-    project: fprojectTransformer(project),
+    project: projectTransformer(project),
   };
 });

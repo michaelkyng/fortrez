@@ -70,7 +70,6 @@
             :value="props.funded"
             :max="props.target"
             size="md"
-            color="yellow"
           >
             <template #indicator="{ percent }">
               <div

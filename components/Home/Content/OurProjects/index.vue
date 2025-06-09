@@ -32,7 +32,7 @@
       </button>
       <div
         ref="scrollContainer"
-        class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 md:gap-20 px-2.5 py-5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
+        class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 px-2.5 py-5 overflow-x-scroll scroll-smooth mx-5 md:mx-14 transition-all"
       >
         <HomeContentOurProjectsCard
           class="flex-none group"

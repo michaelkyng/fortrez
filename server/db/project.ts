@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from ".";
 
 export const createProject = (projectData: any) => {
@@ -6,11 +7,15 @@ export const createProject = (projectData: any) => {
   });
 };
 
-export const getProjects = (params: any = {}) => {
+export const getProjects = () => {
+  return prisma.project.findMany();
+};
+
+export const getOtherProjects = (params: any = {}) => {
   return prisma.project.findMany({
     ...params,
     where: {
-      type: "Other Project",
+      type: "Other",
     },
   });
 };
@@ -25,12 +30,11 @@ export const getFProjects = (params: any = {}) => {
 };
 
 export const verifyProject = (params: any) => {
-  // Adjust the type of params as needed
   return prisma.project.findUnique({
     where: {
       title: params.title,
-      ...params.where, // If you need to include additional where conditions
+      ...params.where,
     },
-    include: params.include, // Include any additional includes
+    include: params.include,
   });
 };

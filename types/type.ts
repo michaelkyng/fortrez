@@ -1,4 +1,4 @@
-import type { Project, Transaction, MediaFiles } from "@prisma/client";
+import type { Project, Transaction, MediaFiles, Admin } from "@prisma/client";
 
 type normalLink = {
   state: "normal";
@@ -17,6 +17,7 @@ export type Link = {
 // Projects
 
 export type ProjectWithRelations = Project & {
-  transactions: Transaction[];
-  mediaFiles: MediaFiles[];
+  author?: Admin;
+  transactions?: Transaction[];
+  mediaFiles?: MediaFiles[];
 };

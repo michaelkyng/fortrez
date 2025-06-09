@@ -28,23 +28,23 @@ model Admin {
 }
 
 model Project {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  title         String        @unique
-  description   String
-  problem       String
-  solutions     String[]
-  transactions  Transaction[]
-  donors        Int?
-  funded        Int?
-  veifiedFunded Int?
-  target        Int
-  completed     Boolean
-  category      String
-  type          String
-  authorId      String        @db.ObjectId
-  author        Admin         @relation(fields: [authorId], references: [id])
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  title        String        @unique
+  description  String
+  problem      String
+  solutions    String[]
+  transactions Transaction[]
+  donors       Int
+  funded       Int
+  pending      Int
+  target       Int
+  completed    Boolean
+  category     String
+  type         String
+  authorId     String        @db.ObjectId
+  author       Admin         @relation(fields: [authorId], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
   // MediaFiles
   mediaFiles MediaFiles[]

@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   experimental: { viewTransition: true },
   css: ["~/assets/css/tailwind.css"],
+  ui: {
+    colorMode: false,
+    fonts: false,
+  },
   modules: [
     [
       "nuxt-mail",

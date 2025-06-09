@@ -7,7 +7,7 @@ defineProps({
     required: true,
   },
   variant: {
-    type: String as PropType<"primary" | "secondary">,
+    type: String as PropType<"primary" | "secondary" | "outline">,
     default: "primary",
   },
   to: {
@@ -21,17 +21,24 @@ defineProps({
   <div class="size-fit">
     <NuxtLink
       :to="to"
-      class="button flex gap-2.5 items-center py-1.5 pl-3.5 pr-1.5 md:py-2 md:pl-5 md:pr-2 border rounded-full transition-all duration-300"
+      class="flex gap-2.5 items-center border rounded-full transition-all duration-300"
       :class="
         variant === 'secondary'
-          ? 'bg-gray-50 border-gray-200 button-secondary'
-          : 'bg-primary border-primary-dark button-primary'
+          ? 'bg-gray-50 border-gray-200 button-secondary py-1.5 pl-3.5 pr-1.5 md:py-2 md:pl-5 md:pr-2'
+          : variant === 'primary'
+            ? 'bg-primary border-primary-dark button-primary py-1.5 pl-3.5 pr-1.5 md:py-2 md:pl-5 md:pr-2'
+            : 'border-accent hover:border-primary-dark py-1.5  px-4 md:py-1 md:px-5'
       "
     >
-      <span class="font-semibold text-base md:text-lg text-shadow-md">{{
-        name
-      }}</span>
+      <span
+        class="text-shadow-md"
+        :class="
+          variant === 'outline' ? '' : 'font-semibold text-base md:text-lg'
+        "
+        >{{ name }}</span
+      >
       <div
+        v-if="variant === 'primary' || variant === 'secondary'"
         class="p-2 md:p-3 rounded-full shadow-md"
         :class="variant === 'secondary' ? 'bg-accent' : 'bg-secondary'"
       >

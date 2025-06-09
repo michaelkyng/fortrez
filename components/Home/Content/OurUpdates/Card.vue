@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-fit max-w-full sm:max-w-72 lg:max-w-96 sm:grow-0 border drop-shadow-sm p-2 rounded-2xl bg-white-bright overflow-clip"
+    class="h-fit max-w-full sm:max-w-72 lg:max-w-96 sm:grow-0 rounded-2xl overflow-clip shadow-md bg-gray-100"
   >
     <NuxtLink :to="props.path">
       <div class="flex flex-col gap-y-5">
