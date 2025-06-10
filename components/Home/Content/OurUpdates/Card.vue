@@ -9,12 +9,12 @@
             class="relative min-w-full h-60 sm:h-36 rounded-2xl overflow-clip"
           >
             <div
-              class="absolute flex items-center justify-center px-5 opacity-0 group-hover:opacity-100 z-10 w-full h-full bg-black/70"
+              class="absolute flex items-center justify-center px-5 opacity-0 group-hover:opacity-100 z-10 size-full bg-black/70"
               :class="transition"
             >
               <!-- Black Ovelay-->
               <div
-                class="border border-accent group-active:border-alternativeAccent rounded-2xl px-5 group-active:text-alternativeAccent text-accent lg:font-medium"
+                class="border border-primary group-active:border-secondary rounded-full px-5 py-1 group-active:text-secondary text-primary text-sm"
                 :class="transition"
               >
                 View Blog
@@ -27,42 +27,43 @@
               alt=""
             />
           </div>
-          <div class="flex flex-col w-full gap-y-1.5 sm:gap-y-2.5">
-            <p class="text-black/40 text-xxs sm:text-xs md:text-base">
-              {{ $props.tags }}
-            </p>
-            <h1 class="text-base sm:text-lg md:text-xl font-bold">
-              {{ $props.title }}
-            </h1>
-            <p
-              class="text-xs sm:text-sm md:text-base text-black/50 group-hover:text-black/80 w-full text-ellipsis line-clamp-2"
-              :class="transition"
-            >
-              {{ $props.description }}
-            </p>
+          <div class="flex flex-col gap-y-2 p-3">
+            <div class="flex flex-col w-full gap-y-2">
+              <p class="text-black/40 text-xs">
+                {{ $props.tags }}
+              </p>
+              <h1 class="text-base sm:text-lg font-bold">
+                {{ $props.title }}
+              </h1>
+              <p
+                class="text-xs sm:text-sm text-black/50 group-hover:text-black/80 w-full text-ellipsis line-clamp-2"
+                :class="transition"
+              >
+                {{ $props.description }}
+              </p>
+            </div>
+            <div class="flex justify-between mt-5">
+              <div
+                class="flex items-center border-b-2 border-b-transparent group-hover:border-b-2 group-hover:border-primary"
+                :class="transition"
+              >
+                <p
+                  class="text-accent/80 group-hover:text-primary font-medium lg:font-bold"
+                  :class="transition"
+                >
+                  READ MORE
+                </p>
+                <PhCaretRight
+                  class="relative group-hover:text-primary text-accent w-6 h-fit bottom-px"
+                  :class="transition"
+                  weight="fill"
+                />
+              </div>
+              <span class="relative text-xs md:text-sm text-black/60 right-1">{{
+                $props.date
+              }}</span>
+            </div>
           </div>
-        </div>
-        <div class="flex justify-between">
-          <div
-            class="flex items-center border-b-2 border-b-transparent group-hover:border-b-2 group-hover:border-accent"
-            :class="transition"
-          >
-            <p
-              class="text-accent/80 hover:text-accent font-medium lg:font-bold"
-              :class="transition"
-            >
-              READ MORE
-            </p>
-            <PhCaretRight
-              class="relative text-accent w-6 h-fit bottom-px"
-              :class="transition"
-              weight="fill"
-            />
-          </div>
-          <span
-            class="relative text-xxs sm:text-xs md:text-sm text-black/60 right-1"
-            >{{ $props.date }}</span
-          >
         </div>
       </div>
     </NuxtLink>

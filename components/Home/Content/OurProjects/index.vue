@@ -9,24 +9,24 @@
   >
     <h1 class="z-10" :class="font">{{ title }}</h1>
 
-    <div class="relative flex items-center mx-1 overflow-hidden w-full">
+    <div class="relative flex items-center overflow-hidden w-full">
       <button
         @click="scrollLeft"
-        class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline cursor-pointer"
+        class="group absolute left-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
       >
         <PhCaretLeft
           weight="fill"
-          class="group-hover:text-accent w-6 h-6"
+          class="group-hover:text-primary group-active:text-primary w-6 h-6"
           :class="transition"
         />
       </button>
       <button
         @click="scrollRight"
-        class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline cursor-pointer"
+        class="group absolute right-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
       >
         <PhCaretRight
           weight="fill"
-          class="group-hover:text-accent w-6 h-6"
+          class="group-hover:text-primary group-active:text-primary w-6 h-6"
           :class="transition"
         />
       </button>

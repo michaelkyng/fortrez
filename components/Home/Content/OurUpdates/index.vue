@@ -1,26 +1,28 @@
 <template>
   <div
-    class="relative h-fit flex flex-col w-full gap-y-16 lg:gap-y-20 overflow-hidden"
+    class="relative h-fit flex flex-col items-center w-full gap-y-16 lg:gap-y-20 overflow-hidden"
     :class="containerWidth"
   >
     <h1 class="z-10" :class="subHeading">{{ props.title }}</h1>
 
-    <div class="relative flex items-center mx-1 overflow-hidden">
+    <div class="relative flex items-center mx-1 overflow-hidden w-fit">
       <button
         @click="scrollLeft"
-        class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline"
+        class="group absolute left-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
       >
         <PhCaretLeft
-          class="group-hover:text-accent w-6 h-6"
+          weight="fill"
+          class="group-hover:text-primary group-active:text-primary w-6 h-6"
           :class="transition"
         />
       </button>
       <button
         @click="scrollRight"
-        class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline"
+        class="group absolute right-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
       >
         <PhCaretRight
-          class="group-hover:text-accent w-6 h-6"
+          weight="fill"
+          class="group-hover:text-primary group-active:text-primary w-6 h-6"
           :class="transition"
         />
       </button>
@@ -28,7 +30,7 @@
         v-if="data"
         ref="scrollContainer"
         :class="data.length < 3 ? 'justify-center' : 'justify-start'"
-        class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
+        class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14 py-2"
       >
         <HomeContentOurUpdatesCard
           class="flex-none group"

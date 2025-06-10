@@ -1,19 +1,22 @@
 <template>
   <div :class="containerWidth">
-    <div class="flex justify-center">
+    <div class="relative flex justify-center">
       <span
         v-if="emailSent"
-        class="text-yellow-100 bg-black/60 px-2 py-1 sm:py-2 text-sm sm:text-base"
+        class="absolute -top-14 left-1/2 -translate-x-1/2 text-yellow-100 bg-accent/60 px-2 py-1 sm:py-2 text-sm sm:text-base"
       >
         Your Mail has been sent</span
       >
       <span
         v-if="errorOccurrence"
-        class="text-red-100 bg-black/60 px-2 py-1 sm:py-2 text-sm sm:text-base"
+        class="absolute -top-14 left-1/2 -translate-x-1/2 text-red-100 bg-accent/60 px-2 py-1 sm:py-2 text-sm sm:text-base"
       >
         An error occured, Please try again</span
       >
-      <div v-if="isLoading" class="flex bg-black/60 p-2 rounded-2xl">
+      <div
+        v-if="isLoading"
+        class="absolute -top-14 left-1/2 -translate-x-1/2 flex bg-accent/60 p-2 rounded-2xl"
+      >
         <svg
           class="w-6 h-6 text-yellow-400 animate-spin"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,54 +40,55 @@
     </div>
     <form
       @submit.prevent="handleSendEmail"
-      class="max-w-[80%] xl:max-w-[70%] mx-auto rounded-lg shadow-md overflow-hidden p-6 sm:p-10 flex flex-col gap-12"
+      class="max-w-full xl:max-w-[70%] mx-auto rounded-lg shadow-sm shadow-accent-foreground/40 overflow-hidden px-5 py-10 sm:p-10 flex flex-col gap-12 backdrop-blur-lg"
     >
-      <div class="flex gap-4 sm:gap-10 w-full">
-        <div class="relative border-b-2 border-black/80 z-0 grow">
+      <div class="flex flex-col sm:flex-row gap-10 w-full">
+        <div class="relative border-b-2 border-secondary/80 z-0 grow">
           <input
             v-model="formData.name"
             type="text"
             name="name"
             placeholder=" "
-            class="peer block w-full appearance-none focus:outline-none !bg-transparent autofill:!bg-transparent z-10"
+            class="peer block w-full appearance-none text-secondary focus:outline-none bg-transparent z-10"
             required
           />
           <label
             for="name"
-            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1] required:text-red-500"
+            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1] required:text-red-500 text-secondary"
             >Full Name</label
           >
         </div>
 
-        <div class="relative border-b-2 border-black/80 z-0 grow">
+        <div class="relative border-b-2 border-secondary/80 z-0 grow">
           <input
             v-model="formData.email"
             type="text"
             name="email"
             placeholder=" "
-            class="peer block w-full appearance-none focus:outline-none !bg-transparent autofill:!bg-transparent z-10"
+            autocomplete="email"
             required
+            class="peer block w-full appearance-none text-secondary focus:outline-none bg-transparent"
           />
           <label
             for="email"
-            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1]"
+            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1] text-secondary"
             >Email</label
           >
         </div>
       </div>
 
-      <div class="flex gap-4 sm:gap-10 w-full">
-        <div class="relative border-b-2 border-black/80 z-0 basis-1/2">
+      <div class="flex flex-col sm:flex-row gap-10 w-full">
+        <div class="relative border-b-2 border-secondary/80 z-0 basis-1/2">
           <input
             v-model="formData.company"
             type="text"
             name="company"
             placeholder=" "
-            class="peer block w-full appearance-none focus:outline-none !bg-transparent autofill:!bg-transparent z-10"
+            class="peer block w-full appearance-none text-secondary focus:outline-none !bg-transparent z-10"
           />
           <label
             for="company"
-            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1]"
+            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1] text-secondary"
             >Company
             <span class="opacity-60 invisible sm:visible"
               >(Optional)</span
@@ -92,17 +96,17 @@
           >
         </div>
 
-        <div class="relative border-b-2 border-black/80 z-0 basis-1/2">
+        <div class="relative border-b-2 border-secondary/80 z-0 basis-1/2">
           <select
             v-model="formData.type"
             name="type"
-            class="peer block w-full appearance-none focus:outline-none !bg-transparent autofill:!bg-transparent z-10"
+            class="peer block w-full appearance-none text-secondary focus:outline-none !bg-transparent z-10"
             required
           >
             <option value="" selected disabled hidden></option>
             <option
               :value="item"
-              class="peer bg-yellow-400"
+              class="peer bg-secondary text-accent"
               v-for="item in options"
             >
               {{ item }}
@@ -110,7 +114,7 @@
           </select>
           <label
             for="type"
-            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not([value='']):valid]:scale-75 peer-[:not([value='']):valid]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1]"
+            class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not([value='']):valid]:scale-75 peer-[:not([value='']):valid]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1] text-secondary"
             >Category</label
           >
 
@@ -127,20 +131,20 @@
         </div>
       </div>
 
-      <div class="relative border-b-2 border-black/80 z-0 grow">
+      <div class="relative border-b-2 border-secondary/80 z-0 grow">
         <textarea
           v-model="formData.message"
           type="text"
           name="message"
           id="message"
-          class="peer block h-32 w-full appearance-none focus:outline-none !bg-transparent autofill:!bg-transparent z-10"
+          class="peer block h-32 w-full appearance-none focus:outline-none !bg-transparent z-10 text-secondary"
           placeholder=" "
           required
           >{{ formData.message }}</textarea
         >
         <label
           for="message"
-          class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1]"
+          class="peer-focus-within:-translate-y-6 peer-focus-within:scale-75 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-6 absolute top-0 duration-300 origin-[0%] opacity-80 text-sm md:text-base z-[-1] text-secondary"
           >Message</label
         >
       </div>
@@ -148,8 +152,7 @@
       <div class="flex w-full justify-center">
         <UButton
           variant="solid"
-          color="black"
-          class="max-w-40 text-center justify-center px-10 rounded-2xl font-semibold drop-shadow"
+          class="max-w-40 text-center justify-center px-10 rounded-2xl font-semibold drop-shadow text-primary"
           type="submit"
           :class="transition"
           ><span class="text-accent">Submit</span></UButton

@@ -12,28 +12,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
 const props = defineProps<{
   digit: number;
   delay?: number;
+  shouldAnimate: boolean;
 }>();
 
 const currentDigit = ref(0);
 
-onMounted(() => {
-  const interval = setInterval(() => {
-    currentDigit.value = Math.floor(Math.random() * 10);
-  }, 1250);
+watch(
+  () => props.shouldAnimate,
+  (animate) => {
+    if (!animate) return;
 
-  setTimeout(
-    () => {
-      clearInterval(interval);
-      currentDigit.value = props.digit;
-    },
-    1800 + (props.delay || 0)
-  );
-});
+    const interval = setInterval(() => {
+      currentDigit.value = Math.floor(Math.random() * 10);
+    }, 125); // Speed of scramble
+
+    setTimeout(
+      () => {
+        clearInterval(interval);
+        currentDigit.value = props.digit;
+      },
+      800 + (props.delay || 0)
+    ); // Duration before locking final number
+  },
+  { immediate: true }
+);
 </script>
 
 <style scoped></style>
