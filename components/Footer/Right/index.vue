@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex justify-between max-w-screen-md grow flex-wrap sm:flex-nowrap gap-y-10"
+    class="flex justify-between grow md:grow-0 flex-wrap gap-y-10 gap-x-[115px]"
   >
-    <div class="flex flex-col gap-2 sm:gap-4 px-5 flex-1">
+    <div class="flex flex-col gap-2 sm:gap-4 flex-1 size-fit">
       <p class="text-black font-bold text-nowrap">SiteMap</p>
 
       <div class="flex flex-col gap-1 sm:gap-3">
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-2 sm:gap-4 px-5 flex-1">
+    <div class="flex flex-col gap-2 sm:gap-4 flex-1 size-fit">
       <p class="text-black font-bold text-nowrap">Support Us</p>
 
       <div class="flex flex-col gap-1 sm:gap-3">
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-2 sm:gap-4 px-5 flex-1">
+    <div class="flex flex-col gap-2 sm:gap-4 flex-1 size-fit">
       <p class="text-black font-bold text-nowrap">Resources</p>
 
       <div class="flex flex-col gap-1 sm:gap-3">
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-2 sm:gap-4 px-5 flex-1">
+    <div class="flex flex-col gap-2 sm:gap-4 flex-1 size-fit">
       <p class="text-black font-bold text-nowrap">Follow</p>
 
       <div class="flex flex-col gap-4 sm:gap-6">

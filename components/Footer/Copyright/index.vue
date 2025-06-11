@@ -1,7 +1,7 @@
 <template>
   <div class="text-secondary text-sm bg-black py-5">
     <p class="mx-auto text-center">
-      Copyright © 2024 Fortrez All rights reserved.
+      Copyright © 2025 Fortrez All rights reserved.
     </p>
   </div>
 </template>

@@ -55,7 +55,10 @@ export default defineNuxtConfig({
     cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
     cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
     cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
-    public: { email: "", waitList: "" },
+    public: {
+      email: "",
+      waitList: process.env.NUXT_PUBLIC_WAIT_LIST,
+    },
   },
   vite: {
     plugins: [tailwindcss()],

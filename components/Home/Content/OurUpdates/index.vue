@@ -33,6 +33,7 @@
         class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14 py-2"
       >
         <HomeContentOurUpdatesCard
+          v-if="!isLoading"
           class="flex-none group"
           v-for="cardItem in data"
           :title="cardItem.title"
@@ -43,6 +44,10 @@
           :path="`/blog/${cardItem.title}`"
         >
         </HomeContentOurUpdatesCard>
+
+        <div v-else class="flex justify-center items-center w-full">
+          <img src="/animation.gif" alt="Animation" />
+        </div>
       </div>
 
       <div v-else class="flex justify-center items-center h-96 w-full">
@@ -57,7 +62,7 @@ import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 
 const { subHeading, transition, containerWidth } = useTailwindConfig();
 
-const isLoading = ref(false);
+const isLoading = ref(true);
 const { getBlogs } = useBlog();
 const data: any = ref([]);
 const latestBlog = ref();
