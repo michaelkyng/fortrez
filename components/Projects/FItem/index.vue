@@ -10,13 +10,17 @@
       :target="Fdata.target"
     />
 
+    <div v-else class="w-full min-h-20 flex justify-center items-center">
+      <img src="/animation.gif" alt="Loading" />
+    </div>
+
     <ProjectsFItemContent :project="Fdata" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Transaction } from "@prisma/client";
-const { containerWidth, subHeading } = useTailwindConfig();
+
 const prop = defineProps({
   urltitle: String,
 });

@@ -3,9 +3,11 @@
     class="flex flex-col w-fit mx-auto px-5 gap-y-2.5"
     :class="containerWidth"
   >
-    <ButtonLink to="/projects" name="All Projects" class="z-20">
-      <PhArrowLeft class="w-4 h-4 order-first" />
-    </ButtonLink>
+    <NuxtLink to="/projects" class="z-20">
+      <PhArrowLeft
+        class="size-5 hover:text-primary transition-colors duration-300"
+      />
+    </NuxtLink>
 
     <div
       class="flex flex-wrap lg:flex-nowrap gap-x-8 sm:gap-x-10 md:gap-x-14 gap-y-5 w-full min-h-80 items-star px-2.5 sm:px-5 md:px-10 py-2.5 sm-py-5 md:py-14 bg-gradient-to-r from-[#ebebeb]/10 to-accent/5 rounded-3xl shadow-md"
@@ -31,17 +33,13 @@
         >
           {{ props.description }}
         </p>
-        <div class="flex flex-wrap gap-y-5 justify-between items-center mt-2.5">
+        <div class="flex flex-wrap gap-y-5 justify-between items-center">
           <div class="flex items-center gap-2.5 pr-1.5">
-            <span class="text-sm md:text-base text-black/80">Status</span>
-            <span>|</span>
             <div v-if="props.completed" class="flex gap-1 items-center">
-              <component :is="IconCompleted" />
-              <p class="text-sm md:text-base text-black/80">Completed</p>
+              <p class="text-sm text-green-600">Completed</p>
             </div>
             <div v-else class="flex gap-1 items-center">
-              <component :is="IconInProgress" />
-              <p class="text-sm md:text-base text-black/80">InProgress</p>
+              <p class="text-sm text-primary">InProgress</p>
             </div>
           </div>
 
@@ -67,13 +65,13 @@
           <p class="text-sm md:text-base">Funds Raised</p>
           <UProgress
             class="relative"
-            :value="props.funded"
+            :model-value="props.funded"
             :max="props.target"
             size="md"
           >
-            <template #indicator="{ percent }">
+            <template #status="{ percent }">
               <div
-                class="flex flex-wrap-reverse w-full justify-between absolute -bottom-8"
+                class="flex flex-wrap-reverse w-full justify-between absolute -bottom-8 right-0"
               >
                 <span class="flex items-center gap-1 text-black/60 pr-1.5">
                   <span class="text-sm md:text-base flex items-center"
@@ -92,15 +90,14 @@
                 </span>
 
                 <span class="text-sm md:text-base text-right ml-auto pl-1.5"
-                  >{{ Math.round(percent) }}%</span
+                  >{{ Math.round(Number(percent)) }}%</span
                 >
               </div>
             </template>
           </UProgress>
           <NuxtLink to="/comingsoon">
             <UButton
-              class="w-fit mt-10 px-3 py-2.5 rounded-3xl font-semibold"
-              color="yellow"
+              class="w-fit mt-10 px-3 py-2.5 rounded-3xl font-semibold text-accent cursor-pointer"
               >Donate Now</UButton
             >
           </NuxtLink>

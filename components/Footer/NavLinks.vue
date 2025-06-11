@@ -1,14 +1,17 @@
 <template>
-  <span class="hover:text-accent text-black/60 text-sm sm:text-base" :class="transition">{{props.title}}</span>
+  <span
+    class="hover:text-primary text-black/60 text-sm sm:text-base"
+    :class="transition"
+    >{{ props.title }}</span
+  >
 </template>
 
 <script lang="ts" setup>
-
-const {transition} = useTailwindConfig()
+const { transition } = useTailwindConfig();
 const props = defineProps({
-    title : {
-        type: String,
-        require: true
-    }
-})
+  title: {
+    type: String,
+    require: true,
+  },
+});
 </script>

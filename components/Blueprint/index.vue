@@ -1,12 +1,12 @@
 <template>
   <div
-    class="bg-fixed bg-cover bg-right-bottom"
+    class="bg-fixed bg-cover bg-right-bottom bg-primary/70 scroll-smooth"
     style="background-image: url(&quot;/images/blueprintBackground.png&quot;)"
   >
     <div class="relative flex flex-col h-[90vh] justify-center">
       <div :class="containerWidth" class="flex flex-col gap-y-10">
         <p
-          class="font-semibold text-4xl sm:text-5xl lg:text-6xl px-2.5 leading-10 w-full lg:w-3/4 tracking-wide md:tracking-wider"
+          class="font-semibold text-4xl sm:text-5xl lg:text-6xl px-2.5 w-full lg:w-3/4 tracking-wide md:tracking-wider"
         >
           Transpiracy, Trust and Transformation through blockchain donation.
         </p>
@@ -22,7 +22,10 @@
       </div>
     </div>
     <div>
-      <div class="bg-white-bright px-5 py-28" id="blueprint">
+      <div
+        class="bg-secondary px-5 py-28 scroll-smooth transition-all"
+        id="blueprint"
+      >
         <div :class="containerWidth">
           <ol class="list-none space-y-12">
             <div class="flex flex-col gap-y-5">
@@ -80,30 +83,7 @@
                 </BlueprintSolutionCard>
               </div>
             </div>
-            <div class="flex flex-col gap-y-5">
-              <li class="font-semibold text-xl px-2.5">Token UseCase</li>
-              <p
-                class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
-              >
-                The native token of Fortrez is
-                <span class="text-accent underline underline-offset-4"
-                  >FRTZ</span
-                >. <br />
-                FRTZ token would be used to provide additional benefits like
-                incentivizing donors with token rewards, creating a sense of
-                community, and facilitating seamless transactions within the
-                platform. FRTZ token would also be used for making donations,
-                accessing exclusive features or content on the platform, and
-                even participating in community voting or decision-making
-                processes. Additionally FRTZ would support, a token distribution
-                model that rewards long-term supporters and encourages ongoing
-                engagement, a token staking mechanism where users can lock up
-                their tokens for a certain period to earn additional rewards or
-                benefits. This would help strike a balance between creating
-                value for FRTZ token holders and ensuring the sustainability and
-                effectiveness of Fortrez charitable initiatives.
-              </p>
-            </div>
+
             <div class="flex flex-col gap-y-5">
               <li class="font-semibold text-xl px-2.5">Tokenomics</li>
               <p

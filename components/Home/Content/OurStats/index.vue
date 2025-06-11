@@ -16,12 +16,15 @@
           class="relative flex flex-col lg:flex-row gap-10 justify-center items-center w-full p-5 sm:p-10 rounded-full mt-5"
         >
           <div
-            v-for="stat in stats"
+            v-for="(stat, index) in stats"
             class="flex flex-col justify-center items-center w-full gap-2 bg-[#000000] p-10 rounded-2xl max-w-96"
           >
             <div
-              class="flex justify-center items-center font-space font-black w-fit text-4xl sm:text-5xl text-primary"
+              class="flex justify-center items-center gap-1 font-space font-black w-fit text-4xl sm:text-5xl text-primary"
             >
+              <div v-if="index === 2">
+                <IconsSymbolsNaira class="size-9 fill-primary" />
+              </div>
               <template
                 v-for="(char, index) in stat.value.toLocaleString().split('')"
                 :key="index"
@@ -54,12 +57,12 @@
 const statsRef = ref<HTMLElement | null>(null);
 const inView = ref(false);
 const { containerWidth } = useTailwindConfig();
-const numberOfProjects = ref(35);
-const numberOfDonor = ref(725);
-const amoundDonated = ref(48600);
+const numberOfProjects = ref(2);
+const numberOfDonor = ref(43);
+const amoundDonated = ref(300000);
 const stats = [
   {
-    title: "Number of Projects",
+    title: "Number of campaigns",
     value: numberOfProjects.value,
   },
   {

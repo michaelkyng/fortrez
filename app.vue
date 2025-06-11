@@ -3,7 +3,7 @@
     class="font-arial overflow-hidden scroll-smooth text-black selection:bg-alternativeAccent"
   >
     <NavBar />
-    <NuxtPage ref="pageScroll" />
+    <NuxtPage class="scroll-smooth" ref="pageScroll" />
     <Footer />
   </div>
 </template>
