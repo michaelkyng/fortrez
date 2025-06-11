@@ -43,10 +43,6 @@
         <h1 class="text-accent" :class="subHeading">No Blog Feed</h1>
       </div>
     </div>
-
-    <div class="relative">
-      <Footer />
-    </div>
   </div>
 </template>
 

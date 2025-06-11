@@ -4,6 +4,7 @@
   >
     <NavBar />
     <NuxtPage ref="pageScroll" />
+    <Footer />
   </div>
 </template>
 

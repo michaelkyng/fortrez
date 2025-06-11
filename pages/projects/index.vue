@@ -35,10 +35,6 @@
         <ProjectsContent />
       </div>
     </div>
-
-    <div class="relative">
-      <Footer />
-    </div>
   </div>
 </template>
 

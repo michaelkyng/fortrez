@@ -5,7 +5,7 @@ const menuToggled = ref(false);
 </script>
 
 <template>
-  <header class="py-2.5 px-5">
+  <header class="px-5">
     <nav
       class="fixed top-10 left-1/2 -translate-x-1/2 bg-white shadow-md sm:max-w-xl md:max-w-2xl h-fit backdrop-blur-md mx-auto z-50"
       :style="{
