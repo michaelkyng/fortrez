@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     [
       "nuxt-mail",
       {
-        message: { to: process.env.NUXT_PUBLIC_EMAIL || "info@fortez.io" },
+        message: { to: process.env.NUXT_PUBLIC_EMAIL },
         smtp: {
           host: process.env.ZOHO_ENDPOINT,
           port: 465,
