@@ -20,7 +20,7 @@
             v-model="email"
             type="email"
             name="email"
-            class="relative text-sm outline-none bg-secondary py-2.5 px-4 rounded-3xl w-full"
+            class="relative text-sm outline-none bg-white py-2.5 px-4 rounded-3xl w-full"
             placeholder="Email address"
           />
           <UButton

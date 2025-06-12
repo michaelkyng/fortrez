@@ -16,24 +16,92 @@
       <div
         class="relative flex flex-wrap justify-center h-fit gap-5 sm:gap-10 md:gap-14 lg:gap-20 px-2.5"
       >
-        <HomeContentOurUpdatesCard
-          class="flex-none group"
-          v-for="cardItem in data"
-          :title="cardItem.title"
-          :description="cardItem.description"
-          :image="cardItem.mediaFiles[0].url"
-          :tags="cardItem.tags"
-          :date="cardItem.date"
-          :path="`/blog/${cardItem.title}`"
-        >
-        </HomeContentOurUpdatesCard>
+        <div class="relative flex items-center mx-1 overflow-hidden w-fit">
+          <button
+            @click="scrollLeft"
+            class="group absolute left-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
+          >
+            <PhCaretLeft
+              weight="fill"
+              class="group-hover:text-primary group-active:text-primary w-6 h-6"
+              :class="transition"
+            />
+          </button>
+          <button
+            @click="scrollRight"
+            class="group absolute right-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
+          >
+            <PhCaretRight
+              weight="fill"
+              class="group-hover:text-primary group-active:text-primary w-6 h-6"
+              :class="transition"
+            />
+          </button>
+          <div
+            v-if="data"
+            ref="scrollContainer"
+            :class="data.length < 3 ? 'justify-center' : 'justify-start'"
+            class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14 py-2"
+          >
+            <HomeContentOurUpdatesCard
+              v-if="!isLoading"
+              class="flex-none group"
+              v-for="cardItem in data"
+              :title="cardItem.title"
+              :description="cardItem.description"
+              :image="cardItem.mediaFiles[0].url"
+              :tags="cardItem.tags"
+              :date="cardItem.createdAt"
+              :path="`/blog/${cardItem.title}`"
+            >
+            </HomeContentOurUpdatesCard>
+
+            <div v-else class="flex justify-center items-center w-full">
+              <img src="/animation.gif" alt="Animation" />
+            </div>
+          </div>
+
+          <div v-else class="flex justify-center items-center h-96 w-full">
+            <h1 class="text-accent" :class="subHeading">No Blog Feed</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const { containerWidth, subHeading } = useTailwindConfig();
+import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 
-const { data } = defineProps(["data"]);
+const { subHeading, transition, containerWidth } = useTailwindConfig();
+
+const isLoading = ref(true);
+const { getBlogs } = useBlog();
+const data: any = ref([]);
+
+onBeforeMount(async () => {
+  isLoading.value = true;
+  try {
+    const { blogs }: any = await getBlogs();
+    data.value = blogs;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    isLoading.value = false;
+  }
+});
+
+const scrollContainer = ref<HTMLDivElement | null>(null);
+
+const scrollRight = () => {
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollBy({ left: 400, behavior: "smooth" });
+  }
+};
+
+const scrollLeft = () => {
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollBy({ left: -400, behavior: "smooth" });
+  }
+};
 </script>
