@@ -1,7 +1,7 @@
 <template>
-  <div class="relative bg-white-bright h-fit">
+  <div class="relative h-fit">
     <div class="absolute w-full h-fit top-0 left-0">
-      <div class="absolute w-full h-60 bg-gradient-to-b bg-accent"></div>
+      <div class="absolute w-full h-60"></div>
       <svg
         class="relative top-44 md:top-36 lg:top-32 xl:top-28"
         xmlns="http://www.w3.org/2000/svg"
@@ -26,13 +26,12 @@
           Linkedin.
         </p>
       </div>
-      <DesignShapesFaintGrayCurves class="absolute top-0 left-0" />
 
       <div v-if="data">
-        <div class="relative bg-white-bright py-14">
-          <BlogHeader class="bg-[#ffffff]" :data="data[0]" />
+        <div class="relative bg-white-bright py-5">
+          <BlogHeader :data="data[0]" />
         </div>
-        <div class="relative bg-white-dim overflow-hidden">
+        <div class="relative overflow-visible">
           <BlogContent :data="data" />
         </div>
       </div>

@@ -3,10 +3,14 @@
     class="flex flex-col w-fit mx-auto px-5 gap-y-2.5"
     :class="containerWidth"
   >
-    <NuxtLink to="/projects" class="z-20">
+    <NuxtLink to="/projects" class="z-20 flex gap-1 items-center">
       <PhArrowLeft
-        class="size-5 hover:text-primary transition-colors duration-300"
+        class="size-5 text-primary hover:text-primary/80 peer-hover:text-primary/80 transition-colors duration-300"
       />
+      <span
+        class="peer text-primary hover:text-primary/80 transition-colors duration-300"
+        >All Projects</span
+      >
     </NuxtLink>
 
     <div

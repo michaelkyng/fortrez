@@ -1,9 +1,7 @@
 <template>
   <div class="relative bg-white-bright h-fit">
     <div class="absolute w-full h-fit top-0 left-0">
-      <div
-        class="absolute w-full h-60 bg-gradient-to-b from-accent/10 to-accent/30"
-      ></div>
+      <div class="absolute w-full h-60"></div>
     </div>
 
     <div class="relative pt-20 z-0">

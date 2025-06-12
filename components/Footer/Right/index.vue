@@ -60,7 +60,10 @@
           <NuxtLink class="max-w-fit" to="https://x.com/fortrez_?s=21">
             <IconsSocialsX />
           </NuxtLink>
-          <NuxtLink class="max-w-fit" to="/comingsoon">
+          <NuxtLink
+            class="max-w-fit"
+            to="https://www.instagram.com/p/DKKgfTlMnjK/?igsh=OGR6eXZudGdvazNo"
+          >
             <IconsSocialsInstagram />
           </NuxtLink>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white-bright h-fit">
+  <div class="bg-secondary h-fit">
     <div class="flex flex-col">
       <div class="py-14 w-full sm:mb-20" :class="containerWidth">
         <div

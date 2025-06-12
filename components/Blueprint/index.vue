@@ -83,15 +83,6 @@
                 </BlueprintSolutionCard>
               </div>
             </div>
-
-            <div class="flex flex-col gap-y-5">
-              <li class="font-semibold text-xl px-2.5">Tokenomics</li>
-              <p
-                class="px-2.5 sm:text-start text-black/80 text-sm md:text-base"
-              >
-                ...Coming Soon
-              </p>
-            </div>
           </ol>
         </div>
       </div>

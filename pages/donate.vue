@@ -72,12 +72,12 @@ const copyText = async () => {
                   <div class="flex justify-end items-center gap-2">
                     <PhCopy
                       weight="duotone"
-                      class="size-8 cursor-pointer"
+                      class="peer size-8 cursor-pointer"
                       @click="copyText"
                       aria-label="copy"
                     />
                     <p
-                      class="text-3xl font-bold tracking-wide mb-2 md:text-4xl cursor-pointer select-all"
+                      class="text-3xl font-bold tracking-wide mb-2 md:text-4xl cursor-pointer select-all hover:text-secondary peer-hover:text-secondary transition-all duration-300"
                       @click="copyText"
                     >
                       {{ acctNumber }}
