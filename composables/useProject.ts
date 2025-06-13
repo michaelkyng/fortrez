@@ -64,6 +64,20 @@ export default () => {
       throw error;
     }
   };
+  const getOtherProjects = async (): Promise<{
+    projects: ProjectWithRelations[];
+  }> => {
+    try {
+      const response = await useFetchApi("/api/project/other", {
+        method: "get",
+      });
+
+      return response as { projects: ProjectWithRelations[] };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
 
   const verifyProject = async (title: string): Promise<any> => {
     try {
@@ -81,6 +95,7 @@ export default () => {
     createProject,
     getProjects,
     getFProjects,
+    getOtherProjects,
     verifyProject,
   };
 };

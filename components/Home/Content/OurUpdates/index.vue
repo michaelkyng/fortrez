@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative h-fit flex flex-col items-center w-full gap-y-16 lg:gap-y-20 overflow-hidden"
+    class="relative h-fit flex flex-col items-center w-full gap-y-16 overflow-hidden"
     :class="containerWidth"
   >
     <h1 class="z-10" :class="subHeading">{{ props.title }}</h1>
@@ -30,7 +30,7 @@
         v-if="data"
         ref="scrollContainer"
         :class="data.length < 3 ? 'justify-center' : 'justify-start'"
-        class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14 py-2"
+        class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
       >
         <HomeContentOurUpdatesCard
           v-if="!isLoading"

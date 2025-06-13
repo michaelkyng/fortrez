@@ -7,13 +7,22 @@ export const routes: Link[] = [
   },
   {
     state: "normal",
-    name: "Support Us",
-    path: "/support",
+    name: "Projects",
+    path: "/projects",
   },
   {
-    state: "normal",
-    name: "Blog",
-    path: "/blog",
+    state: "subnavLink",
+    name: "Other",
+    subItems: [
+      {
+        name: "Support Us",
+        path: "/support",
+      },
+      {
+        name: "Blog",
+        path: "/blog",
+      },
+    ],
   },
   {
     state: "button",

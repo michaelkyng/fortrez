@@ -1,10 +1,9 @@
 <template>
-  <div class="relative bg-white-bright h-fit">
-    <div class="absolute w-full h-fit top-0 left-0">
-      <div class="absolute w-full h-60"></div>
-    </div>
-
-    <div class="relative pt-20 z-0">
+  <div class="relative max-h-fit h-screen">
+    <div
+      class="relative flex flex-col justify-center items-center pt-20 z-0 size-full"
+      v-if="!isLoading"
+    >
       <div
         class="relative h-full flex flex-col justify-end items-start px-5 pt-12 py-4 gap-2"
         :class="containerWidth"
@@ -17,11 +16,8 @@
         </p>
       </div>
 
-      <DesignShapesFaintGrayCurves class="absolute top-0 left-0" />
-
-      <div v-if="data && data.title" class="relative bg-white-bright py-14">
+      <div v-if="data && data.title" class="relative w-full">
         <BlogItem
-          class="bg-[#ffffff]"
           :title="data.title"
           :description="data.description"
           :image="data.mediaFiles[0].url"
@@ -29,7 +25,6 @@
           :date="data.createdAt"
         />
       </div>
-
       <div v-else class="flex justify-center items-center h-96 w-full">
         <h1 class="text-accent h-screen" :class="subHeading">
           No Data on the Blog Found
@@ -37,7 +32,9 @@
       </div>
     </div>
 
-    v>
+    <div v-else class="flex justify-center items-center size-full">
+      <img src="/animation.gif" alt="Animation" />
+    </div>
   </div>
 </template>
 
@@ -45,6 +42,7 @@
 const { title }: any = useRoute().params;
 const { verifyBlog } = useBlog();
 const { containerWidth, subHeading } = useTailwindConfig();
+const isLoading = ref(true);
 
 interface BlogData {
   title: string;
@@ -64,11 +62,13 @@ const data: Ref<BlogData> = ref({
 
 onBeforeMount(async () => {
   try {
+    isLoading.value = true;
     const { blog }: any = await verifyBlog(title);
     data.value = blog;
   } catch (error) {
     console.log(error);
   } finally {
+    isLoading.value = false;
   }
 });
 </script>

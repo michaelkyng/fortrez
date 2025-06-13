@@ -1,8 +1,18 @@
 import type { Project, Transaction, MediaFiles, Admin } from "@prisma/client";
 
+export interface subItems {
+  name: string;
+  path: string;
+}
+
 type normalLink = {
   state: "normal";
   path: string;
+};
+
+type subnavLink = {
+  state: "subnavLink";
+  subItems: subItems[];
 };
 
 type button = {
@@ -12,7 +22,7 @@ type button = {
 
 export type Link = {
   name: string;
-} & (normalLink | button);
+} & (normalLink | subnavLink | button);
 
 // Projects
 

@@ -17,6 +17,6 @@ export default defineEventHandler(async () => {
   });
 
   return {
-    Fprojects: projects.map(projectTransformer),
+    projects: projects.map(projectTransformer),
   };
 });

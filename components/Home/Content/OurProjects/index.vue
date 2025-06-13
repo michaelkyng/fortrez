@@ -1,11 +1,7 @@
 <template>
   <div
-    class="relative h-fit flex flex-col items-center w-full overflow-hidden"
-    :class="
-      project
-        ? 'gap-y-16 lg:gap-y-20' + containerWidth
-        : 'gap-y-8' + containerWidth
-    "
+    class="relative h-fit flex flex-col items-center w-full overflow-hidden gap-16"
+    :class="containerWidth"
   >
     <h1 class="z-10" :class="font">{{ title }}</h1>
 
@@ -32,7 +28,7 @@
       </button>
       <div
         ref="scrollContainer"
-        class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 px-2.5 py-5 overflow-x-scroll scroll-smooth mx-5 md:mx-14 transition-all"
+        class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 px-2.5 overflow-x-scroll scroll-smooth mx-0 md:mx-14 transition-all"
       >
         <HomeContentOurProjectsCard
           class="flex-none group"
@@ -55,15 +51,14 @@ import type { ProjectWithRelations } from "~/types/type";
 
 const { transition, containerWidth } = useTailwindConfig();
 const isLoading = ref(true);
-const { getFProjects } = useProject();
+const { getProjects } = useProject();
 const data = ref<ProjectWithRelations[]>([]);
 
 onBeforeMount(async () => {
   isLoading.value = true;
   try {
-    const { Fprojects } = await getFProjects();
-    data.value = Fprojects as ProjectWithRelations[];
-    console.log(data.value);
+    const { projects } = await getProjects();
+    data.value = projects as ProjectWithRelations[];
   } catch (error) {
     console.log(error);
   } finally {
@@ -74,7 +69,6 @@ onBeforeMount(async () => {
 defineProps({
   title: { type: String, require: true },
   font: { type: String, reqiure: true },
-  project: { type: Boolean, default: true },
 });
 
 const scrollContainer = ref<HTMLDivElement | null>(null);

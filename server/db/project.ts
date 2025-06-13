@@ -7,8 +7,10 @@ export const createProject = (projectData: any) => {
   });
 };
 
-export const getProjects = () => {
-  return prisma.project.findMany();
+export const getProjects = (params: any = {}) => {
+  return prisma.project.findMany({
+    ...params,
+  });
 };
 
 export const getOtherProjects = (params: any = {}) => {

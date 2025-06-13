@@ -16,14 +16,12 @@
               @click="tab = 1"
               :key="1"
               class="w-fit sm:w-full justify-center bg-accent font-semibold md:py-2.5"
-              color
               >Blogs</UButton
             >
             <UButton
               @click="tab = 2"
               :key="2"
               class="w-fit sm:w-full justify-center bg-accent font-semibold md:py-2.5"
-              color
               >Projects</UButton
             >
           </div>
@@ -31,7 +29,6 @@
 
         <UButton
           class="bg-slate-400 justify-center w-full font-semibold md:py-2.5"
-          color
         >
           <span class="flex items-center gap-x-2.5">
             <PhSignOut class="w-4 h-4" />
@@ -40,7 +37,7 @@
         </UButton>
       </div>
       <div
-        class="col-span-8 sm:col-span-6 bg-white-dim p-2.5 sm:p-10 overflow-y-auto menu-scroll"
+        class="col-span-8 sm:col-span-6 bg-white-dim px-2.5 sm:p-10 overflow-y-auto menu-scroll"
       >
         <AdminCreateBlog v-if="tab === 1" />
 

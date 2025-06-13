@@ -137,7 +137,7 @@ const options = [
 const { subHeading2, transition } = useTailwindConfig();
 const defaultImageHolder = ref("/images/imageHolder.jpg");
 const projectSuccessful = ref(false);
-const isLoading = ref(false);
+const isLoading = ref(true);
 const { createProject } = useProject();
 
 const projectData = reactive({

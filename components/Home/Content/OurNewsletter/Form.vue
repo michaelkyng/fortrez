@@ -152,7 +152,7 @@
       <div class="flex w-full justify-center">
         <UButton
           variant="solid"
-          class="max-w-40 text-center justify-center px-10 rounded-2xl font-semibold drop-shadow text-primary"
+          class="max-w-40 text-center justify-center px-10 rounded-2xl font-semibold drop-shadow text-primary cursor-pointer"
           type="submit"
           :class="transition"
           ><span class="text-accent">Submit</span></UButton

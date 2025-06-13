@@ -13,7 +13,7 @@
       </h1>
       <div class="flex flex-col gap-y-10 self-center">
         <p
-          class="text-accent-foreground sm:text-lg max-w-3xl text-justify sm:text-center leading-5 md:leading-10 font-lato"
+          class="text-accent-foreground sm:text-lg max-w-3xl text-justify sm:text-center font-lato"
         >
           Fortrez, a blockchain-based platform for charitable donations would
           ensure transparency and security. With blockchain, every donation

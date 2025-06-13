@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="relative flex flex-col gap-7 md:gap-14 z-10"
+      class="relative flex flex-col gap-7 md:gap-20 z-10 pb-20"
       :class="containerWidth"
     >
       <DesignShapesBlob
@@ -10,90 +10,109 @@
 
       <div class="flex flex-col gap-y-5 px-5">
         <h1 :class="subHeading2">Foundation Projects</h1>
-        <div
-          class="relative flex items-center mx-1 overflow-hidden min-h-96 h-full"
-        >
+        <div class="relative flex items-center overflow-hidden w-full">
           <button
             @click="scrollLeft"
-            class="group absolute left-0 active:outline outline-accent rounded-2xl hidden md:inline"
+            class="group absolute left-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
           >
             <PhCaretLeft
-              class="group-hover:text-accent w-6 h-6"
+              weight="fill"
+              class="group-hover:text-primary group-active:text-primary w-6 h-6"
               :class="transition"
             />
           </button>
           <button
             @click="scrollRight"
-            class="group absolute right-0 active:outline outline-accent rounded-2xl hidden md:inline"
+            class="group absolute right-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
           >
             <PhCaretRight
-              class="group-hover:text-accent w-6 h-6"
+              weight="fill"
+              class="group-hover:text-primary group-active:text-primary w-6 h-6"
               :class="transition"
             />
           </button>
           <div
             ref="scrollContainer"
-            class="menu-scroll relative flex justify-start items-center h-fit gap-4 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
+            class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 px-2.5 overflow-x-scroll scroll-smooth mx-0 md:mx-14 transition-all"
           >
             <HomeContentOurProjectsCard
+              v-if="!isLoading"
               class="flex-none group"
               v-for="cardItem in Fdata"
-              :title="cardItem.title"
-              :description="cardItem.description"
-              :funded="cardItem.funded"
-              :target="cardItem.target"
-              :completed="cardItem.completed"
-              :image="cardItem.mediaFiles[0].url"
-              :path="`${cardItem.title}`"
-            >
-            </HomeContentOurProjectsCard>
+              :item="cardItem"
+            />
+
+            <div v-else class="flex justify-center items-center w-full">
+              <img src="/animation.gif" alt="Animation" />
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="hidden flex-col gap-y-5 px-5">
+      <div class="flex flex-col gap-y-5 px-5">
         <h1 :class="subHeading2">Other Projects</h1>
-        <div v-if="data && data.length" class="min-h-full">
-          <div
-            class="relative fle flex-wrap-reverse w-full overflow-hidden px-5 mx-auto gap-y-7 hidden"
-          >
-            <SubNavFilter />
-            <div class="relative group basis-3/5 md:basis-2/5">
-              <input
-                type="search"
-                name="search"
-                id="search"
-                placeholder="Search..."
-                class="bg-slate-300/20 px-7 py-2.5 rounded-3xl outline-none w-full"
-              />
-              <PhMagnifyingGlass
-                class="absolute inset-0 left-0 top-0 w-4 h-4 my-auto ml-2 text-slate-500/60"
-              />
-            </div>
-            <ButtonOutline name="Filter" class="w-fit ml-auto">
-              <IconsSymbolsFilter />
-            </ButtonOutline>
+
+        <div
+          class="relative fle flex-wrap-reverse w-full overflow-hidden px-5 mx-auto gap-y-7 hidden"
+        >
+          <SubNavFilter />
+          <div class="relative group basis-3/5 md:basis-2/5">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search..."
+              class="bg-slate-300/20 px-7 py-2.5 rounded-3xl outline-none w-full"
+            />
+            <PhMagnifyingGlass
+              class="absolute inset-0 left-0 top-0 w-4 h-4 my-auto ml-2 text-slate-500/60"
+            />
           </div>
-          <div
-            class="relative flex flex-wrap justify-center gap-y-1.5 sm:gap-y-5 lg:gap-y-8 gap-x-1.5 sm:gap-x-5 md:gap-x-10 lg:gap-x-1 lg:justify-between h-fit"
+          <ButtonOutline name="Filter" class="w-fit ml-auto">
+            <IconsSymbolsFilter />
+          </ButtonOutline>
+        </div>
+        <div class="relative flex items-center overflow-hidden w-full">
+          <button
+            @click="otherscrollLeft"
+            class="group absolute left-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
           >
-            <HomeContentOurProjectsCard2
+            <PhCaretLeft
+              weight="fill"
+              class="group-hover:text-primary group-active:text-primary w-6 h-6"
+              :class="transition"
+            />
+          </button>
+          <button
+            @click="otherscrollRight"
+            class="group absolute right-1 active:outline outline-primary rounded-2xl hidden md:inline cursor-pointer"
+          >
+            <PhCaretRight
+              weight="fill"
+              class="group-hover:text-primary group-active:text-primary w-6 h-6"
+              :class="transition"
+            />
+          </button>
+          <div
+            ref="otherscrollContainer"
+            class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 px-2.5 overflow-x-scroll scroll-smooth mx-0 md:mx-14 transition-all"
+            v-if="!isLoading"
+          >
+            <HomeContentOurProjectsCard
+              v-if="data && data.length"
               class="flex-none group"
               v-for="cardItem in data"
-              :title="cardItem.title"
-              :description="cardItem.description"
-              :funded="cardItem.funded"
-              :target="cardItem.target"
-              :completed="cardItem.completed"
-              :image="cardItem.image"
-              :path="`/projects/p/${cardItem.title}`"
+              :item="cardItem"
             >
-            </HomeContentOurProjectsCard2>
+            </HomeContentOurProjectsCard>
+            <div v-else class="flex justify-center items-center h-96 w-full">
+              <h1 class="text-accent" :class="subHeading">No Project</h1>
+            </div>
           </div>
-        </div>
 
-        <div v-else class="flex justify-center items-center h-96">
-          <h1 class="text-accent" :class="subHeading">No Project</h1>
+          <div v-else class="flex justify-center items-center w-full">
+            <img src="/animation.gif" alt="Animation" />
+          </div>
         </div>
       </div>
     </div>
@@ -101,26 +120,27 @@
 </template>
 
 <script lang="ts" setup>
-import IconCompleted from "@/components/Icons/Projects/CompletedStatus.vue";
 import {
   PhCaretRight,
   PhCaretLeft,
   PhMagnifyingGlass,
 } from "@phosphor-icons/vue";
+import type { ProjectWithRelations } from "~/types/type";
 const { containerWidth, subHeading2, transition, subHeading } =
   useTailwindConfig();
-const isLoading = ref(false);
-const { getProjects, getFProjects } = useProject();
-const data: any = ref([]);
+const isLoading = ref(true);
+const { getOtherProjects, getFProjects } = useProject();
+const data = ref<ProjectWithRelations[]>([]);
 const Fdata: any = ref([]);
 
 onBeforeMount(async () => {
   isLoading.value = true;
   try {
-    const { projects }: any = await getProjects();
-    const { Fprojects }: any = await getFProjects();
-    data.value = projects;
+    const { projects } = await getOtherProjects();
+    const { Fprojects } = await getFProjects();
     Fdata.value = Fprojects;
+    data.value = projects as ProjectWithRelations[];
+    console.log("Other: ", data.value);
   } catch (error) {
     console.log(error);
   } finally {
@@ -139,6 +159,19 @@ const scrollRight = () => {
 const scrollLeft = () => {
   if (scrollContainer.value) {
     scrollContainer.value.scrollBy({ left: -400, behavior: "smooth" });
+  }
+};
+const otherscrollContainer = ref<HTMLDivElement | null>(null);
+
+const otherscrollRight = () => {
+  if (otherscrollContainer.value) {
+    otherscrollContainer.value.scrollBy({ left: 400, behavior: "smooth" });
+  }
+};
+
+const otherscrollLeft = () => {
+  if (otherscrollContainer.value) {
+    otherscrollContainer.value.scrollBy({ left: -400, behavior: "smooth" });
   }
 };
 </script>
