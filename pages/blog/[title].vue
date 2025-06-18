@@ -1,5 +1,7 @@
 <template>
-  <div class="relative min-h-screen h-fit">
+  <div
+    class="relative flex flex-col justify-center items-center min-h-screen h-fit"
+  >
     <div
       class="relative flex flex-col justify-center items-center pt-20 z-0 size-full"
       v-if="!isLoading"
@@ -25,6 +27,7 @@
           :date="data.createdAt"
         />
       </div>
+
       <div v-else class="flex justify-center items-center h-96 w-full">
         <h1 class="text-accent h-screen" :class="subHeading">
           No Data on the Blog Found
