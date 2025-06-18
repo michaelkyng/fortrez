@@ -54,7 +54,7 @@
         </table>
       </div>
       <div v-if="!fullView" class="flex justify-end">
-        <ButtonLink
+        <Button
           :to="`/projects/${project.title}/donation`"
           class="my-2"
           name="View More"

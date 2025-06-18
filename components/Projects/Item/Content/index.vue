@@ -47,7 +47,7 @@
             :project="false"
           />
           <div class="flex justify-end">
-            <ButtonLink :to="`/projects`" class="my-2" name="View More" />
+            <Button :to="`/projects`" class="my-2" name="View More" />
           </div>
         </div>
       </div>

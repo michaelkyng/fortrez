@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="flex justify-end sm:justify-center">
-        <ButtonLink
+        <Button
           to="#donation"
           class="my-2"
           name="More Transactions"

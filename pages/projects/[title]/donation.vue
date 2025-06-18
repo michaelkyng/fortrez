@@ -7,13 +7,13 @@
       >
         <div class="flex flex-wrap-reverse justify-between w-full gap-y-5">
           <h3 class="!text-left" :class="subHeading">{{ project.title }}</h3>
-          <ButtonLink
+          <Button
             :to="`/projects`"
             name="All Projects"
             class="flex flex-col justify-center z-20 ml-auto"
           >
             <ArrowSmLeftIcon class="w-4 h-4 order-first" />
-          </ButtonLink>
+          </Button>
         </div>
         <ProjectsItemContentDonation
           @change="refresh"
@@ -23,21 +23,21 @@
         />
 
         <div class="flex justify-between w-full">
-          <ButtonLink
+          <Button
             :to="`/projects/${project.title}`"
             name="Project Oveview"
             class="px-2.5"
           >
             <PhCaretLeft class="w-4 h-4 order-first" weight="fill" />
-          </ButtonLink>
+          </Button>
 
-          <ButtonLink
+          <Button
             :to="`/projects/${project.title}/donate`"
             class="px-2.5"
             name="Donate Now"
           >
             <PhCaretRight class="w-4 h-4" weight="fill" />
-          </ButtonLink>
+          </Button>
         </div>
       </div>
     </div>
