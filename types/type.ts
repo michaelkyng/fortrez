@@ -27,7 +27,7 @@ export type Link = {
 // Projects
 
 export type ProjectWithRelations = Project & {
-  author?: Admin;
-  transactions?: Transaction[];
-  mediaFiles?: MediaFiles[];
+  author: Admin;
+  transactions: Transaction[];
+  mediaFiles: MediaFiles[];
 };

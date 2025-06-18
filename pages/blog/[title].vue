@@ -1,5 +1,5 @@
 <template>
-  <div class="relative max-h-fit h-screen">
+  <div class="relative min-h-screen h-fit">
     <div
       class="relative flex flex-col justify-center items-center pt-20 z-0 size-full"
       v-if="!isLoading"

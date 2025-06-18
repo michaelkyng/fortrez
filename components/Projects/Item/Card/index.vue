@@ -21,8 +21,9 @@
         class="w-full flex flex-col lg:basis-2/5 rounded-3xl overflow-clip h-full min-h-48 lg:min-h-64 z-20"
       >
         <img
+          v-if="project.mediaFiles"
           class="object-cover min-h-48 lg:min-h-64"
-          :src="props.image"
+          :src="project.mediaFiles[0].url"
           alt=""
         />
       </div>
@@ -30,16 +31,16 @@
         class="flex flex-col basis-full lg:basis-3/5 gap-4 lg:gap-2 xl:gap-4 h-full z-20 py-2.5 px-1.5 sm:px-2.5"
       >
         <h1 class="text-lg md:text-2xl xl:text-3xl font-bold">
-          {{ props.title }}
+          {{ project.title }}
         </h1>
         <p
           class="text-sm md:text-base text-black/60 line-clamp-2 lg:line-clamp-1 xl:line-clamp-2"
         >
-          {{ props.description }}
+          {{ project.description }}
         </p>
         <div class="flex flex-wrap gap-y-5 justify-between items-center">
           <div class="flex items-center gap-2.5 pr-1.5">
-            <div v-if="props.completed" class="flex gap-1 items-center">
+            <div v-if="project.completed" class="flex gap-1 items-center">
               <p class="text-sm text-green-600">Completed</p>
             </div>
             <div v-else class="flex gap-1 items-center">
@@ -51,7 +52,10 @@
             <NuxtLink class="max-w-fit" to="https://x.com/fortrez_?s=21">
               <IconsSocialsX />
             </NuxtLink>
-            <NuxtLink class="max-w-fit" to="/faq">
+            <NuxtLink
+              class="max-w-fit"
+              to="https://www.instagram.com/p/DKKgfTlMnjK/?igsh=OGR6eXZudGdvazNo"
+            >
               <IconsSocialsInstagram />
             </NuxtLink>
             <NuxtLink
@@ -69,8 +73,8 @@
           <p class="text-sm md:text-base">Funds Raised</p>
           <UProgress
             class="relative"
-            :model-value="props.funded"
-            :max="props.target"
+            :model-value="project.funded"
+            :max="project.target"
             size="md"
           >
             <template #status="{ percent }">
@@ -82,14 +86,14 @@
                     ><IconsSymbolsNaira
                       class="w-3 h-3 opacity-60"
                       color="#000"
-                    />{{ props.funded }}</span
+                    />{{ project.funded }}</span
                   >
                   <span class="text-sm md:text-base">raised of</span>
                   <span class="text-sm md:text-base flex items-center"
                     ><IconsSymbolsNaira
                       class="w-3 h-3 opacity-60"
                       color="#000"
-                    />{{ props.target }}</span
+                    />{{ project.target }}</span
                   >
                 </span>
 
@@ -99,7 +103,7 @@
               </div>
             </template>
           </UProgress>
-          <NuxtLink to="/comingsoon">
+          <NuxtLink to="/donate">
             <UButton
               class="w-fit mt-10 px-3 py-2.5 rounded-3xl font-semibold text-accent cursor-pointer"
               >Donate Now</UButton
@@ -112,18 +116,15 @@
 </template>
 
 <script lang="ts" setup>
-import IconCompleted from "@/components/Icons/Projects/CompletedStatus.vue";
-import IconInProgress from "@/components/Icons/Projects/InProgressStatus.vue";
 import { PhArrowLeft } from "@phosphor-icons/vue";
+import type { PropType } from "vue";
+import type { ProjectWithRelations } from "~/types/type";
 const { containerWidth } = useTailwindConfig();
 
-const props = defineProps({
-  title: { type: String, require: true },
-  description: { type: String, require: true },
-  image: { type: String, require: true },
-  completed: { type: Boolean, default: false },
-  path: { type: String, require: true },
-  funded: { type: Number, require: true },
-  target: { type: Number, require: true },
+defineProps({
+  project: {
+    type: Object as PropType<ProjectWithRelations>,
+    required: true,
+  },
 });
 </script>

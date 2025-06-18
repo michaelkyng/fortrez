@@ -38,7 +38,7 @@ const { containerWidth } = useTailwindConfig();
               organizations secure funding for their projects and initiatives.
             </p>
           </div>
-          <Button name="Donate Now" />
+          <Button name="Donate Now" to="/projects" />
         </div>
 
         <div

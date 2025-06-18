@@ -1,28 +1,36 @@
 <template>
-  <div class="relative space-y-20">
-    <ProjectsItemCard 
-            :title="project.title"
-            :description="project.description"
-            :image="project.image"
-            :completed="project.completed"
-            :funded="project.funded"
-            :target="project.target"
-    />
+  <div
+    class="relative flex flex-col space-y-20 min-h-screen justify-center items-center py-32"
+  >
+    <ProjectsItemCard v-if="data && data.title" :project="data" />
 
-    <ProjectsItemContent/>
-    
+    <div v-else class="w-full min-h-20 flex justify-center items-center">
+      <img src="/animation.gif" alt="Loading" />
+    </div>
+
+    <ProjectsItemContent v-if="data && data.title" :project="data" />
   </div>
 </template>
 
 <script lang="ts" setup>
-  const {containerWidth, subHeading} = useTailwindConfig();
-  
-  const project = ref({
-        title: 'Nourishing vulnerable children',
-        description: "Providing both food and care for orphans and other vulnerable kids out there is super important. There are so many vulnerable kids out there who really need our support. It's heartwarming to think about the positive impact we can make in their lives. Let's spread love and kindness together!",
-        image: '/images/projectImage1.png',
-        completed: false,
-        funded: 650000.77,
-        target: 2000000
-  })
+import type { ProjectWithRelations } from "~/types/type";
+
+const prop = defineProps({
+  urltitle: String,
+});
+
+const { verifyProject } = useProject();
+const title: any = prop.urltitle;
+
+const data = ref<ProjectWithRelations>();
+
+onBeforeMount(async () => {
+  try {
+    const { project }: any = await verifyProject(title);
+    data.value = project;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+});
 </script>

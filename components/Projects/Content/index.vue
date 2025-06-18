@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="relative flex flex-col gap-7 md:gap-20 z-10 pb-20"
+      class="relative flex flex-col gap-20 z-10 pb-20"
       :class="containerWidth"
     >
       <DesignShapesBlob

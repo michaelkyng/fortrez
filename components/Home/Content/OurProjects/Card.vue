@@ -3,7 +3,7 @@
     class="h-fit max-w-72 sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-100"
     v-if="!item.completed"
   >
-    <NuxtLink :to="`/projects/f/${item.title}`">
+    <NuxtLink :to="`/projects/${item.title}`">
       <div class="flex flex-col gap-y-5">
         <div class="flex flex-col gap-y-2.5">
           <div class="relative w-full h-40 rounded-2xl overflow-clip">

@@ -10,22 +10,22 @@
           <FooterNavLinks title="Home" />
         </NuxtLink>
 
-        <NuxtLink class="max-w-fit" to="/blog">
-          <FooterNavLinks title="Blog" />
+        <NuxtLink class="max-w-fit" to="/projects">
+          <FooterNavLinks title="Projects" />
         </NuxtLink>
       </div>
     </div>
 
     <div class="flex flex-col gap-2 sm:gap-4 flex-1 size-fit">
-      <p class="text-black font-bold text-nowrap">Support Us</p>
+      <p class="text-black font-bold text-nowrap">Other</p>
 
       <div class="flex flex-col gap-1 sm:gap-3">
-        <NuxtLink class="max-w-fit" to="/">
-          <FooterNavLinks title="Donate" />
+        <NuxtLink class="max-w-fit" to="/support">
+          <FooterNavLinks title="Support Us" />
         </NuxtLink>
 
-        <NuxtLink class="max-w-fit" to="/#proposal">
-          <FooterNavLinks title="Proposal" />
+        <NuxtLink class="max-w-fit" to="/blog">
+          <FooterNavLinks title="Blog" />
         </NuxtLink>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <p class="text-black font-bold text-nowrap">Resources</p>
 
       <div class="flex flex-col gap-1 sm:gap-3">
-        <NuxtLink class="max-w-fit" to="/comingsoon">
+        <NuxtLink class="max-w-fit" to="/blueprint">
           <FooterNavLinks title="BluePrint" />
         </NuxtLink>
 
@@ -42,13 +42,13 @@
           <FooterNavLinks title="FAQ" />
         </NuxtLink>
 
-        <NuxtLink class="max-w-fit" to="/comingsoon">
+        <!-- <NuxtLink class="max-w-fit" to="/comingsoon">
           <FooterNavLinks title="Terms of Use" />
         </NuxtLink>
 
         <NuxtLink class="max-w-fit" to="/comingsoon">
           <FooterNavLinks title="Privacy Policy" />
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col mx-auto gap-10 px-5 w-full pb-20"
+    class="flex flex-col mx-auto gap-5 px-5 w-full pb-20 pt-10 md:pt-0"
     :class="containerWidth"
   >
     <NuxtLink to="/blog" class="z-20 flex gap-1 items-center">
@@ -23,7 +23,7 @@
         <p class="grow px-2.5 text-sm text-black/50">
           {{ props.tags }}
         </p>
-        <p class="text-justify text-sm md:text-base text-black/60 px-2.5">
+        <p class="text-justify text-sm md:text-base text-black/60">
           {{ props.description }}
         </p>
       </div>
