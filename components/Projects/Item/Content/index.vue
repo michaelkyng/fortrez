@@ -46,8 +46,8 @@
             :font="subHeading"
             :project="false"
           />
-          <div class="flex justify-end">
-            <Button :to="`/projects`" class="my-2" name="View More" />
+          <div class="flex justify-center mt-10">
+            <Button variant="outline" :to="`/projects`" class="my-2" name="View More" />
           </div>
         </div>
       </div>

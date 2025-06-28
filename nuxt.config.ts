@@ -24,8 +24,19 @@ export default defineNuxtConfig({
     ],
     "@nuxt/ui",
     "nuxt-swiper",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+    'nuxt-seo-utils',
   ],
 
+  site: {
+    url: "https://www.fortrez.io",
+    name: "Fortrez",
+    defaultLocale: "en",
+  },
+   robots: {
+    disallow: ["/_nuxt/", "/_nuxt/builds/", "/_nuxt/meta/", "/api/", "/comingsoon", "/admin"],
+  },
   build: { transpile: ["@phosphor-icons/vue"] },
   app: {
     head: {
@@ -38,6 +49,16 @@ export default defineNuxtConfig({
           content:
             "Welcome to Fortrez, where blockchain technology meets philanthropy. We're committed to transforming how charitable organizations secure funding for their projects and initiatives.",
         },
+        {
+          name: "og:description",
+          content:
+            "Welcome to Fortrez, where blockchain technology meets philanthropy. We're committed to transforming how charitable organizations secure funding for their projects and initiatives.",
+        },
+        {
+          name: "og:image",
+          content: "https://www.fortrez.io/images/test1.png",
+        },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       link: [
         {

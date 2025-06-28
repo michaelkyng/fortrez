@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col gap-y-8 w-full">
+  <div class="flex flex-col justify-between gap-y-8 w-full min-h-96">
     <h3 :class="subHeading2">Donations</h3>
-    <div class="flex flex-col gap-y-4">
+    <div class="flex flex-col gap-y-4 h-full justify-between">
       <div class="overflow-x-auto sm:menu-scroll">
         <table class="w-full border-collapse text-sm md:text-base">
           <thead>
@@ -53,10 +53,11 @@
           </tbody>
         </table>
       </div>
-      <div v-if="!fullView" class="flex justify-end">
+      <div v-if="!fullView" class="flex justify-center mt-10">
         <Button
           :to="`/projects/${project.title}/donation`"
           class="my-2"
+          variant="outline"
           name="View More"
         />
       </div>

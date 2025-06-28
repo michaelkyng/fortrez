@@ -1,56 +1,58 @@
 <template>
   <div class="relative bg-gradient-to-b from-white-bright to-white-dim h-fit">
-    <div class="relative pt-20 z-0 px-5">
+    <div class="relative flex pt-20 z-0 min-h-screen">
       <div
-        class="relative py-14 flex flex-col items-start justify-center gap-y-14"
+        class="relative py-14 flex flex-col items-center gap-y-14 h-auto"
         :class="containerWidth"
       >
         <div class="flex flex-wrap-reverse justify-between w-full gap-y-5">
-          <h3 class="!text-left" :class="subHeading">{{ project.title }}</h3>
-          <Button
+          <h3 class="!text-left" :class="subHeading2">{{ project.title }}</h3>
+          <NuxtLink
             :to="`/projects`"
-            name="All Projects"
-            class="flex flex-col justify-center z-20 ml-auto"
+            class="flex justify-center items-center z-20 ml-auto text-primary hover:text-primary/80 text-base md:text-lg transition-all duration-300 group"
           >
-            <ArrowSmLeftIcon class="w-4 h-4 order-first" />
-          </Button>
+            <span class="text-primary hover:text-primary/80 text-base md:text-lg transition-all duration-300">
+              Back to Projects
+            </span>
+            <PhCaretLeft weight="fill" class="w-4 h-4 order-first" />
+          </NuxtLink>
         </div>
         <ProjectsItemContentDonation
           @change="refresh"
           :project="project"
           :entries="entries"
           :full-view="true"
+          
         />
 
-        <div class="flex justify-between w-full">
-          <Button
+        <div class="flex justify-between w-full mt-10">
+          <NuxtLink
             :to="`/projects/${project.title}`"
-            name="Project Oveview"
-            class="px-2.5"
+            
+            class="group px-2.5 flex items-center gap-x-2 text-primary hover:text-primary/80 text-base md:text-lg transition-all duration-300"
           >
+          <span>Project Overview</span>
             <PhCaretLeft class="w-4 h-4 order-first" weight="fill" />
-          </Button>
+          </NuxtLink>
 
-          <Button
-            :to="`/projects/${project.title}/donate`"
-            class="px-2.5"
-            name="Donate Now"
+          <NuxtLink
+            :to="`/donate`"
+            class="group px-2.5 flex items-center gap-x-2 text-primary hover:text-primary/80 text-base md:text-lg transition-all duration-300"
+            
           >
-            <PhCaretRight class="w-4 h-4" weight="fill" />
-          </Button>
+          <span>Donate Now</span>
+          <PhCaretRight class="w-4 h-4" weight="fill" />
+        </NuxtLink>
         </div>
       </div>
     </div>
 
-    <div class="relative">
-      <Footer />
-    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
-const { containerWidth, subHeading, subHeading2 } = useTailwindConfig();
+const { containerWidth, subHeading2 } = useTailwindConfig();
 
 const perPage = 10;
 const start = ref(0);
@@ -75,262 +77,262 @@ const project = ref({
   verifiedFunded: 500000.54,
   target: 2000000,
   transactions: [
-    {
-      id: "",
-      userId: "",
-      donor: "John Doe",
-      comment:
-        "Looking forward to seeing the progress,Looking forward to seeing the progress",
-      amount: 50000,
-      currency: "NGN-Naira",
-      date: "09:45, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Sophia Queen",
-      comment: "Can't wait",
-      amount: 150000,
-      currency: "NGN-Naira",
-      date: "12:01, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "John Doe",
-      comment:
-        "Looking forward to seeing the progress,Looking forward to seeing the progress",
-      amount: 50000,
-      currency: "NGN-Naira",
-      date: "09:45, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Sophia Queen",
-      comment: "Can't wait",
-      amount: 150000,
-      currency: "NGN-Naira",
-      date: "12:01, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "John Doe",
-      comment:
-        "Looking forward to seeing the progress,Looking forward to seeing the progress",
-      amount: 50000,
-      currency: "NGN-Naira",
-      date: "09:45, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Sophia Queen",
-      comment: "Can't wait",
-      amount: 150000,
-      currency: "NGN-Naira",
-      date: "12:01, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "John Doe",
-      comment:
-        "Looking forward to seeing the progress,Looking forward to seeing the progress",
-      amount: 50000,
-      currency: "NGN-Naira",
-      date: "09:45, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Sophia Queen",
-      comment: "Can't wait",
-      amount: 150000,
-      currency: "NGN-Naira",
-      date: "12:01, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
-    {
-      id: "",
-      userId: "",
-      donor: "Lillian Shaw",
-      comment: "Looking forward to seeing the progress",
-      amount: 250000,
-      currency: "NGN-Naira",
-      date: "14:20, Jan 15th, 2022",
-    },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "John Doe",
+    //   comment:
+    //     "Looking forward to seeing the progress,Looking forward to seeing the progress",
+    //   amount: 50000,
+    //   currency: "NGN-Naira",
+    //   date: "09:45, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Sophia Queen",
+    //   comment: "Can't wait",
+    //   amount: 150000,
+    //   currency: "NGN-Naira",
+    //   date: "12:01, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "John Doe",
+    //   comment:
+    //     "Looking forward to seeing the progress,Looking forward to seeing the progress",
+    //   amount: 50000,
+    //   currency: "NGN-Naira",
+    //   date: "09:45, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Sophia Queen",
+    //   comment: "Can't wait",
+    //   amount: 150000,
+    //   currency: "NGN-Naira",
+    //   date: "12:01, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "John Doe",
+    //   comment:
+    //     "Looking forward to seeing the progress,Looking forward to seeing the progress",
+    //   amount: 50000,
+    //   currency: "NGN-Naira",
+    //   date: "09:45, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Sophia Queen",
+    //   comment: "Can't wait",
+    //   amount: 150000,
+    //   currency: "NGN-Naira",
+    //   date: "12:01, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "John Doe",
+    //   comment:
+    //     "Looking forward to seeing the progress,Looking forward to seeing the progress",
+    //   amount: 50000,
+    //   currency: "NGN-Naira",
+    //   date: "09:45, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Sophia Queen",
+    //   comment: "Can't wait",
+    //   amount: 150000,
+    //   currency: "NGN-Naira",
+    //   date: "12:01, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
+    // {
+    //   id: "",
+    //   userId: "",
+    //   donor: "Lillian Shaw",
+    //   comment: "Looking forward to seeing the progress",
+    //   amount: 250000,
+    //   currency: "NGN-Naira",
+    //   date: "14:20, Jan 15th, 2022",
+    // },
   ],
 });
 const entries = ref(project.value.transactions.slice(start.value, end.value));

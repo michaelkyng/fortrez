@@ -9,6 +9,20 @@
 </template>
 
 <script lang="ts" setup>
+useHead({
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Fortrez",
+        url: "https://www.fortrez.io",
+      }),
+    },
+  ],
+});
+
 const { initAuth } = useAuth();
 
 onBeforeMount(() => {

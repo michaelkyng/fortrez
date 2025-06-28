@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     return sendError(
       event,
       createError({
-        statusCode: 400,
+        statusCode: 401,
         statusMessage: "Email or Password Incorrect",
       })
     );
