@@ -1,13 +1,13 @@
 <template>
   <div v-if="project" class="relative z-0 min-h-screen">
     <DesignShapesWhiteCircle class="absolute right-0 top-0 -z-10" />
-    <div class="z-10">
+    <div class="z-10" :class="containerWidth">
       <!-- First Row -->
-      <div class="px-5 space-y-14 overflow-hidden" :class="containerWidth">
+      <div class="px-5 space-y-14 overflow-hidden max-w-screen" >
         <h2 :class="subHeading">Overview</h2>
         <div
           v-if="project.description"
-          class="flex flex-wrap lg:flex-nowrap gap-x-10 gap-y-14 lg:gap-x-14 xl:gap-x-20"
+          class="flex flex-wrap lg:flex-nowrap gap-x-10 gap-y-14 lg:gap-x-14 xl:gap-x-20 max-w-full"
         >
           <ProjectsItemContentSummaryProblemFrame
             class="basis-full lg:basis-1/2"
@@ -40,15 +40,15 @@
         </div>
 
         <!-- Other Projects -->
-        <div class="flex flex-col gap-y-4">
+        <div class="relative">
           <HomeContentOurProjects
             title="Other Projects"
             :font="subHeading"
             :project="false"
           />
-          <div class="flex justify-center mt-10">
-            <Button variant="outline" :to="`/projects`" class="my-2" name="View More" />
-          </div>
+        </div>
+        <div class="flex justify-center mt-10">
+          <Button variant="outline" :to="`/projects`" class="my-2" name="View More" />
         </div>
       </div>
     </div>

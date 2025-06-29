@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-fit max-w-72 sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-100"
+    class="h-fit max-w-full sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-100"
     v-if="!item.completed"
   >
     <NuxtLink :to="`/projects/${item.title}`">

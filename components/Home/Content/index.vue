@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white-dim h-fit">
+  <div class=" h-fit">
     <div class="h-fit flex flex-col gap-20">
       <HomeContentOurBlueprint />
       <div class="relative">

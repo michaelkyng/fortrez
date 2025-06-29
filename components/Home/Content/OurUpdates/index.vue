@@ -29,8 +29,8 @@
       <div
         v-if="data"
         ref="scrollContainer"
-        :class="data.length < 3 ? 'justify-center' : 'justify-start'"
-        class="menu-scroll w-full relative flex items-center h-fit gap-5 sm:gap-10 md:gap-20 px-2.5 overflow-x-scroll scroll-smooth mx-5 md:mx-14"
+        :class="data.length < 3 ? 'md:justify-center' : ''"
+        class="menu-scroll w-full relative flex justify-start items-center h-fit gap-5 sm:gap-10 md:gap-20  overflow-x-scroll scroll-smooth  md:mx-14"
       >
         <HomeContentOurUpdatesCard
           v-if="!isLoading"

@@ -3,7 +3,7 @@
     <h3 :class="subHeading2">Project Stats</h3>
     <div
       id="flex-wrapper"
-      class="flex flex-nowrap gap-4 sm:gap-7 w-full justify-center"
+      class="flex flex-wrap gap-4 sm:gap-7 w-full justify-start md:justify-center xl:justify-start"
     >
       <div class="relative min-w-32 min-h-32 sm:w-40 sm:h-40 lg:w-56 lg:h-52">
         <div
