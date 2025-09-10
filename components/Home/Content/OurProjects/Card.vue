@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-fit max-w-full sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-100"
+    class="h-fit max-w-full sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-50/50"
     v-if="!item.completed"
   >
     <NuxtLink :to="`/projects/${item.title}`">
@@ -11,7 +11,7 @@
               v-if="item.mediaFiles"
               class="absolute object-cover top-0 left-0 group-hover:scale-125 aspect-square"
               :class="transition"
-              :src="item.mediaFiles[0].url"
+              :src="item?.mediaFiles[0]?.url"
               :alt="`${item.title} image`"
             />
           </div>

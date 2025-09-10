@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-fit max-w-full sm:max-w-72 lg:max-w-96 sm:grow-0 rounded-2xl overflow-clip shadow-md bg-gray-100"
+    class="h-fit max-w-full sm:max-w-72 lg:max-w-96 sm:grow-0 rounded-2xl overflow-clip shadow-md bg-gray-50/50"
   >
     <NuxtLink :to="props.path">
       <div class="flex flex-col gap-y-5">
@@ -32,11 +32,11 @@
               <p class="text-black/40 text-xs">
                 {{ $props.tags }}
               </p>
-              <h1 class="text-base sm:text-lg font-bold">
+              <h1 class="text-base sm:text-lg font-semibold text-black/60 group-hover:text-black/80">
                 {{ $props.title }}
               </h1>
               <p
-                class="text-xs sm:text-sm text-black/50 group-hover:text-black/80 w-full text-ellipsis line-clamp-2"
+                class="text-xs sm:text-sm text-black/40 group-hover:text-black/80 w-full text-ellipsis line-clamp-2"
                 :class="transition"
               >
                 {{ $props.description }}

@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "https://fortrez-backend.vercel.app/api/$1"
+      }
+    ]
+  }
+  
