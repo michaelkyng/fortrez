@@ -17,7 +17,7 @@
         >
           <div
             v-for="(stat, index) in stats"
-            class="flex flex-col justify-center items-center w-full gap-2 bg-[#000000] p-10 rounded-2xl max-w-96"
+            class="flex flex-col justify-center items-center w-full gap-4 bg-[#000000] p-10 rounded-2xl max-w-96"
           >
             <div
               class="flex justify-center items-center gap-1 font-space font-black w-fit text-4xl sm:text-5xl text-primary"
@@ -78,7 +78,7 @@ const stats = [
 onMounted(() => {
   const observer = new IntersectionObserver(
     ([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry && entry.isIntersecting) {
         inView.value = true;
         observer.disconnect(); // Remove if you want it to repeat on scroll
       }
