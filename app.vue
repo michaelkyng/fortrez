@@ -23,11 +23,11 @@ useHead({
   ],
 });
 
-const { initAuth } = useAuth();
+// const { initAuth } = useAuth();
 
-onBeforeMount(() => {
-  initAuth();
-});
+// onBeforeMount(() => {
+//   initAuth();
+// });
 </script>
 
 <style>

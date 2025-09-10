@@ -21,9 +21,9 @@
         class="w-full flex flex-col lg:basis-2/5 rounded-3xl overflow-clip h-full min-h-48 lg:min-h-64 z-20"
       >
         <img
-          v-if="project.mediaFiles"
+          v-if="campaign.coverImage"
           class="object-cover min-h-48 lg:min-h-64"
-          :src="project.mediaFiles[0].url"
+          :src="campaign.coverImage"
           alt=""
         />
       </div>
@@ -31,16 +31,16 @@
         class="flex flex-col basis-full lg:basis-3/5 gap-4 lg:gap-2 xl:gap-4 h-full z-20 py-2.5 px-1.5 sm:px-2.5"
       >
         <h1 class="text-lg md:text-2xl xl:text-3xl font-bold">
-          {{ project.title }}
+          {{ campaign.title }}
         </h1>
         <p
           class="text-sm md:text-base text-black/60 line-clamp-2 lg:line-clamp-1 xl:line-clamp-2"
         >
-          {{ project.description }}
+          {{ campaign.description }}
         </p>
         <div class="flex flex-wrap gap-y-5 justify-between items-center">
           <div class="flex items-center gap-2.5 pr-1.5">
-            <div v-if="project.completed" class="flex gap-1 items-center">
+            <div v-if="campaign.status === 'funded'" class="flex gap-1 items-center">
               <p class="text-sm text-green-600">Completed</p>
             </div>
             <div v-else class="flex gap-1 items-center">
@@ -73,8 +73,8 @@
           <p class="text-sm md:text-base">Funds Raised</p>
           <UProgress
             class="relative"
-            :model-value="project.funded"
-            :max="project.target"
+            :model-value="campaign.raisedAmount"
+            :max="campaign.target"
             size="md"
           >
             <template #status="{ percent }">
@@ -86,14 +86,14 @@
                     ><IconsSymbolsNaira
                       class="w-3 h-3 opacity-60"
                       color="#000"
-                    />{{ project.funded }}</span
+                    />{{ campaign.raisedAmount }}</span
                   >
                   <span class="text-sm md:text-base">raised of</span>
                   <span class="text-sm md:text-base flex items-center"
                     ><IconsSymbolsNaira
                       class="w-3 h-3 opacity-60"
                       color="#000"
-                    />{{ project.target }}</span
+                    />{{ campaign.target }}</span
                   >
                 </span>
 
@@ -118,12 +118,11 @@
 <script lang="ts" setup>
 import { PhArrowLeft } from "@phosphor-icons/vue";
 import type { PropType } from "vue";
-import type { ProjectWithRelations } from "~/types/type";
 const { containerWidth } = useTailwindConfig();
 
 defineProps({
-  project: {
-    type: Object as PropType<ProjectWithRelations>,
+  campaign: {
+    type: Object as PropType<PopulatedCampaign>,
     required: true,
   },
 });

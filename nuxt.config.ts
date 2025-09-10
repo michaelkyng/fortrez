@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     fonts: false,
   },
   modules: [
+    '@pinia/nuxt',
     [
       "nuxt-mail",
       {
@@ -76,10 +77,26 @@ export default defineNuxtConfig({
     cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
     cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
     cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
+  
     public: {
       email: "",
       waitList: process.env.NUXT_PUBLIC_WAIT_LIST,
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '/api',
+      cloudinaryCloudName: process.env.NUXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+      cloudinaryUploadPreset: process.env.NUXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
     },
+    smtpHost: process.env.SMTP_HOST,
+    smtpPort: process.env.SMTP_PORT,
+    smtpUser: process.env.SMTP_USER,
+    smtpPass: process.env.SMTP_PASS,
+    adminEmail: process.env.ADMIN_EMAIL
+  },
+  routeRules: {
+    '/api/**': { proxy: { to: 'https://api.fortrez.io/api/**' } }
+  },
+  typescript: {
+    strict: true,
+    typeCheck: true
   },
   vite: {
     plugins: [tailwindcss()],

@@ -53,9 +53,9 @@
 
         <div class="flex items-center gap-x-1 xl:gap-x-2">
           <IconsProjectsDonor />
-          <span class="text-black/80">Donors</span>
+          <span class="text-black/80">Donations</span>
           <pre>:</pre>
-          <span class="flex items-center font-medium">{{ props.donors }}</span>
+          <span class="flex items-center font-medium">{{ props.donations }}</span>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ const items = Array.from({ length: 100 }, (_, i) => i + 1);
 const { subHeading2 } = useTailwindConfig();
 
 const props = defineProps({
-  donors: {
+  donations: {
     type: Number,
     required: true,
   },

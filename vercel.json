@@ -3,7 +3,7 @@
     "rewrites": [
       {
         "source": "/api/(.*)",
-        "destination": "https://fortrez-backend.vercel.app/api/$1"
+        "destination": "https://api.fortrez.io/api/$1"
       }
     ]
   }

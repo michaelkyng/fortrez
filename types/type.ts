@@ -1,4 +1,4 @@
-export interface subItems {
+interface subItems {
   name: string;
   path: string;
 }
@@ -18,44 +18,52 @@ type button = {
   path: string;
 };
 
-export type Link = {
+type Link = {
   name: string;
 } & (normalLink | subnavLink | button);
 
-// Types for Admin, Project, Transaction, and MediaFiles
-export interface Admin {
+// Base interface for common fields
+export interface BaseSchema {
   id: string;
-  name: string;
-  email: string;
-  // Add other admin properties as needed
-}
-
-export interface MediaFiles {
-  id: string;
-  url: string;
-  type: 'image' | 'video' | 'document';
-  // Add other media file properties as needed
-}
-
-export interface Transaction {
-  id: string;
-  amount: number;
-  status: 'pending' | 'completed' | 'failed';
-  // Add other transaction properties as needed
-}
-
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
   createdAt: Date;
   updatedAt: Date;
-  // Add other project properties as needed
 }
 
-// Projects
-export type ProjectWithRelations = Project & {
-  author: Admin;
-  transactions: Transaction[];
-  mediaFiles: MediaFiles[];
+
+// Enums
+enum DonationStatus {
+  PENDING = 'pending',
+  COMPLETED = 'completed',
+  FAILED = 'failed',
+  REFUNDED = 'refunded'
+}
+
+// Donation interface
+interface Donation extends BaseSchema {
+  txHash: string;
+  amount: number;
+  donor: string; // User ID reference
+  campaign: string; // Campaign ID reference
+  status: DonationStatus;
+}
+
+// Populated versions (when references are populated)
+interface PopulatedDonation extends Omit<Donation, 'donor' | 'campaign'> {
+  donor: User;
+  campaign: Campaign;
+}
+
+
+export type {
+  User,
+  Blog,
+  Donation,
+  Campaign,
+  PopulatedUser,
+  PopulatedBlog,
+  PopulatedDonation,
+  PopulatedCampaign,
+  DonationStatus,
+  Link,
+  subItems,
 };

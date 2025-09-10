@@ -1,17 +1,17 @@
 <template>
   <div
     class="h-fit max-w-full sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-50/50"
-    v-if="!item.completed"
+    v-if="item.status === 'active'"
   >
     <NuxtLink :to="`/projects/${item.title}`">
       <div class="flex flex-col gap-y-5">
         <div class="flex flex-col gap-y-2.5">
           <div class="relative w-full h-40 rounded-2xl overflow-clip">
             <img
-              v-if="item.mediaFiles"
+              v-if="item.coverImage"
               class="absolute object-cover top-0 left-0 group-hover:scale-125 aspect-square"
               :class="transition"
-              :src="item?.mediaFiles[0]?.url"
+              :src="item.coverImage"
               :alt="`${item.title} image`"
             />
           </div>
@@ -24,7 +24,7 @@
                   })
                 }}
               </p>
-              <p class="text-xs">{{ item.donors }} donors</p>
+              <p class="text-xs">{{ item.donations.length }} donations</p>
             </span>
             <div class="flex flex-col gap-y-5">
               <div class="flex flex-col gap-2">
@@ -40,7 +40,7 @@
               </div>
               <div class="relative w-full">
                 <UProgress
-                  v-model="item.funded"
+                  v-model="item.raisedAmount"
                   :max="item.target"
                   animation="swing"
                   size="sm"
@@ -49,7 +49,7 @@
                     <span class="flex items-center text-xs"
                       ><IconsSymbolsNaira
                         class="size-2.5 fill-(--ui-text-dimmed)"
-                      /><span>{{ item.funded.toLocaleString() }}</span></span
+                      /><span>{{ item.raisedAmount.toLocaleString() }}</span></span
                     >
                   </template>
                 </UProgress>
@@ -59,7 +59,7 @@
                   <span class="w-fit text-xs md:text-sm right-0 bottom-0"
                     >{{
                       Math.round(
-                        (item.funded / item.target) * 100
+                        (item.raisedAmount / item.target) * 100
                       ).toLocaleString()
                     }}%</span
                   >
@@ -80,11 +80,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { ProjectWithRelations } from "~/types/type";
 
 defineProps({
   item: {
-    type: Object as PropType<ProjectWithRelations>,
+    type: Object as PropType<PopulatedCampaign>,
     required: true,
   },
 });

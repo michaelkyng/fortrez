@@ -47,18 +47,18 @@
 
 <script lang="ts" setup>
 import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
-import type { ProjectWithRelations } from "~/types/type";
+
 
 const { transition, containerWidth } = useTailwindConfig();
 const isLoading = ref(true);
-const { getProjects } = useProject();
-const data = ref<ProjectWithRelations[]>([]);
+const { getCampaigns } = useCampaign();
+const data = ref<PopulatedCampaign[]>([]);
 
 onBeforeMount(async () => {
   isLoading.value = true;
   try {
-    const { projects } = await getProjects();
-    data.value = projects as ProjectWithRelations[];
+    const { campaigns } = await getCampaigns();
+    data.value = campaigns as PopulatedCampaign[];
   } catch (error) {
     console.log(error);
   } finally {

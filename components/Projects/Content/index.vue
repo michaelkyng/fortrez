@@ -125,21 +125,21 @@ import {
   PhCaretLeft,
   PhMagnifyingGlass,
 } from "@phosphor-icons/vue";
-import type { ProjectWithRelations } from "~/types/type";
+import type { PopulatedCampaign } from "~/types/type";
 const { containerWidth, subHeading2, transition, subHeading } =
   useTailwindConfig();
 const isLoading = ref(true);
-const { getOtherProjects, getFProjects } = useProject();
-const data = ref<ProjectWithRelations[]>([]);
+const { getOtherCampaigns, getFCampaigns } = useCampaign();
+const data = ref<PopulatedCampaign[]>([]);
 const Fdata: any = ref([]);
 
 onBeforeMount(async () => {
   isLoading.value = true;
   try {
-    const { projects } = await getOtherProjects();
-    const { Fprojects } = await getFProjects();
-    Fdata.value = Fprojects;
-    data.value = projects as ProjectWithRelations[];
+    const { campaigns } = await getOtherCampaigns();
+    const { Fcampaigns } = await getFCampaigns();
+    Fdata.value = Fcampaigns;
+    data.value = campaigns as PopulatedCampaign[];
     console.log("Other: ", data.value);
   } catch (error) {
     console.log(error);

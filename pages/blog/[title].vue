@@ -22,7 +22,7 @@
         <BlogItem
           :title="data.title"
           :description="data.description"
-          :image="data.mediaFiles[0].url"
+          :image="data.coverImage"
           :tags="data.tags"
           :date="data.createdAt"
         />
@@ -43,30 +43,15 @@
 
 <script lang="ts" setup>
 const { title }: any = useRoute().params;
-const { verifyBlog } = useBlog();
+const { getBlogByTitle } = useBlogStore();
 const { containerWidth, subHeading } = useTailwindConfig();
 const isLoading = ref(true);
-
-interface BlogData {
-  title: string;
-  description: string;
-  mediaFiles: { url: string }[];
-  tags: string;
-  createdAt: string;
-}
-
-const data: Ref<BlogData> = ref({
-  title: "",
-  description: "",
-  mediaFiles: [],
-  tags: "",
-  createdAt: "",
-});
+const data = ref();
 
 onBeforeMount(async () => {
   try {
     isLoading.value = true;
-    const { blog }: any = await verifyBlog(title);
+    const { blog }: any = await getBlogByTitle(title);
     data.value = blog;
   } catch (error) {
     console.log(error);

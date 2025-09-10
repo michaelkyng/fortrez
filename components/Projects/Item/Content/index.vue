@@ -1,32 +1,31 @@
 <template>
-  <div v-if="project" class="relative z-0 min-h-screen">
+  <div v-if="campaign" class="relative z-0 min-h-screen">
     <DesignShapesWhiteCircle class="absolute right-0 top-0 -z-10" />
     <div class="z-10" :class="containerWidth">
       <!-- First Row -->
       <div class="px-5 space-y-14 overflow-hidden max-w-screen" >
         <h2 :class="subHeading">Overview</h2>
         <div
-          v-if="project.description"
+          v-if="campaign.description"
           class="flex flex-wrap lg:flex-nowrap gap-x-10 gap-y-14 lg:gap-x-14 xl:gap-x-20 max-w-full"
         >
           <ProjectsItemContentSummaryProblemFrame
             class="basis-full lg:basis-1/2"
             name="Summary"
             :choice="true"
-            :description="project.description"
-            :problem="project.problem"
-          />
+            :description="campaign.description"
+            :problem="campaign.problem"
+          /> 
           <ProjectsItemContentStats
             class="basis-full lg:basis-1/2"
             :percentofVerifiedFunded="
               Math.round(
-                ((project.funded - project.pending) / project.funded) * 100
+                (campaign.raisedAmount / campaign.target) * 100
               )
             "
-            :pending="project.pending"
-            :funded="project.funded"
-            :verifiedFund="project.funded - project.pending"
-            :donors="project.donors"
+            :funded="campaign.raisedAmount"
+            :verifiedFund="campaign.raisedAmount"
+            :donations="campaign.donations.length"
           />
         </div>
 
@@ -36,7 +35,7 @@
 
         <!-- Donations -->
         <div id="donation">
-          <ProjectsItemContentDonation :project="project" :entries="entries" />
+          <ProjectsItemContentDonation :campaign="campaign" :entries="entries" />
         </div>
 
         <!-- Other Projects -->
@@ -44,7 +43,7 @@
           <HomeContentOurProjects
             title="Other Projects"
             :font="subHeading"
-            :project="false"
+            :campaign="false"
           />
         </div>
         <div class="flex justify-center mt-10">
@@ -56,16 +55,15 @@
 </template>
 
 <script lang="ts" setup>
-import type { ProjectWithRelations } from "~/types/type";
 
 const { containerWidth, subHeading, subHeading2 } = useTailwindConfig();
 
 const props = defineProps({
-  project: Object as PropType<ProjectWithRelations>,
+  campaign: Object as PropType<PopulatedCampaign>,
 });
 
-const entries = props?.project?.transactions.slice(
-  props.project.transactions.length - 11,
-  props.project.transactions.length - 1
+const entries = props?.campaign?.donations.slice(
+  props.campaign.donations.length - 11,
+  props.campaign.donations.length - 1
 );
 </script>
