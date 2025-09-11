@@ -3,6 +3,7 @@ import type { Blog } from '~/types/type'
 
 export default defineEventHandler(async (event) => {
   try {
+    console.log("Visiting",config.public.apiBase)
     const blogs = await $fetch<Blog[]>(`${config.public.apiBase}/blogs`, {
       headers: { Accept: 'application/json' }
     })
