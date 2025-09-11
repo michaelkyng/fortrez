@@ -81,7 +81,7 @@ export default defineNuxtConfig({
     public: {
       email: "",
       waitList: process.env.NUXT_PUBLIC_WAIT_LIST,
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '/api',
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '',
       cloudinaryCloudName: process.env.NUXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
       cloudinaryUploadPreset: process.env.NUXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
     },
@@ -92,7 +92,9 @@ export default defineNuxtConfig({
     adminEmail: process.env.ADMIN_EMAIL
   },
   routeRules: {
-    '/api/**': { proxy: { to: 'https://api.fortrez.io/api/**' } }
+    '/api/admin/**': { proxy: { to: 'https://api.fortrez.io/admin/**' } },
+    '/api/auth/**': { proxy: { to: 'https://api.fortrez.io/auth/**' } },
+    '/api/**': { proxy: { to: 'https://api.fortrez.io/**' } }
   },
   typescript: {
     strict: true,

@@ -2,8 +2,16 @@
     "version": 2,
     "rewrites": [
       {
-        "source": "/api/(.*)",
-        "destination": "https://api.fortrez.io/$1"
+        "source": "/api/blog/(.*)",
+        "destination": "https://api.fortrez.io/blog/$1"
+      },
+      {
+        "source": "/api/campaigns/(.*)",
+        "destination": "https://api.fortrez.io/campaigns/$1"
+      },
+      {
+        "source": "/api/donations",
+        "destination": "https://api.fortrez.io/donations"
       }
     ]
   }
