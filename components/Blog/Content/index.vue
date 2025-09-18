@@ -71,18 +71,18 @@
 </template>
 
 <script lang="ts" setup>
-import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 
 const { subHeading, transition, containerWidth } = useTailwindConfig();
 
 const isLoading = ref(true);
-const { getBlogs } = useBlog();
+const blogStore = useBlogStore();
 const data: any = ref([]);
 
-onBeforeMount(async () => {
+
+onMounted(async () => {
   isLoading.value = true;
   try {
-    const { blogs }: any = await getBlogs();
+    const blogs = await blogStore.fetchBlogs();
     data.value = blogs;
   } catch (error) {
     console.log(error);

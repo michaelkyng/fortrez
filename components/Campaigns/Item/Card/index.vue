@@ -116,13 +116,12 @@
 </template>
 
 <script lang="ts" setup>
-import { PhArrowLeft } from "@phosphor-icons/vue";
 import type { PropType } from "vue";
 const { containerWidth } = useTailwindConfig();
 
 defineProps({
   campaign: {
-    type: Object as PropType<PopulatedCampaign>,
+    type: Object as PropType<Campaign>,
     required: true,
   },
 });

@@ -30,7 +30,7 @@
         ref="scrollContainer"
         class="menu-scroll relative w-full flex items-center h-fit gap-4 sm:gap-10 px-2.5 overflow-x-scroll scroll-smooth mx-0 md:mx-14 transition-all"
       >
-        <HomeContentOurProjectsCard
+        <HomeContentOurCampaignsCard
           class="flex-none group"
           v-if="!isLoading"
           v-for="cardItem in data"
@@ -46,19 +46,18 @@
 </template>
 
 <script lang="ts" setup>
-import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 
 
 const { transition, containerWidth } = useTailwindConfig();
 const isLoading = ref(true);
-const { getCampaigns } = useCampaign();
-const data = ref<PopulatedCampaign[]>([]);
+const campaignStore = useCampaignStore();
+const data = ref<Campaign[]>([]);
 
-onBeforeMount(async () => {
-  isLoading.value = true;
+onMounted(async () => {
   try {
-    const { campaigns } = await getCampaigns();
-    data.value = campaigns as PopulatedCampaign[];
+    const campaigns = await campaignStore.fetchCampaigns();
+    data.value = campaigns as Campaign[];
+    console.log(data.value);
   } catch (error) {
     console.log(error);
   } finally {

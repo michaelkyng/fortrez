@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { PropType } from "vue";
-import { PhArrowRight } from "@phosphor-icons/vue";
 defineProps({
   name: {
     type: String,

@@ -55,7 +55,6 @@
 </template>
 
 <script lang="ts" setup>
-import { PhArrowRight } from "@phosphor-icons/vue";
 import { defineProps } from "vue";
 
 const { containerWidth } = useTailwindConfig();

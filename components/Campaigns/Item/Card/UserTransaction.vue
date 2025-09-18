@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts" setup>
-import { PhUserCircle } from "@phosphor-icons/vue";
 
 const props = defineProps({
   name: { type: String, require: true },

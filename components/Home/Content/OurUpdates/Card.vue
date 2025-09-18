@@ -29,8 +29,10 @@
           </div>
           <div class="flex flex-col gap-y-2 p-3">
             <div class="flex flex-col w-full gap-y-2">
-              <p class="text-black/40 text-xs">
-                {{ $props.tags }}
+              <p class="flex flex-wrap items-center gap-2 text-black/40 text-xs w-full justify-start">
+                <span v-for="tag in $props.tags" :key="tag">
+                  {{ tag }}
+                </span>
               </p>
               <h1 class="text-base sm:text-lg font-semibold text-black/60 group-hover:text-black/80">
                 {{ $props.title }}
@@ -71,7 +73,6 @@
 </template>
 
 <script lang="ts" setup>
-import { PhCaretRight } from "@phosphor-icons/vue";
 
 const { subHeading, transition, containerWidth } = useTailwindConfig();
 
@@ -79,7 +80,7 @@ const props = defineProps({
   title: { type: String, require: true },
   description: { type: String, require: true },
   image: { type: String, require: true },
-  tags: { type: String, require: true },
+  tags: { type: Array as PropType<string[]>, require: true, default: [] },
   path: { type: String, require: true },
   date: { type: String, require: true },
 });

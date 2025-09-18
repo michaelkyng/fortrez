@@ -37,6 +37,7 @@
     "nuxt-server-utils": "0.0.7",
     "nuxt-swiper": "2.0.1",
     "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.5.0",
     "swiper": "^11.2.10",
     "tailwindcss": "^4.1.12",
     "url-pattern": "1.0.3",

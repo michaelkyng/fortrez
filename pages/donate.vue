@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { PhCopy } from "@phosphor-icons/vue";
 
 const acctNumber = ref("8100661130");
 

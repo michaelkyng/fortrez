@@ -9,14 +9,14 @@
           v-if="campaign.description"
           class="flex flex-wrap lg:flex-nowrap gap-x-10 gap-y-14 lg:gap-x-14 xl:gap-x-20 max-w-full"
         >
-          <ProjectsItemContentSummaryProblemFrame
+          <CampaignsItemContentSummaryProblemFrame
             class="basis-full lg:basis-1/2"
             name="Summary"
             :choice="true"
             :description="campaign.description"
             :problem="campaign.problem"
           /> 
-          <ProjectsItemContentStats
+          <CampaignsItemContentStats
             class="basis-full lg:basis-1/2"
             :percentofVerifiedFunded="
               Math.round(
@@ -35,19 +35,19 @@
 
         <!-- Donations -->
         <div id="donation">
-          <ProjectsItemContentDonation :campaign="campaign" :entries="entries" />
+          <CampaignsItemContentDonation :campaign="campaign" :entries="entries" />
         </div>
 
         <!-- Other Projects -->
         <div class="relative">
-          <HomeContentOurProjects
+          <HomeContentOurCampaigns
             title="Other Projects"
             :font="subHeading"
             :campaign="false"
           />
         </div>
         <div class="flex justify-center mt-10">
-          <Button variant="outline" :to="`/projects`" class="my-2" name="View More" />
+          <Button variant="outline" :to="`/campaigns`" class="my-2" name="View More" />
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
 const { containerWidth, subHeading, subHeading2 } = useTailwindConfig();
 
 const props = defineProps({
-  campaign: Object as PropType<PopulatedCampaign>,
+  campaign: Object as PropType<Campaign>,
 });
 
 const entries = props?.campaign?.donations.slice(

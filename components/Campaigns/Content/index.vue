@@ -125,22 +125,21 @@ import {
   PhCaretLeft,
   PhMagnifyingGlass,
 } from "@phosphor-icons/vue";
-import type { PopulatedCampaign } from "~/types/type";
+
 const { containerWidth, subHeading2, transition, subHeading } =
   useTailwindConfig();
 const isLoading = ref(true);
-const { getOtherCampaigns, getFCampaigns } = useCampaign();
-const data = ref<PopulatedCampaign[]>([]);
+const campaignStore = useCampaignStore();
+const data = ref<Campaign[]>([]);
 const Fdata: any = ref([]);
 
 onBeforeMount(async () => {
   isLoading.value = true;
   try {
-    const { campaigns } = await getOtherCampaigns();
-    const { Fcampaigns } = await getFCampaigns();
-    Fdata.value = Fcampaigns;
-    data.value = campaigns as PopulatedCampaign[];
-    console.log("Other: ", data.value);
+    const campaigns = await campaignStore.fetchCampaigns();
+    const Fcampaigns = await campaignStore.fetchFortrezCampaigns();
+    Fdata.value = Fcampaigns as Campaign[];
+    data.value = campaigns as Campaign[];
   } catch (error) {
     console.log(error);
   } finally {

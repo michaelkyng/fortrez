@@ -3,7 +3,7 @@
     class="h-fit max-w-full sm:max-w-80 w-full rounded-2xl overflow-clip shadow-md bg-gray-50/50"
     v-if="item.status === 'active'"
   >
-    <NuxtLink :to="`/projects/${item.title}`">
+    <NuxtLink :to="`/campaigns/${item.id}`">
       <div class="flex flex-col gap-y-5">
         <div class="flex flex-col gap-y-2.5">
           <div class="relative w-full h-40 rounded-2xl overflow-clip">
@@ -83,7 +83,7 @@
 
 defineProps({
   item: {
-    type: Object as PropType<PopulatedCampaign>,
+    type: Object as PropType<Campaign>,
     required: true,
   },
 });

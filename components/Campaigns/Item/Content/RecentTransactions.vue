@@ -28,10 +28,10 @@
           ref="scrollContainer"
           class="menu-scroll flex justify-start items-center h-fit gap-10 md:gap-14 lg:gap-16 xl:gap-20 overflow-x-auto scroll-smooth"
         >
-          <ProjectsItemCardUserTransaction
-            v-for="transaction in project.transactions"
-            :name="transaction.donor"
-            :amount="transaction.amount"
+          <CampaignsItemCardUserTransaction
+            v-for="donation in campaign.donations"
+            :name="donation.donor"
+            :amount="donation.amount"
             image=""
           />
         </div>
@@ -49,7 +49,6 @@
 </template>
 
 <script lang="ts" setup>
-import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 
 const { containerWidth, subHeading, subHeading2, transition } =
   useTailwindConfig();
@@ -66,5 +65,5 @@ const scrollLeft = () => {
   }
 };
 
-const { project } = defineProps(["project"]);
+const { campaign } = defineProps(["campaign"]);
 </script>

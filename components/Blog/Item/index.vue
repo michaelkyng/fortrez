@@ -32,7 +32,6 @@
 </template>
 
 <script lang="ts" setup>
-import { PhArrowLeft } from "@phosphor-icons/vue";
 const { containerWidth } = useTailwindConfig();
 
 const props = defineProps({

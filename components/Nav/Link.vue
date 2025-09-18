@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { PhCaretDown } from "@phosphor-icons/vue";
 import type { PropType } from "vue";
 import type { Link } from "~/types/type";
 const { navLinkStyle } = useTailwindConfig();

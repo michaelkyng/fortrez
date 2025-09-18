@@ -5,12 +5,12 @@
         class="relative h-full flex flex-col justify-end items-start px-5 py-12 gap-7"
         :class="containerWidth"
       >
-        <h1 class="text-4xl font-bold">Projects</h1>
+        <h1 class="text-4xl font-bold">Campaigns</h1>
       </div>
 
       <div class="relative">
-        <!-- Projects -->
-        <ProjectsContent />
+        <!-- Campaigns -->
+        <CampaignsContent />
       </div>
     </div>
   </div>

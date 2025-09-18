@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { routes } from "~/utils/routes";
 import type { Link, subItems } from "~/types/type";
-import { PhX } from "@phosphor-icons/vue";
 const menuToggled = ref(false);
 type NavItem = Link | subItems;
 const filteredRoutes = computed((): NavItem[] => {

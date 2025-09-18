@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     'nuxt-seo-utils',
+    'nuxt-phosphor-icons',
   ],
 
   site: {

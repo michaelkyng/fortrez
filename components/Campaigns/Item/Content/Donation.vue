@@ -15,12 +15,12 @@
           </thead>
           <tbody>
             <tr
-              v-for="(transaction, index) in entries"
+              v-for="(donation, index) in entries"
               :key="index"
               class="even:bg-slate-300/20 odd:bg-transparent"
             >
               <td class="p-4 sm:p-6 w-fit text-nowrap">
-                {{ transaction.donor }}
+                {{ donation.donor }}
               </td>
               <td class="p-4 mr-4 md:mr-0 sm:p-6 w-fit">
                 <UPopover
@@ -29,25 +29,25 @@
                 >
                   <span
                     class="max-w-28 sm:max-w-96 text-nowrap overflow-x-auto truncate line-clamp-1"
-                    >{{ transaction.comment }}</span
+                    >{{ donation.comment }}</span
                   >
                   <template #panel>
                     <div class="p-4 bg-white-dim text-accent">
                       <Placeholder class="h-20 w-48 text-wrap">
-                        {{ transaction.comment }}
+                        {{ donation.comment }}
                       </Placeholder>
                     </div>
                   </template>
                 </UPopover>
               </td>
               <td class="p-4 sm:p-6 w-fit text-nowrap">
-                {{ transaction.amount }}
+                {{ donation.amount }}
               </td>
               <td class="p-4 sm:p-6 w-fit text-nowrap">
-                {{ transaction.currency }}
+                {{ donation.currency }}
               </td>
               <td class="p-4 sm:p-6 w-fit text-nowrap">
-                {{ transaction.date }}
+                {{ donation.createdAt }}
               </td>
             </tr>
           </tbody>
@@ -55,7 +55,7 @@
       </div>
       <div v-if="!fullView" class="flex justify-center mt-10">
         <Button
-          :to="`/projects/${project.title}/donation`"
+          :to="`/campaigns/${campaign.id}/donation`"
           class="my-2"
           variant="outline"
           name="View More"
@@ -69,7 +69,7 @@
           class="mx-auto bg-transparent"
           :max="3"
           size="lg"
-          :total="project.transactions.length"
+          :total="campaign.donations.length"
           show-last
           show-first
           :active-button="{ variant: 'ghost', color: 'yellow' }"
@@ -86,7 +86,7 @@
 </template>
 
 <script lang="ts" setup>
-const { project, entries } = defineProps(["project", "entries", "fullView"]);
+const { campaign, entries } = defineProps(["campaign", "entries", "fullView"]);
 const { containerWidth, subHeading, subHeading2, transition } =
   useTailwindConfig();
 

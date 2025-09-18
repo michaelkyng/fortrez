@@ -4,12 +4,12 @@
       <DesignShapesFaintGrayCurves class="absolute top-0 left-0" />
 
       <div class="relative">
-        <ProjectsItem :urltitle="title" />
+        <CampaignsItem :id="id" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const { title }: any = useRoute().params;
+const { id }: any = useRoute().params;
 </script>

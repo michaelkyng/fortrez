@@ -6,7 +6,7 @@
         :class="containerWidth"
       >
         <div class="flex flex-wrap-reverse justify-between w-full gap-y-5">
-          <h3 class="!text-left" :class="subHeading2">{{ project.title }}</h3>
+          <h3 class="!text-left" :class="subHeading2">{{ campaign.title }}</h3>
           <NuxtLink
             :to="`/projects`"
             class="flex justify-center items-center z-20 ml-auto text-primary hover:text-primary/80 text-base md:text-lg transition-all duration-300 group"
@@ -19,7 +19,7 @@
         </div>
         <ProjectsItemContentDonation
           @change="refresh"
-          :project="project"
+          :campaign="campaign"
           :entries="entries"
           :full-view="true"
           
@@ -27,11 +27,11 @@
 
         <div class="flex justify-between w-full mt-10">
           <NuxtLink
-            :to="`/projects/${project.title}`"
+            :to="`/campaigns/${campaign.id}`"
             
             class="group px-2.5 flex items-center gap-x-2 text-primary hover:text-primary/80 text-base md:text-lg transition-all duration-300"
           >
-          <span>Project Overview</span>
+          <span>Campaign Overview</span>
             <PhCaretLeft class="w-4 h-4 order-first" weight="fill" />
           </NuxtLink>
 
@@ -51,14 +51,13 @@
 </template>
 
 <script lang="ts" setup>
-import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
 const { containerWidth, subHeading2 } = useTailwindConfig();
 
 const perPage = 10;
 const start = ref(0);
 const end = ref(start.value + Number(perPage));
 
-const project = ref({
+const campaign = ref({
   id: "",
   title: "Nourishing vulnerable children",
   description:
@@ -76,7 +75,7 @@ const project = ref({
   funded: 650000.77,
   verifiedFunded: 500000.54,
   target: 2000000,
-  transactions: [
+  donations: [
     // {
     //   id: "",
     //   userId: "",
@@ -335,11 +334,11 @@ const project = ref({
     // },
   ],
 });
-const entries = ref(project.value.transactions.slice(start.value, end.value));
+const entries = ref(campaign.value.donations.slice(start.value, end.value));
 
 async function refresh(number: number) {
   start.value = (Number(number) - 1) * Number(perPage);
   end.value = start.value + Number(perPage);
-  entries.value = project.value.transactions.slice(start.value, end.value);
+  entries.value = campaign.value.donations.slice(start.value, end.value);
 }
 </script>

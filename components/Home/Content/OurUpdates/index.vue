@@ -27,20 +27,20 @@
         />
       </button>
       <div
-        v-if="data"
+        v-if="blogData && campaignData"
         ref="scrollContainer"
-        :class="data.length < 3 ? 'md:justify-center' : ''"
+        :class="blogData.length < 3 ? 'md:justify-center' : ''"
         class="menu-scroll w-full relative flex justify-start items-center h-fit gap-5 sm:gap-10 md:gap-20  overflow-x-scroll scroll-smooth  md:mx-14"
       >
         <HomeContentOurUpdatesCard
           v-if="!isLoading"
           class="flex-none group"
-          v-for="cardItem in data"
+          v-for="cardItem in blogData"
           :title="cardItem.title"
-          :description="cardItem.description"
-          :image="cardItem.mediaFiles[0].url"
+          :description="cardItem.content"
+          :image="cardItem.coverImage"
           :tags="cardItem.tags"
-          :date="cardItem.createdAt"
+          :date="new Date(cardItem.createdAt).toLocaleDateString('en-GB', { dateStyle: 'medium' })"
           :path="`/blog/${cardItem.title}`"
         >
         </HomeContentOurUpdatesCard>
@@ -58,22 +58,20 @@
 </template>
 
 <script lang="ts" setup>
-import { PhCaretRight, PhCaretLeft } from "@phosphor-icons/vue";
-
+const blogStore = useBlogStore();
+const campaignStore = useCampaignStore();
 const { subHeading, transition, containerWidth } = useTailwindConfig();
-
 const isLoading = ref(true);
-const { getBlogs } = useBlog();
-const data: any = ref([]);
-const latestBlog = ref();
+const blogData: any = ref([]);
+const campaignData: any = ref([]);
 
-onBeforeMount(async () => {
-  isLoading.value = true;
+
+onMounted(async () => {
   try {
-    const { blogs }: any = await getBlogs();
-    data.value = blogs;
+    blogData.value = await blogStore.fetchBlogs();
+    campaignData.value = await campaignStore.fetchCampaigns();
   } catch (error) {
-    console.log(error);
+    console.error("Failed to fetch blogs:", error);
   } finally {
     isLoading.value = false;
   }

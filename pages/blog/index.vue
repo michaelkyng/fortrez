@@ -30,15 +30,13 @@
 
 <script lang="ts" setup>
 const { subHeading, transition, containerWidth } = useTailwindConfig();
-
-const isLoading = ref(false);
-const { getBlogs } = useBlog();
+const blogStore = useBlogStore();
+const isLoading = ref(true);
 const data: any = ref([]);
 
-onBeforeMount(async () => {
-  isLoading.value = true;
+onMounted(async () => {
   try {
-    const { blogs }: any = await getBlogs();
+    const blogs = await blogStore.fetchBlogs();
     data.value = blogs;
   } catch (error) {
     console.log(error);

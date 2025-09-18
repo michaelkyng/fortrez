@@ -2,31 +2,29 @@
   <div
     class="relative flex flex-col space-y-20 min-h-screen justify-center items-center py-32"
   >
-    <ProjectsItemCard v-if="data && data.title" :campaign="data" />
+    <CampaignsItemCard v-if="data && data.title" :campaign="data" />
 
     <div v-else class="w-full min-h-20 flex justify-center items-center">
       <img src="/animation.gif" alt="Loading" />
     </div>
 
-    <ProjectsItemContent v-if="data && data.title" :campaign="data" />
+    <CampaignsItemContent v-if="data && data.title" :campaign="data" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { PopulatedCampaign } from "~/types/type";
-
 const prop = defineProps({
-  urltitle: String,
+  id: String,
 });
 
-const { verifyCampaign } = useCampaign();
-const title: any = prop.urltitle;
+const campaignStore = useCampaignStore();
+const id: any = prop.id;
 
-const data = ref<PopulatedCampaign>();
+const data = ref<Campaign>();
 
 onBeforeMount(async () => {
   try {
-    const { campaign }: any = await verifyCampaign(title);
+    const { campaign }: any = await campaignStore.fetchCampaignById(id);
     data.value = campaign;
   } catch (error) {
     console.log(error);

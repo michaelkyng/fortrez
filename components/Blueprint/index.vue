@@ -97,7 +97,6 @@ import Contract from "@/components/Icons/Blueprint/Contract.vue";
 import Traceable from "@/components/Icons/Blueprint/Traceable.vue";
 import Global from "@/components/Icons/Blueprint/Global.vue";
 import Funding from "@/components/Icons/Blueprint/Funding.vue";
-import { PhArrowCircleDown } from "@phosphor-icons/vue";
 const { containerWidth } = useTailwindConfig();
 
 const problems = [

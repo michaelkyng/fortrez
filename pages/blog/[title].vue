@@ -43,7 +43,7 @@
 
 <script lang="ts" setup>
 const { title }: any = useRoute().params;
-const { getBlogByTitle } = useBlogStore();
+const blogStore = useBlogStore();
 const { containerWidth, subHeading } = useTailwindConfig();
 const isLoading = ref(true);
 const data = ref();
@@ -51,7 +51,7 @@ const data = ref();
 onBeforeMount(async () => {
   try {
     isLoading.value = true;
-    const { blog }: any = await getBlogByTitle(title);
+    const { blog }: any = await blogStore.getBlogByTitle(title);
     data.value = blog;
   } catch (error) {
     console.log(error);

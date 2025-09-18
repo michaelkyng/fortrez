@@ -163,7 +163,6 @@
 </template>
 
 <script setup lang="ts">
-import { PhCaretUp, PhCaretDown } from "@phosphor-icons/vue";
 
 const { containerWidth, transition } = useTailwindConfig();
 
